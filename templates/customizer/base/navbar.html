@@ -1,0 +1,70 @@
+  {% load static %}
+  <!-- Navbar Vertical -->
+  <aside class="js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered bg-white  ">
+    <div class="navbar-vertical-container">
+      <div class="navbar-brand d-flex justify-content-center">
+        <!-- Logo -->
+        <a class="navbar-brand" href="{% url 'custom_main' %}" aria-label="Batler">
+          <img class="navbar-brand-logo-short" src="{% static 'img/logo/technoguru.png' %}" alt="Logo" data-hs-theme-appearance="default">
+          <img class="navbar-brand-logo-short" src="{% static 'img/logo/technoguru.png' %}" alt="Logo" data-hs-theme-appearance="dark">
+        </a>
+        <!-- End Logo -->
+      </div>
+      <!-- Content -->
+      <div class="navbar-vertical-content">
+        <div class="navbar-nav nav-compact">
+          <div id="navbarVerticalMenu" class="nav nav-vertical card-navbar-nav">
+            <!-- Collapse -->
+            {% url 'custom_main' as custom_main_url %}
+            {% url 'custom_lesson' as custom_lesson_url %}
+            {% url 'custom_card' as custom_card_url %}
+            {% url 'custom_login' as custom_login_url %}
+            {% url 'custom_navigation' as custom_navigation_url %}
+            
+            <!-- Пункт "Курсы" -->
+            <div class="nav-item{% if request.path == custom_main_url %} active{% endif %}">
+                <a class="nav-link{% if request.path == custom_main_url %} active{% endif %}" href="{{ custom_main_url }}" role="button">
+                    <i class="bi bi-grid nav-icon"></i>
+                    <span class="nav-link-title">Курсы</span>
+                </a>
+            </div>
+
+            <!-- Пункт "Курс" -->
+            <div class="nav-item{% if request.path == custom_lesson_url %} active{% endif %}">
+                <a class="nav-link{% if request.path == custom_lesson_url %} active{% endif %}" href="{{ custom_lesson_url }}" role="button">
+                    <i class="bi bi-layout-text-window-reverse nav-icon"></i>
+                    <span class="nav-link-title">Курс</span>
+                </a>
+            </div>
+
+            <!-- Пункт "Карточка" -->
+            <div class="nav-item{% if request.path == custom_card_url %} active{% endif %}">
+              <a class="nav-link{% if request.path == custom_card_url %} active{% endif %}" href="{{ custom_card_url }}" role="button">
+                  <i class="bi bi-card-heading nav-icon"></i>
+                  <span class="nav-link-title">Карточка</span>
+              </a>
+          </div>
+          <!-- Пункт "Логин" -->
+          <div class="nav-item{% if request.path == custom_card_url %} active{% endif %}">
+            <a class="nav-link{% if request.path == custom_login_url %} active{% endif %}" href="{{ custom_login_url }}" role="button">
+                <i class="bi bi-box-arrow-in-right nav-icon"></i>
+                <span class="nav-link-title">Вход</span>
+            </a>
+        </div>
+        <!-- Пункт "Логин" -->
+        <div class="nav-item{% if request.path == custom_navigation_url %} active{% endif %}">
+          <a class="nav-link{% if request.path == custom_navigation_url %} active{% endif %}" href="{{ custom_navigation_url }}" role="button">
+              <i class="bi bi-menu-button nav-icon"></i>
+              <span class="nav-link-title">Навигация</span>
+          </a>
+      </div>
+
+        
+          </div>
+
+        </div>
+      </div>
+      <!-- End Content -->
+    </div>
+  </aside>
+  <!-- End Navbar Vertical -->

@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Title -->
+
+  <title>{% block title %}Настройка моей темы{% endblock %}</title>
+  <link rel="shortcut icon" href="{% static 'img/logo/technoguru.png' %}">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="{% static 'assets-admin/vendor/bootstrap-icons/font/bootstrap-icons.css' %}">
+
+  <!-- CSS Front Template -->
+  <link rel="preload" href="{% static 'assets-admin/css/theme-dark.min.css' %}" data-hs-appearance="default" as="style">
+  <link rel="preload" href="{% static 'assets-admin/css/theme-dark.min.css' %}" data-hs-appearance="dark" as="style">
+  {% block link-css %}{% endblock %}
+  {% include 'customizer/base/onload-styles&script.html' %}
+</head>
+<body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl navbar-vertical-aside-compact-mini-mode navbar-vertical-aside-compact-mode">
+  <script src="{% static 'assets-admin/js/hs.theme-appearance.js' %}"></script>
+  <style>
+    #content.blocked {
+        display: none;
+    }
+    #warning-message {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        padding-top: 20%;
+        z-index: 9999;
+    }
+    #content p.lead {
+        color: white;
+    }
+</style>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  {% include 'customizer/base/navbar.html' %}
+  <div id="warning-message" class="p-4">
+    <div class="alert alert-primary" role="alert">
+      Настройка темы доступна на экранах шириной не менее 900px
+    </div></div>
+
+  <main id="content" role="main" class="main">
+    <div class="content container-fluid">
+      <div class="d-flex justify-content-end">
+        <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-aside-toggler position-static">
+          <i class="bi-arrow-bar-left navbar-toggler-short-align" data-bs-toggle="tooltip" data-bs-placement="right" title="Collapse"></i>
+          <i class="bi-arrow-bar-right navbar-toggler-full-align" data-bs-template='<div class="tooltip d-none d-sm-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' data-bs-toggle="tooltip" data-bs-placement="right" title="Expand"></i>
+        </button>
+      </div>
+      <div class="row justify-content-lg-center">
+        <div class="col-lg-11">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+  <!-- ========== END MAIN CONTENT ========== -->
+  
+  <!-- JS Global Compulsory  -->
+  <script src="{% static 'assets-admin/vendor/jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'assets-admin/vendor/jquery-migrate/dist/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'assets-admin/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="{% static 'assets-admin/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside.min.js' %}"></script>
+
+  <!-- JS Front -->
+  <script src="{% static 'assets-admin/js/theme.min.js' %}"></script>
+
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+      // =======================================================
+      new HSSideNav('.js-navbar-vertical-aside').init()
+
+
+      // INITIALIZATION OF BOOTSTRAP DROPDOWN
+      // =======================================================
+      HSBsDropdown.init()
+    })()
+  </script>
+
+  <script>
+    function checkWindowSize() {
+        var content = document.getElementById('content');
+        var warningMessage = document.getElementById('warning-message');
+        if (window.innerWidth < 900) {
+            content.classList.add('blocked');
+            warningMessage.style.display = 'block';
+        } else {
+            content.classList.remove('blocked');
+            warningMessage.style.display = 'none';
+        }
+    }
+
+    window.addEventListener('load', checkWindowSize);
+    window.addEventListener('resize', checkWindowSize);
+</script>
+{% block my_scripts %}
+{% endblock %}
+
+</body>
+</html>

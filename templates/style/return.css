@@ -1,0 +1,865 @@
+
+{% include "style/root.css" %}
+
+
+ /* background всего сайта  */
+ body {
+    color: var(--text-color) !important;
+}
+
+h2 {
+    color: var(--text-color) !important;
+}
+
+.bg-white {
+      background-color: var(--main-color) !important;
+}
+
+
+.course-sidebar-header .ant-btn-text, .course-title, 
+.course-current-step, .course-progress-percent,
+.course-sidebar, .ant-btn-link,
+.course-item {
+    color: var(--left-menu-text-color) !important;
+}
+
+._comment_form_1flia_1 textarea {
+    border-width: var(--form-border-width) ; /* Преобразование ширины границы в пиксели */
+    border-color: var(--form-border-color);
+    border-style: solid; /* Установка стиля границы */
+    border-radius: var(--form-border-radius) ; /* Преобразование радиуса скругления в rem */
+    color: var(--form-text-color);
+    background-color: var(--form-back-color);
+}
+
+
+.ant-btn.ant-btn-default {
+    background-color: var(--form-button-back-default-color) !important;
+    border-width: var(--form-button-border-default-width)  !important; /* Преобразование ширины границы в пиксели */
+    border-color: var(--form-button-border-default-color) !important;
+    border-style: solid !important; /* Установка стиля границы */
+    border-radius: var(--form-button-border-default-radius)  !important; /* Преобразование радиуса скругления в rem */
+    color: var(--form-button-text-default-color) !important;
+}
+
+
+.ant-btn.ant-btn-primary {
+    background-color: var(--form-button-back-color) !important;
+    border-width: var(--form-button-border-width)  !important; /* Преобразование ширины границы в пиксели */
+    border-color: var(--form-button-border-color) !important;
+    border-style: solid !important; /* Установка стиля границы */
+    border-radius: var(--form-button-border-radius)  !important; /* Преобразование радиуса скругления в rem */
+    color: var(--form-button-text-color) !important;
+}
+._rate_step_541b3_5 {
+    background-color: var(--nps-back-color);
+    border-width: var(--nps-border-width) ; /* Преобразование ширины границы в пиксели */
+    border-color: var(--nps-border-color);
+    border-style: solid; /* Установка стиля границы */
+    border-radius: var(--nps-border-radius) ; /* Преобразование радиуса скругления в rem */
+    color: var(--nps-text-color);
+}
+
+._tabs_tab_activity_bar_16yb2_39 {
+    border-bottom: 2px solid var(--hr-active-color) !important;
+}
+
+.ant-menu-item-selected .course-item {
+    color: var(--left-menu-select-text-color) !important;
+}
+html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: var(--menu-course-background-selected) !important;
+}
+.ant-btn-text {
+    color: rgba(0,0,0,.85);
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+}
+
+.ant-layout-content {
+      background-color: var(--main-color) !important; 
+}
+
+
+
+.LibraryPage_learn_content_wrapper__1EeGX {
+      background-color: var(--main-color) !important; 
+}
+
+.ant-layout.min-vh-100 {
+      background-color: var(--main-color) !important; 
+}
+
+.ant-input-group-addon {
+    background-color: var(--main-color) !important; 
+}
+.ant-layout-header {
+       background-color: var(--menu-color) !important;
+}
+.ant-menu {
+      background-color: var(--menu-color) !important;
+}
+
+
+ /*  общие стили шапки  */
+
+.hoverable:hover {
+    background: none !important;
+}
+
+.ant-layout > .shadow-sm {
+      box-shadow: none;
+}
+
+.ant-layout > .shadow-sm {
+    box-shadow: none;
+    border-bottom: var(--menu-line-height)  solid var(--menu-line-color) !important;
+}
+
+
+.ant-menu-inline > li.ant-menu-item-selected {
+     font-weight: bold;
+     color: var(--text-color) !important;
+}
+
+.ant-menu-horizontal>.ant-menu-item:after, .ant-menu-horizontal>.ant-menu-submenu:after {
+    border-bottom: none !important;
+}   
+
+.ant-menu > .ant-menu-item:hover {
+    color: var(--text-color) !important;
+}
+
+.ant-menu-item:active, .ant-menu-submenu-title:active {
+    background: var(--active-accent-color);
+}
+
+span.ant-menu-title-content {
+    color: var(--text-color) !important;
+}
+
+.ant-badge > .ant-btn-circle {
+    color: var(--unaccent-color) !important;
+    background-color: var(--accent-color) !important;
+}
+.ant-avatar-circle {
+    background-color: var(--accent-color) !important;
+    color: var(--unaccent-color) !important;
+}
+.ant-dropdown-trigger {
+    color: var(--menu-text-color) !important;
+}
+
+.ant-menu-horizontal {
+    border-bottom: 1px solid var(--header-background-color);
+}
+
+ /*  Врапперы  */
+
+.msg-edit-input {
+    background-color: var( --main-color) !important;
+    color: var(--text-color);
+}
+
+.emoji-picker-btn, .file-input-btn, .comment-msg-btn-send, .ant-btn-icon-only {
+    color: var(--menu-text-color) !important
+}
+
+
+.ant-drawer-body {
+    background-color: var(--main-color) !important;
+}
+
+
+.ant-dropdown-menu-vertical > li.ant-dropdown-menu-item ,
+.ant-dropdown-menu-vertical > li.ant-dropdown-menu-submenu > .ant-dropdown-menu-submenu-title {
+    color: var(--text-color) !important;
+}
+
+.ant-dropdown-menu-vertical > li.ant-dropdown-menu-item ,
+.ant-dropdown-menu-vertical > li.ant-dropdown-menu-submenu > .ant-dropdown-menu-submenu-title {
+    color: var(--text-color) !important;
+    background-color: rgb(255 255 255 / 10%) !important;
+}
+
+.ant-dropdown-menu-vertical {
+    background-color: var( --main-color) !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: rgb(255 255 255 / 20%) !important;
+}
+
+
+.ant-drawer-body {
+    margin-bottom: 0px  !important;
+}
+
+
+
+ /* карточки */
+  
+
+.license-card-preview-placeholder {
+    border-radius: 5px;
+
+}
+
+.material-card-image .material-card-image-placeholder {
+    border: var(--card-image-border-width)  solid var(--card-image-border-color) !important;
+    border-radius: var(--card-image-border-radius)  !important;
+}
+
+.ant-progress-text {
+     color: var(--text-color);
+}
+
+ /* Прогресс */
+
+
+.ant-progress-bg, .ant-progress-success-bg {
+    border-radius: 0px;
+}
+  
+  
+.material-card-title-wrapper {
+    background: none !important;
+    color: var(--card-text-color-primary) !important;
+    text-shadow: none !important;
+    top: 105px;
+}
+
+.material-card-main-btn, .course-complete-theory-button, .license-card-navigate-button, .course-next-button{
+      color: var(--card-button-color-primary) !important;
+      border-color: var(--card-button-border-color) !important;
+      background: var(--card-button-color) !important;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius:  var(--card-button-border-radius)  !important;
+      border-width: var(--card-button-border-width)  !important;
+      min-height: 40px;
+      text-transform: uppercase;
+  }
+
+
+.ant-switch {
+    border: 1px solid var(--text-color);
+}
+
+@media (max-width: 767px) {
+  .material-card,
+  .license-card {
+     margin-inline: auto;
+  }
+
+.ant-drawer-body > .ant-layout-header, .ant-menu {
+    background-color: #ffffff !important;
+}
+
+  .flex.flex-wrap.gap-16.mt-10 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+.LicenseCard_card__1EtQ_ {
+    width: 360px;
+    max-width: 360px;
+}
+}
+ul.ant-pagination > li > .ant-btn,
+ul.ant-pagination > li > a{
+    background-color: var(--main-color);
+    color: var(--text-color);
+}
+  
+  .material-card-image-placeholder {
+      height: 60% !important;
+  }
+
+ .material-card-progress-current-name {
+     height: 70px;
+     display: flex;
+     align-items: flex-end;
+  }
+
+.border {
+    border: 1px solid var(--border-accent-color);
+}
+
+.material-card, .license-card {
+    padding: 20px; /* Упрощение padding */
+    background-color: var(--card-back-color) !important;
+    border-radius: var(--card-border-radius) !important;
+    border: var(--card-border-width)  solid var(--card-border-color) !important; /* Объединенное свойство border */
+}
+
+.material-card-image img {
+    border-radius: var(--card-image-border-radius)  !important;
+    border: var(--card-image-border-radius)  solid var(--card-image-border-radius) !important; /* Объединенное свойство border */
+    height: 60% !important;
+}
+
+.LicenseCard_preview__1cqFW .license-card-preview-image, .LicenseCard_preview__1cqFW .license-card-preview-placeholder {
+    border-radius: var(--card-image-border-radius)  !important;
+    border: var(--card-image-border-radius)  solid var(--card-image-border-radius) !important; /* Объединенное свойство border */
+}
+
+.material-card-image-placeholder {
+    height: 60% !important;
+}
+
+ /* Форум */
+
+.ant-page-header {
+    background-color: var( --main-color) !important;
+    border: 1px solid var(--text-color);
+}
+
+.ant-page-header-heading-title {
+ color: var(--text-color) !important;
+}
+
+.ant-page-header {
+    border-radius: 0px;
+}
+
+
+ /* Левое меню */
+.ant-menu-submenu-title,
+.LearnSidebar_learn_sidebar__2EX4P {
+        background: var(--main-color);
+}
+
+
+.course-item-menu {
+    background: var(--main-color) !important;
+}
+
+.CourseItemTree_course_item__2clQA, .CourseItemTree_course_item__2clQA .ant-menu-submenu-title {
+    background-color: var(--main-color) !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: var(--main-color)  !important;
+}
+
+.ant-menu-inline .ant-menu-item:after, .ant-menu-vertical-left .ant-menu-item:after, .ant-menu-vertical-right .ant-menu-item:after, .ant-menu-vertical .ant-menu-item:after {
+    border-right: 3px solid var(--menu-course-right-selected);
+}
+
+.ant-badge-status-processing {
+    background-color: var(--border-accent-color);
+}
+
+.border-r {
+    border-right: 2px solid var(--border-accent-color);
+}
+
+.course-sidebar-header > a >.ant-btn-text ,
+.LibraryHeader_header__uOjxM > .align-center  >.ml-10 >  a >.ant-btn-text ,
+.LibraryHeader_header__uOjxM > .align-center  >.ml-10 {
+    color: var(--text-color);
+}
+
+{% if domain.logo %}
+.fs-20.lh-24.fw-500.mb-15.course-title::before {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 72px;
+  background-image: url("https://themes.technoguru.club/{{domain.logo.url}}");
+  background-size: contain;
+  margin-bottom: 15px;
+}
+{% endif %}
+ /* Шапка курса */
+
+.ant-breadcrumb a:hover, .ant-breadcrumb li:last-child, .ant-breadcrumb li:last-child a, .ant-breadcrumb-separator
+ {
+     color: var(--menu-text-color);
+}
+
+.ant-breadcrumb {
+    color: var(--text-color);
+}
+
+.border-b {
+    border-bottom: 1px solid var(--border-accent-color);
+}
+
+.ez-section-container {
+    background-color: var(--main-color) !important;
+}
+
+.ez-section {
+    background-color: var(--main-color) !important;
+}
+
+
+.ez-wrapper-content  {
+    background-color: var(--main-color) !important;
+}
+
+.ez-wrapper .ez .ez-video-v2 .ez-video-preview, .ez-wrapper .ez .ez-video-v2 iframe {
+    padding: 15px;
+    border: var(--video-border-width)  solid var(--video-border-color);
+    border-radius: var(--video-border-radius)  !important;
+}
+
+ /* Шаги курса */
+
+.Tabs_tabs_tab__active__2iFKG, .Tabs_tabs_tab__active__2iFKG:hover {
+    color:  var(--border-accent-color) ;
+}
+
+span.course-item-tab-title {
+    color:  var(--text-color) ;
+}
+
+.course-item-tab-desc {
+    color:  var(--text-color) ;
+}
+
+.bg-primary {
+    background-color: var(--border-accent-color) ;
+}
+
+.CourseItemTabs_tabs_nav__PWmSQ:before {
+    border-bottom: 1.5px solid var(--border-accent-color);
+}
+
+.ant-typography {
+    color:  var(--text-color) !important;
+}
+
+.Rate_rate_step__1vqnQ {
+    border-radius: 0px;
+    border: 1px solid var(--text-color);
+    background-color: var(--main-color);
+    color: var(--text-color);
+}
+
+/* .Comment_comment__F8Lal .Comment_comment_text__24H3f {
+    border: 1px solid var(--text-color);
+} */
+
+.CourseItemContentFooter_item_content_footer__1D0I2 {
+     padding-left: 24px;
+     padding-right: 24px; 
+}
+
+.ant-btn-primary {
+    color: var(--text-color);
+    border-color: var(--text-color);
+    background: var(--main-color);
+}
+
+.color-secondary {
+    color: var(--text-color);
+}
+
+.Tabs_tabs_tab_activity_bar__2CdBf {
+    border-bottom: 1px solid var(--border-accent-color);
+}
+
+ /* Подвал курса */
+.CourseItemContentFooter_item_content_footer__1D0I2 {
+    box-shadow: none;
+}
+
+.PartnershipTotalCard_total_card__3QWfu.hoverable:hover  {
+   background-color: #ffff !important;
+}
+
+.LibraryItemContentFooter_item_content_footer__1XDwj {
+   background-color: var(--main-color) !important;
+}
+
+.ant-layout {
+   background-color: var(--main-color) !important;
+}
+
+
+ /* Библиотека */
+.Tabs_tabs_nav__1kh1t:before {
+    border-bottom: 1px solid var(--border-accent-color);
+}
+
+.LibraryHeader_header__uOjxM {
+    border-bottom: 1px solid var(--border-accent-color);
+}
+.LibraryPage_learn_sidebar__wCwLE {
+    border-right: 1px solid var(--border-accent-color);
+}
+
+
+ /* Резиновые варианты меню -  Главное */
+.ant-drawer-title, .ant-drawer-close {
+    color: var(--text-color);
+}
+
+.ant-drawer-title > a > .ant-btn-text {
+    color: var(--text-color);
+}
+
+.ant-drawer-body > .ant-menu {
+    border-right: 0px;
+}
+.ant-drawer-header {
+    border-bottom: 1px solid var(--border-accent-color);
+}
+.ant-drawer-content-wrapper {
+    border-right: 1px solid var(--border-accent-color);
+}
+
+.ant-drawer-close:hover {
+    color: var(--text-color);
+}
+
+@media (max-width: 767px) {
+.ant-drawer-body > .ant-layout-header, .ant-menu {
+    background-color: var(--main-color) !important;
+}
+}
+
+ /* Резиновые варианты меню -  В курсах */
+.ant-drawer-header {
+   background-color: var(--main-color) !important;
+}
+
+.ant-switch-checked {
+    background-color: var(--border-accent-color);
+}
+
+.ant-switch {
+    border: 1px solid var(--border-accent-color);
+}
+
+.ant-switch-checked {
+    background-color: var(--border-accent-color);
+}
+
+.ant-page-header {
+    background-color: var(--main-color) !important;
+    border: 1px solid var(--border-accent-color);
+}
+
+.ant-layout-header {
+    color: var(--menu-text-color);
+}
+
+.ant-breadcrumb a:hover, .ant-breadcrumb li:last-child, .ant-breadcrumb li:last-child a, .ant-breadcrumb-separator {
+    color: var(--menu-text-color);
+}
+
+.ant-menu-horizontal  > li.ant-menu-item-selected > span.ant-menu-title-content{
+    color: var(--menu-text-color) !important;
+    font-weight: bold;
+
+}
+
+ .ant-menu-horizontal  > li.ant-menu-item > span.ant-menu-title-content {
+    color: var(--menu-text-color) !important;
+
+}
+
+
+ /* Логин */
+
+.AuthLayout_auth_layout__2hV_a {
+    background: var(--main-color);
+}
+
+.AuthLayout_auth_layout__2hV_a .AuthLayout_auth_drawer__1Cpio {
+    display: flex;
+    position: absolute;
+    height: 100vh;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: none;
+}
+
+.AuthLayout_auth_form_wrapper_body__HWeJN {
+    background: var(--main-color);
+    padding: 30px;
+    max-height: 540px;
+    border: 1px solid var(--border-accent-color);
+}
+
+.AuthLayout_school_name__3Sqhn {
+    color: var(--text-color);
+}
+
+.AuthLayout_auth_form_wrapper__26rZ8 .flex.flex-col.align-center {
+    display: none;
+}
+
+.ant-input-affix-wrapper {
+    border: 1px solid var(--border-accent-color) !important;
+    background: var(--main-color) !important;
+}
+
+.auth_form_button_item__9SIMB button {
+    width: 100%;
+    color: var(--main-color) !important;
+    border-color: var(--border-accent-color) !important;
+    background: var(--border-accent-color) !important;
+}
+
+.ant-input {
+    background-color: var(--main-color) !important;
+}
+
+.ant-input-affix-wrapper>.ant-input {
+    color: var(--text-color) !important;
+}
+
+.login-content .ant-form-item-label>label, .auth_auth_form_wrapper_footer__2oN3C{
+    color: var(--text-color) !important;
+}
+
+
+/* Логин */
+
+._auth_layout_p3cc9_8 ._auth_drawer_p3cc9_12 {
+    display: flex;
+    position: absolute;
+    height: 100vh;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: none;
+}
+
+
+._auth_drawer_p3cc9_12 {
+    background-color: var(--login-card-back-color) !important;
+    border-width: var(--login-card-border-width)  !important; /* Преобразование ширины границы в пиксели */
+    border-color: var(--login-card-border-color) !important;
+    border-style: solid !important; /* Установка стиля границы */
+    border-radius: var(--login-card-border-radius)  !important; /* Преобразование радиуса скругления в rem */
+}
+
+
+._auth_form_wrapper_body_p3cc9_61 {
+    justify-content: flex-start !important;
+}
+
+._auth_form_wrapper_header_p3cc9_53{
+    margin-bottom: 0px;    
+    margin-top: 0px;
+}
+
+._custom_logo_wn4yh_1 {
+    margin-bottom: 15px !important;
+    margin-top: 15px !important;
+}
+
+.login-content .ant-checkbox-wrapper, .login-content ._auth_form_wrapper_footer_agmhf_14 {
+    color: var(--login-label-color) !important;
+    margin-top: 20px !important;
+}
+
+.login-content a {
+    color: var(--login-link-label-color) !important;
+}
+
+._auth_form_wrapper_p3cc9_46 .flex.flex-col.align-center {
+    display: none;
+}
+
+.ant-input-affix-wrapper {
+    border: 1px solid var(--border-accent-color) !important;
+    color: var(--menu-text-color) !important;
+}
+
+
+.ant-form-item-control-input-content .ant-input-affix-wrapper {
+    border: var(--login-input-border-width)  solid var(--login-input-border-color) !important;
+    color: var(--login-input-text-color) !important;
+    background: var(--login-input-back-color) !important;
+    border-radius: var(--login-input-border-radius)  !important;
+}
+
+.ant-form-item-control-input-content .ant-input-affix-wrapper input {
+    background: var(--login-input-back-color) !important;
+    color: var(--login-input-text-color) !important;
+
+}
+
+.login-school-name {
+    color: var(--login-school-color);
+}
+
+.login-content h3 {
+    color: var(--login-title-color) !important;
+}
+
+
+.login-content .ant-form-item-label>label, .ant-form-item-required{
+    color: var(--login-label-color) !important;
+}
+
+.login-content .ant-form-item-control-input-content .ant-input-affix-wrapper input::placeholder{
+    color: var(--login-input-text-color-transparent) !important;
+}
+
+
+
+._form_button_item_agmhf_7 button {
+    width: 100% !important;
+    color: var(--main-color) !important;
+    border-color: var(--border-accent-color) !important;
+    background: var(--border-accent-color) !important;
+}
+
+
+._auth_drawer_p3cc9_12 {
+    max-height: 662px;
+}
+
+
+
+
+
+
+
+._auth_layout_p3cc9_8 {
+    background: var(--login-background-color) !important;
+}
+
+
+._comment_editor_f0hw1_1 {
+    background: var(--main-color) !important;
+}
+
+.border-t {
+    border-top: 1px solid var(--text-color) !important;
+}
+
+
+.ant-dropdown-menu-item-divider, .ant-dropdown-menu-submenu-title-divider {
+    background-color: var(--text-color) !important;
+}
+
+textarea::placeholder{
+    color: var(--text-color-transparent) !important;
+}
+
+input.ant-input::placeholder {
+    color: var(--text-color-transparent) !important;
+}
+
+
+
+.ant-input-group-addon .ant-select.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    background-color: var(--main-color);
+    border: 1px solid transparent;
+    border-color: var(--border-accent-color);
+    color: var(--text-color) !important;
+}
+
+
+.material-card-progress .ant-progress-inner {
+    border-radius: var(--progress-card-border-radius)  !important;
+    border: var(--progress-card-border-width)  solid var(--progress-card-border-color) !important;
+}
+.material-card-progress .ant-progress-bg {
+    background-color: var(--progress-card-bar-color) !important;
+    height: 6px !important; /* Явно заданная высота для полосы прогресса */
+}
+
+
+
+.course-sidebar-header .ant-progress-inner {
+    border-radius: var(--progress-border-radius)  !important;
+    border: 1px solid var(--progress-border-color) !important;
+    background-color: var(--menu-course-color) !important;
+
+}
+.course-sidebar-header .ant-progress-bg {
+    background-color: var(--progress-bar-color) !important;
+    height: 6px !important; /* Явно заданная высота для полосы прогресса */
+}
+
+
+.material-card-progress-current-name, .material-card-progress-courses-count {
+    color: var(--card-text-color-secondary) !important;
+}
+
+.material-card-progress .ant-progress-text {
+    color: var(--card-text-color-secondary) !important;
+}
+
+
+
+._learn_sidebar_1gst3_1 {
+    background: var(--menu-course-color) !important;
+}
+
+
+html body ._course_item_18ox6_1, 
+html body ._course_item_18ox6_1 .ant-menu-submenu-title {
+    background: var(--menu-course-color) !important;
+}
+
+
+
+
+/* Для WebKit (Chrome, Safari, Opera) */
+::-webkit-scrollbar {
+    width: var(--scroll-bar-size) ;
+    height: var(--scroll-bar-size) ;
+  }
+  
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar-color) !important;
+    border: 2px solid var(--scroll-bar-color);
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: var(--main-color) !important;   
+    border-radius: var(--scroll-bar-round) ;
+  }
+  
+
+
+  /* Специфичные стили для скроллбара внутри _learn_sidebar_1gst3_1 */
+  .overflow-y-auto::-webkit-scrollbar {
+    width: var(--scroll-bar-size) ;
+    height: var(--scroll-bar-size) ;
+  }
+  
+  
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar-color) !important;
+    border: 2px solid var(--scroll-bar-color);
+  }
+  
+  .overflow-y-auto::-webkit-scrollbar-track {
+    background-color: var(--main-color) !important;   
+    border-radius: var(--scroll-bar-round) ;
+  }
+  
+
+
+.overflow-y-auto::-webkit-scrollbar-track {
+    background-color: var(--menu-course-color) !important; /* Новый цвет дорожки */
+}
+
+/* Селектор для кнопки логина */
+._form_button_item_agmhf_7 .ant-btn.ant-btn-primary[type="submit"] {
+    background-color: var(--login-button-back-color) !important; /* Цвет фона */
+    border-width: var(--login-button-border-width)  !important; /* Ширина границы */
+    border-color: var(--login-button-border-color) !important; /* Цвет границы */
+    border-style: solid !important; /* Стиль границы */
+    border-radius: var(--login-button-border-radius)  !important; /* Радиус скругления */
+    color: var(--login-button-text-color) !important; /* Цвет текста */
+}
+

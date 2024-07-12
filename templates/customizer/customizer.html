@@ -1,0 +1,314 @@
+{% extends 'customizer/base/index.html' %}
+{% load static %}
+{% block link-css %}<link rel="preload"  href="{% static 'assets-admin/emulator/style.css' %}" as="style">{% endblock %}
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+<!-- Начало слоёв эмулятора ( перенос в assets-admin/emulator/style.css ) -->
+<style>
+  .base-layer {
+      position: relative;
+      z-index: 1;
+  }
+
+  .content-layer {
+      position: relative;
+      z-index: 2;
+  }
+
+  .overlay-layer {
+      position: relative;
+      z-index: 3;
+  }
+
+  .top-layer {
+      position: relative;
+      z-index: 5;
+  }
+
+  .device-browser-frame {
+      position: relative;
+      z-index: 4;
+  }
+
+
+  /* Настройка элементов в .input-group */
+  .input-group-md-vertical {
+      display: flex;
+      align-items: center;
+  }
+
+  .input-group-md-vertical input[type="color"] {
+      border-radius: 0.4rem;
+      border: 0px;
+      padding: 0.375rem;
+      margin-right: 10px;
+      height: 38px;
+      cursor: pointer;
+  }
+
+  .input-group-md-vertical .form-control {
+      height: 38px;
+  }
+
+  .input-group>.form-control, 
+  .input-group>input[type="color"] {
+      margin-left: 0 !important;
+      border-top-left-radius: 0.25rem !important;
+      border-bottom-left-radius: 0.25rem !important;
+  }
+
+  .device-browser-frame {
+    background: none !important;
+  }
+
+  .divider-start {
+    color: #ffffff !important;
+  }
+
+  .col-form-label {
+    color: #91989e !important;
+  }
+</style>
+
+<!-- Конец слоёв эмулятора ( перенос в assets-admin/emulator/style.css ) -->
+<script src="https://cdn.jsdelivr.net/npm/imask"></script>
+
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-header-title">{{title}}</h3>
+      </div>
+        <div class="card-body">
+          <div class="container-custom border border-2 p-4 {% if not device_browser_background %}bg-soft-secondary"{% else %}"style="background-color: {{device_browser_background}}"{% endif %}>
+            <!-- начало эмулятора -->
+            <figure class="device-browser" style="width: {{emulator_size.width}}px;">
+              {% if device_browser_header %}
+              <div class="device-browser-header">
+                <div class="device-browser-header-btn-list">
+                  <span class="device-browser-header-btn-list-btn"></span>
+                  <span class="device-browser-header-btn-list-btn"></span>
+                  <span class="device-browser-header-btn-list-btn"></span>
+                </div>
+                <div class="device-browser-header-browser-bar">https://themes.technoguru.club/</div>
+              </div>
+              {% endif%}
+
+              <!-- base-layer  -->
+              <div class="base-layer position-relative">
+                {% for element in base_layer %}
+                  {{ element.render|safe }}
+                {% endfor %}
+              </div>
+
+              <!-- content-layer  -->
+              <div class="content-layer position-relative">
+                {% for element in content_layer %}
+                  {{ element.render|safe }}
+                {% endfor %}
+              </div>
+
+              <!-- overlay-layer  -->
+              <div class="overlay-layer position-relative">
+                {% for element in overlay_layer %}
+                  {{ element.render|safe }}
+                {% endfor %}
+              </div>
+
+              <!-- top-layer  -->
+              <div class="top-layer position-relative">
+                {% for element in top_layer %}
+                  {{ element.render|safe }}
+                {% endfor %}
+              </div>
+
+              <!-- device-browser-frame  -->
+              <div class="device-browser-frame shadow-none">
+                <div style="width: {{emulator_size.width}}px; height: {{emulator_size.height}}px">
+                </div>
+              </div>
+
+            </figure>
+            <!-- конец эмулятора -->
+          </div>
+
+
+          <form action="" method="POST">
+            <!-- CSRF токен для безопасности формы -->
+            {% csrf_token %}
+          <div class="container mt-6">
+            {% for block in blocks %}
+            <span class="divider-start">{{block.name}}</span>
+              {% for input in block.inputs %}
+                {% if input.type == 'backgroundColor' or input.type == 'color' or input.type == 'borderColor' %}
+                  {% include 'customizer/emulators/color_input.html' with label=input.label name=input.name value=input.value %} 
+                  {% elif input.type == 'lineHeight' or input.type == 'borderWidth' %}
+                  {% include 'customizer/emulators/height_input.html' with label=input.label name=input.name value=input.value  id='decimal_input' %}
+                  {% elif input.type == 'borderRadius' %}
+                  {% include 'customizer/emulators/height_input.html' with label=input.label name=input.name value=input.value id='to_one_input' %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            </div>
+            <div class="d-grid mb-2 mt-6">
+              <button type="submit" class="btn btn-primary btn-lg">Сохранить изменения</button>
+            </div>
+      </form>
+        </div>
+        </div>
+</div>
+{% endblock %}
+{% block my_scripts %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      // Функция для синхронизации цветового пикера, hex ввода и изменения стиля
+      const setupColorSync = (pickerId, hexId, elementClassNames, cssProperty) => {
+          const picker = document.getElementById(pickerId);
+          const hex = document.getElementById(hexId);
+
+          // Функция для применения цвета к указанному CSS-свойству
+          const applyColor = (color) => {
+              elementClassNames.forEach(className => {
+                  const elements = document.querySelectorAll(`.${className}`);
+                  elements.forEach(element => {
+                      element.style[cssProperty] = color;
+                  });
+              });
+          };
+
+          // Обновление hex ввода и CSS-свойства при изменении цветового пикера
+          picker.addEventListener('input', function () {
+              const selectedColor = this.value;
+              hex.value = selectedColor;
+              applyColor(selectedColor);
+          });
+
+          // Обновление цветового пикера и CSS-свойства при изменении hex ввода
+          hex.addEventListener('input', function () {
+              // Проверка корректности hex ввода
+              if (/^#[0-9A-F]{6}$/i.test(this.value)) {
+                  const hexColor = this.value;
+                  picker.value = hexColor;
+                  applyColor(hexColor);
+              }
+          });
+      };
+
+      // Настройка синхронизации цвета для разных элементов и свойств
+      {% for block in blocks %}
+        {% for input in block.inputs %}
+          {% if input.type == 'backgroundColor' or input.type == 'color' or input.type == 'borderColor' %}
+            setupColorSync('{{input.name}}Picker', '{{input.name}}Hex', [{% for item in input.elements %}'{{ item }}'{% if not forloop.last %}, {% endif %}{% endfor %}], '{{input.type}}');
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+  });
+</script>
+
+<script>
+  // Скрипт для элементов с классом 'decimalInput'
+  var decimalInputs = document.querySelectorAll('.decimal_input');
+  decimalInputs.forEach(function(input) {
+    var decimalMask = IMask(input, {
+      mask: Number,
+      scale: 1,
+      thousandsSeparator: '',
+      radix: '.',
+      mapToRadix: ['.'],
+      normalizeZeros: true,
+      min: 0,
+      max: 9.9,  // Измените максимальное значение по необходимости
+    });
+  });
+</script>
+
+<script>
+  // Скрипт для элементов с классом 'toOneInput'
+  var toOneInputs = document.querySelectorAll('.to_one_input');
+  toOneInputs.forEach(function(input) {
+    var decimalMask = IMask(input, {
+      mask: Number,
+      scale: 1,
+      thousandsSeparator: '',
+      radix: '.',
+      mapToRadix: ['.'],
+      normalizeZeros: true,
+      min: 0,
+      max: 1,  // Измените максимальное значение по необходимости
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const setupHeightSync = (heightInputName, elementClassNames) => {
+          const heightInput = document.getElementsByName(heightInputName)[0];
+          const applyHeight = (heightValue) => {
+              const adjustedHeight = heightValue / 1.5;
+
+              elementClassNames.forEach(className => {
+                  const elements = document.querySelectorAll(`.${className}`);
+                  elements.forEach(element => {
+                      element.style.height = `${adjustedHeight}px`;
+                  });
+              });
+          };
+          heightInput.addEventListener('input', function () {
+              const heightValue = parseInt(this.value);
+              applyHeight(heightValue);
+          });
+      };
+      {% for block in blocks %}
+        {% for input in block.inputs %}
+          {% if input.type == 'lineHeight' %}
+            setupHeightSync('{{input.name}}', [{% for item in input.elements %}'{{ item }}'{% if not forloop.last %}, {% endif %}{% endfor %}]);
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const setupBorderWidthSync = (widthInputName, elementClassNames) => {
+          const widthInput = document.getElementsByName(widthInputName)[0];
+          widthInput.addEventListener('input', function () {
+              const adjustedWidth = parseInt(this.value) / 1.5;
+              elementClassNames.forEach(className => {
+                  const elements = document.querySelectorAll(`.${className}`);
+                  elements.forEach(element => {
+                      element.style.borderWidth = `${adjustedWidth}px`;
+                  });
+              });
+          });
+      };
+
+      const setupBorderRadiusSync = (radiusInputName, elementClassNames) => {
+    const radiusInput = document.getElementsByName(radiusInputName)[0];
+    radiusInput.addEventListener('input', function () {
+        const adjustedRadius = parseFloat(this.value);  // Используем parseFloat для значений с точкой
+        elementClassNames.forEach(className => {
+            const elements = document.querySelectorAll(`.${className}`);
+            elements.forEach(element => {
+                element.style.borderRadius = `${adjustedRadius}em`;
+            });
+        });
+    });
+};
+
+
+      {% for block in blocks %}
+        {% for input in block.inputs %}
+          {% if input.type == 'borderWidth' %}
+            setupBorderWidthSync('{{input.name}}', [{% for item in input.elements %}'{{ item }}'{% if not forloop.last %}, {% endif %}{% endfor %}]);
+          {% elif input.type == 'borderRadius' %}
+            setupBorderRadiusSync('{{input.name}}', [{% for item in input.elements %}'{{ item }}'{% if not forloop.last %}, {% endif %}{% endfor %}]);
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+  });
+</script>
+
+
+{% endblock %}

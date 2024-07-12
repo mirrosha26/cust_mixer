@@ -1,0 +1,37 @@
+el_email_label
+type = text
+var = Email
+(255;186)
+
+el_password_label
+type = text
+var = Пароль
+(255;224)
+
+
+el_text_footer
+type = text
+var = У вас нет аккаунта?
+
+el_button
+type = shape
+
+
+el_button_text
+type = text
+var = Войти
+
+
+el_label_reset
+type = text
+var = Забыли пароль?
+
+el_link
+type = text
+var = Регистрация
+
+el_input_email
+
+
+
+

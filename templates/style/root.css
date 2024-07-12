@@ -1,0 +1,97 @@
+:root {
+    --menu-color: {{ theme_settings.menu_color }};
+    --menu-text-color: {{ theme_settings.menu_text_color }};
+    --menu-line-height: {{ theme_settings.menu_line_height }};
+    --menu-line-color: {{ theme_settings.menu_line_color }};
+    
+    --main-color: {{ theme_settings.main_color }};
+    --text-color: {{ theme_settings.text_color }};
+    --scroll-bar-size: {{ theme_settings.scroll_bar_size }}px;
+    --scroll-bar-color: {{ theme_settings.scroll_bar_color }};
+    --scroll-bar-round: {{ theme_settings.scroll_bar_round }};
+    
+    --accent-color: {{ theme_settings.accent_color }};
+    --unaccent-color: {{ theme_settings.unaccent_color }};
+    --border-accent-color: {{ theme_settings.border_accent_color }};
+    
+    --card-back-color: {{ theme_settings.card_back_color }};
+    --card-border-width: {{ theme_settings.card_border_width }}px;
+    --card-border-color: {{ theme_settings.card_border_color }};
+    --card-border-radius: {{ theme_settings.card_border_radius }}rem;
+    
+    --menu-course-color: {{ theme_settings.menu_course_color }};
+    
+    --video-border-color: {{ theme_settings.video_border_color }};
+    --video-border-radius: {{ theme_settings.video_border_radius }}rem;
+    --video-border-width: {{ theme_settings.video_border_width }}px;
+    
+    --left-menu-text-color: {{ theme_settings.left_menu_text_color }};
+    --left-menu-select-text-color: {{ theme_settings.left_menu_select_text_color }};
+    
+    --progress-bar-color: {{ theme_settings.progress_bar_color }};
+    --progress-border-color: {{ theme_settings.progress_border_color }};
+    --progress-border-radius: {{ theme_settings.progress_border_radius }}rem;
+    
+    --menu-course-background-selected: {{ theme_settings.menu_course_background_selected }};
+    --menu-course-right-selected: {{ theme_settings.menu_course_right_selected }};
+    
+    --card-image-border-radius: {{ theme_settings.card_image_border_radius }}rem;
+    --card-image-border-width: {{ theme_settings.card_image_border_width }}px;
+    --card-image-border-color: {{ theme_settings.card_image_border_color }};
+    --card-button-color: {{ theme_settings.card_button_color }};
+    --card-button-border-radius: {{ theme_settings.card_button_border_radius }}rem;
+    --card-button-border-width: {{ theme_settings.card_button_border_width }}px;
+    --card-button-border-color: {{ theme_settings.card_button_border_color }};
+    
+    --progress-card-bar-color: {{ theme_settings.progress_card_bar_color }};
+    --progress-card-border-radius: {{ theme_settings.progress_card_border_radius }}rem;
+    --progress-card-border-color: {{ theme_settings.progress_card_border_color }};
+    --progress-card-border-width: {{ theme_settings.progress_card_border_width }}px;
+    
+    --card-text-color-secondary: {{ theme_settings.card_text_color_secondary }};
+    --card-text-color-primary: {{ theme_settings.card_text_color_primary }};
+    --card-button-color-primary: {{ theme_settings.card_button_color_primary }};
+    
+    --login-input-back-color: {{ theme_settings.login_input_back_color }};
+    --login-input-border-radius: {{ theme_settings.login_input_border_radius }}rem;
+    --login-input-border-width: {{ theme_settings.login_input_border_width }}px;
+    --login-input-border-color: {{ theme_settings.login_input_border_color }};
+    --login-input-text-color: {{ theme_settings.login_input_text_color }};
+    
+    --login-school-color: {{ theme_settings.login_school_color }};
+    --login-title-color: {{ theme_settings.login_title_color }};
+    --login-label-color: {{ theme_settings.login_label_color }};
+    --login-link-label-color: {{ theme_settings.login_link_label_color }};
+    
+    --login-button-back-color: {{ theme_settings.login_button_back_color }};
+    --login-button-border-radius: {{ theme_settings.login_button_border_radius }}rem;
+    --login-button-border-width: {{ theme_settings.login_button_border_width }}px;
+    --login-button-border-color: {{ theme_settings.login_button_border_color }};
+    --login-button-text-color: {{ theme_settings.login_button_text_color }};
+    --login-background-color: {{ theme_settings.login_background_color }};
+    
+    --login-card-back-color: {{ theme_settings.login_card_back_color }};
+    --login-card-border-width: {{ theme_settings.login_card_border_width }}px;
+    --login-card-border-color: {{ theme_settings.login_card_border_color }};
+    --login-card-border-radius: {{ theme_settings.login_card_border_radius }}rem;
+    
+    --hr-active-color: {{ theme_settings.hr_active_color }};
+    
+    --nps-back-color: {{ theme_settings.nps_back_color }};
+    --nps-border-width: {{ theme_settings.nps_border_width }}px;
+    --nps-border-color: {{ theme_settings.nps_border_color }};
+    --nps-border-radius: {{ theme_settings.nps_border_radius }}rem;
+    --nps-text-color: {{ theme_settings.nps_text_color }};
+    
+    --form-border-width: {{ theme_settings.form_border_width }}px;
+    --form-border-color: {{ theme_settings.form_border_color }};
+    --form-border-radius: {{ theme_settings.form_border_radius }}rem;
+    --form-text-color: {{ theme_settings.form_text_color }};
+    --form-back-color: {{ theme_settings.form_back_color }};
+    
+    --form-button-back-color: {{ theme_settings.form_button_back_color }};
+    --form-button-border-width: {{ theme_settings.form_button_border_width }}px;
+    --form-button-border-color: {{ theme_settings.form_button_border_color }};
+    --form-button-border-radius: {{ theme_settings.form_button_border_radius }}rem;
+    --form-button-text-color: {{ theme_settings.form_button_text_color }};
+}
