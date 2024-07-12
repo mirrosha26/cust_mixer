@@ -1,7 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth import authenticate, login, get_user_model, logout
 from django.http import JsonResponse
+from customizer.models import ThemeSettings
+from django.http import HttpResponseForbidden
+from custom_profile.models import User
 from customizer.models import ThemeSettings
 
 class SigninView(View):
@@ -34,6 +37,14 @@ class LogoutView(View):
         logout(request)
         return redirect('signin')
 
+
 def theme_view(request):
-    theme_settings = ThemeSettings.objects.get(user=request.user)
+    uuid = request.GET.get('uuid')
+    domain = request.GET.get('d')
+    if not uuid or not domain:
+        return HttpResponseForbidden("Access Denied")
+    user = get_object_or_404(User, uuid=uuid)
+    if user.domain != domain:
+        return HttpResponseForbidden("Access Denied")
+    theme_settings = get_object_or_404(ThemeSettings, user=user)
     return render(request, 'style/return.css', {'theme_settings': theme_settings})
