@@ -1,5 +1,4 @@
 asgiref
-Django
 djangorestframework
 pillow
 sqlparse
