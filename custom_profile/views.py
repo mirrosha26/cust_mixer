@@ -47,4 +47,4 @@ def theme_view(request):
     if user.domain != domain:
         return HttpResponseForbidden("Access Denied")
     theme_settings = get_object_or_404(ThemeSettings, user=user)
-    return render(request, 'style/return.css', {'theme_settings': theme_settings})
+    return render(request, 'style/return.css', {'theme_settings': theme_settings}, content_type='text/css')
