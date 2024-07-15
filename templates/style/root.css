@@ -1,14 +1,14 @@
 :root {
     --menu-color: {{ theme_settings.menu_color }};
     --menu-text-color: {{ theme_settings.menu_text_color }};
-    --menu-line-height: {{ theme_settings.menu_line_height }};
+    --menu-line-height: {{ theme_settings.menu_line_height }}px;
     --menu-line-color: {{ theme_settings.menu_line_color }};
     
     --main-color: {{ theme_settings.main_color }};
     --text-color: {{ theme_settings.text_color }};
     --scroll-bar-size: {{ theme_settings.scroll_bar_size }}px;
     --scroll-bar-color: {{ theme_settings.scroll_bar_color }};
-    --scroll-bar-round: {{ theme_settings.scroll_bar_round }};
+    --scroll-bar-round: {{ theme_settings.scroll_bar_round }}rem;
     
     --accent-color: {{ theme_settings.accent_color }};
     --unaccent-color: {{ theme_settings.unaccent_color }};

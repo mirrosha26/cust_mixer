@@ -141,8 +141,8 @@ class MainCustomizerView(View):
                 {
                     'name': 'Линия под меню',
                     'inputs': [
-                        {'label': 'Толщина линии под меню (px)', 'type': 'lineHeight', 'name': 'menu_line_height', 'value': ts.menu_line_height, 'elements': ['el_menu_line']  },
                         {'label': 'Цвет линии под меню', 'type': 'backgroundColor', 'name': 'menu_line_color', 'value': ts.menu_line_color, 'elements': ['el_menu_line']  },
+                        {'label': 'Толщина линии под меню (px)', 'type': 'lineHeight', 'name': 'menu_line_height', 'value': ts.menu_line_height, 'elements': ['el_menu_line']  },
                     ]
                 },
                 {
@@ -278,8 +278,8 @@ class LessonCustomizerView(View):
                     'name': 'Прогресс-бар',
                     'inputs': [
                         {'label': 'Цвет', 'type': 'backgroundColor', 'name': 'progress_bar_color', 'value': ts.progress_bar_color, 'elements': ['el_progress'] },
-                        {'label': 'Радиус скругленя обводки', 'type': 'borderRadius', 'name': 'progress_border_radius', 'value': ts.progress_border_radius, 'elements': ['el_progress_back']},
                         {'label': 'Цвет обводки', 'type': 'borderColor', 'name': 'progress_border_color', 'value': ts.progress_border_color, 'elements': ['el_progress_back'] },
+                        {'label': 'Радиус скругленя обводки', 'type': 'borderRadius', 'name': 'progress_border_radius', 'value': ts.progress_border_radius, 'elements': ['el_progress_back']},
                     ],
                 },
                 {
@@ -368,18 +368,18 @@ class CardCustomizerView(View):
                     'inputs': [
                         {'label': 'Цвет кнопки', 'type': 'backgroundColor', 'name': 'card_button_color', 'value': ts.card_button_color, 'elements': ['el_card_button']},
                         {'label': 'Цвет текста кнопки', 'type': 'color', 'name': 'card_button_color_primary', 'value': ts.card_button_color_primary, 'elements': ['el_button_title']},
+                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'card_button_border_color', 'value': ts.card_button_border_color, 'elements': ['el_card_button']},
                         {'label': 'Толщина линии обводки кнопки', 'type': 'borderWidth', 'name': 'card_button_border_width', 'value': ts.card_button_border_width, 'elements': ['el_card_button']},
                         {'label': 'Радиус скругления обводки кнопки', 'type': 'borderRadius', 'name': 'card_button_border_radius', 'value': ts.card_button_border_radius, 'elements': ['el_card_button']},
-                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'card_button_border_color', 'value': ts.card_button_border_color, 'elements': ['el_card_button']},
                     ],
                 },
                 {
                     'name': 'Прогресс-бар',
                     'inputs': [
                         {'label': 'Цвет прогресс-бара', 'type': 'backgroundColor', 'name': 'progress_card_bar_color', 'value': ts.progress_card_bar_color, 'elements': ['el_card_progress']},
+                        {'label': 'Цвет обводки прогресс-бара', 'type': 'borderColor', 'name': 'progress_card_border_color', 'value': ts.progress_card_border_color, 'elements': ['el_card_progress_bar_back']},
                         {'label': 'Толщина линии обводки прогресс-бара', 'type': 'borderWidth', 'name': 'progress_card_border_width', 'value': ts.progress_card_border_width, 'elements': ['el_card_progress_bar_back']},
                         {'label': 'Радиус скругления обводки прогресс-бара', 'type': 'borderRadius', 'name': 'progress_card_border_radius', 'value': ts.progress_card_border_radius, 'elements': ['el_card_progress_bar_back']},
-                        {'label': 'Цвет обводки прогресс-бара', 'type': 'borderColor', 'name': 'progress_card_border_color', 'value': ts.progress_card_border_color, 'elements': ['el_card_progress_bar_back']},
                     ],
                 },
             ]
@@ -469,9 +469,9 @@ class LoginCustomizerView(View):
                     'inputs': [
                         {'label': 'Фон поля ввода', 'type': 'backgroundColor', 'name': 'login_input_back_color', 'value': ts.login_input_back_color, 'elements': ['el_input']},
                         {'label': 'Цвет текста поля ввода', 'type': 'color', 'name': 'login_input_text_color', 'value': ts.login_input_text_color, 'elements': ['el_text_input']},
+                        {'label': 'Цвет обводки', 'type': 'borderColor', 'name': 'login_input_border_color', 'value': ts.login_input_border_color, 'elements': ['el_input']},
                         {'label': 'Толщина линии обводки', 'type': 'borderWidth', 'name': 'login_input_border_width', 'value': ts.login_input_border_width, 'elements': ['el_input']},
                         {'label': 'Радиус скругления обводки', 'type': 'borderRadius', 'name': 'login_input_border_radius', 'value': ts.login_input_border_radius, 'elements': ['el_input']},
-                        {'label': 'Цвет обводки', 'type': 'borderColor', 'name': 'login_input_border_color', 'value': ts.login_input_border_color, 'elements': ['el_input']},
                     ],
                 },
                 {
@@ -479,9 +479,9 @@ class LoginCustomizerView(View):
                     'inputs': [
                         {'label': 'Цвет кнопки', 'type': 'backgroundColor', 'name': 'login_button_back_color', 'value': ts.login_button_back_color, 'elements': ['el_button']},
                         {'label': 'Цвет текста кнопки', 'type': 'color', 'name': 'login_button_text_color', 'value': ts.login_button_text_color, 'elements': ['el_button_text']},
+                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'login_button_border_color', 'value': ts.login_button_border_color, 'elements': ['el_button']},
                         {'label': 'Толщина линии обводки кнопки', 'type': 'borderWidth', 'name': 'login_button_border_width', 'value': ts.login_button_border_width, 'elements': ['el_button']},
                         {'label': 'Радиус скругления обводки кнопки', 'type': 'borderRadius', 'name': 'login_button_border_radius', 'value': ts.login_button_border_radius, 'elements': ['el_button']},
-                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'login_button_border_color', 'value': ts.login_button_border_color, 'elements': ['el_button']},
                     ],
                 },
             ]
@@ -594,9 +594,9 @@ class NavigationCustomizerView(View):
                     'inputs': [
                         {'label': 'Цвет кнопки', 'type': 'backgroundColor', 'name': 'nps_back_color', 'value': ts.nps_back_color, 'elements': ['el_shape']},
                         {'label': 'Цвет текста кнопки', 'type': 'color', 'name': 'nps_text_color', 'value': ts.nps_text_color, 'elements': ['el_shape', 'el_num_shape']},
+                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'nps_border_color', 'value': ts.nps_border_color, 'elements': ['el_shape', 'el_num_shape_end']},
                         {'label': 'Толщина линии обводки кнопки', 'type': 'borderWidth', 'name': 'nps_border_width', 'value': ts.nps_border_width, 'elements': ['el_shape', 'el_num_shape_end']},
                         {'label': 'Радиус скругления обводки кнопки', 'type': 'borderRadius', 'name': 'nps_border_radius', 'value': ts.nps_border_radius, 'elements': ['el_shape', 'el_num_shape_end']},
-                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'nps_border_color', 'value': ts.nps_border_color, 'elements': ['el_shape', 'el_num_shape_end']},
                     ],
                 },
                 {
@@ -604,9 +604,9 @@ class NavigationCustomizerView(View):
                     'inputs': [
                         {'label': 'Фон поля ввода', 'type': 'backgroundColor', 'name': 'form_back_color', 'value': ts.form_back_color, 'elements': ['el_form']},
                         {'label': 'Цвет текста поля ввода', 'type': 'color', 'name': 'form_text_color', 'value': ts.form_text_color, 'elements': ['el_form_text']},
+                        {'label': 'Цвет обводки', 'type': 'borderColor', 'name': 'form_border_color', 'value': ts.form_border_color, 'elements': ['el_form']},
                         {'label': 'Толщина линии обводки', 'type': 'borderWidth', 'name': 'form_border_width', 'value': ts.form_border_width, 'elements': ['el_form']},
                         {'label': 'Радиус скругления обводки', 'type': 'borderRadius', 'name': 'form_border_radius', 'value': ts.form_border_radius, 'elements': ['el_form']},
-                        {'label': 'Цвет обводки', 'type': 'borderColor', 'name': 'form_border_color', 'value': ts.form_border_color, 'elements': ['el_form']},
                     ],
                 },
                 {
@@ -614,9 +614,9 @@ class NavigationCustomizerView(View):
                     'inputs': [
                         {'label': 'Цвет кнопки', 'type': 'backgroundColor', 'name': 'form_button_back_color', 'value': ts.form_button_back_color, 'elements': ['el_form_button']},
                         {'label': 'Цвет текста кнопки', 'type': 'color', 'name': 'form_button_text_color', 'value': ts.form_button_text_color, 'elements': ['el_form_button_text']},
+                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'form_button_border_color', 'value': ts.form_button_border_color, 'elements': ['el_form_button']},
                         {'label': 'Толщина линии обводки кнопки', 'type': 'borderWidth', 'name': 'form_button_border_width', 'value': ts.form_button_border_width, 'elements': ['el_form_button']},
                         {'label': 'Радиус скругления обводки кнопки', 'type': 'borderRadius', 'name': 'form_button_border_radius', 'value': ts.form_button_border_radius, 'elements': ['el_form_button']},
-                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'form_button_border_color', 'value': ts.form_button_border_color, 'elements': ['el_form_button']},
                     ],
                 },
             ]

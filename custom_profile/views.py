@@ -80,7 +80,7 @@ def update_user_status(request):
     if request.method == 'POST':
         order_id = request.POST.get('order_id')
         is_connected = request.POST.get('is_connected')
-
+        
         if not order_id or is_connected is None:
             return JsonResponse({'error': 'Missing required fields'}, status=400)
 
@@ -91,7 +91,7 @@ def update_user_status(request):
 
         try:
             user = User.objects.get(order_id=order_id)
-        except User.DoesNotExist:domai
+        except User.DoesNotExist:
             return JsonResponse({'error': 'User with this order_id does not exist'}, status=404)
 
         user.is_connected = is_connected
