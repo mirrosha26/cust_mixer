@@ -637,7 +637,7 @@ span.course-item-tab-title {
 }
 
 
-._auth_drawer_p3cc9_12 {
+.login-wrapper ._auth_drawer_p3cc9_12 {
     background-color: var(--login-card-back-color) !important;
     border-width: var(--login-card-border-width)  !important; /* Преобразование ширины границы в пиксели */
     border-color: var(--login-card-border-color) !important;
@@ -679,14 +679,14 @@ span.course-item-tab-title {
 }
 
 
-.ant-form-item-control-input-content .ant-input-affix-wrapper {
+.login-wrapper .ant-form-item-control-input-content .ant-input-affix-wrapper {
     border: var(--login-input-border-width)  solid var(--login-input-border-color) !important;
     color: var(--login-input-text-color) !important;
     background: var(--login-input-back-color) !important;
     border-radius: var(--login-input-border-radius)  !important;
 }
 
-.ant-form-item-control-input-content .ant-input-affix-wrapper input {
+.login-wrapper .ant-form-item-control-input-content .ant-input-affix-wrapper input {
     background: var(--login-input-back-color) !important;
     color: var(--login-input-text-color) !important;
 
@@ -854,7 +854,7 @@ html body ._course_item_18ox6_1 .ant-menu-submenu-title {
 }
 
 /* Селектор для кнопки логина */
-._form_button_item_agmhf_7 .ant-btn.ant-btn-primary[type="submit"] {
+.login-wrapper ._form_button_item_agmhf_7 .ant-btn.ant-btn-primary[type="submit"] {
     background-color: var(--login-button-back-color) !important; /* Цвет фона */
     border-width: var(--login-button-border-width)  !important; /* Ширина границы */
     border-color: var(--login-button-border-color) !important; /* Цвет границы */

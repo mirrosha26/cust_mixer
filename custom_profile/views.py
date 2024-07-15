@@ -91,7 +91,7 @@ def update_user_status(request):
 
         try:
             user = User.objects.get(order_id=order_id)
-        except User.DoesNotExist:
+        except User.DoesNotExist:domai
             return JsonResponse({'error': 'User with this order_id does not exist'}, status=404)
 
         user.is_connected = is_connected
