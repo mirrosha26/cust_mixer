@@ -46,7 +46,7 @@ def theme_view(request):
     if not uuid or not domain:
         return HttpResponseForbidden("Access Denied")
     user = get_object_or_404(User, uuid=uuid)
-    if user.domain != domain:
+    if user.domain != domain or not user.is_connected:
         return HttpResponseForbidden("Access Denied")
     theme_settings = get_object_or_404(ThemeSettings, user=user)
     return render(request, 'style/return.css', {'theme_settings': theme_settings}, content_type='text/css')
@@ -71,9 +71,7 @@ def create_user(request):
             password=make_password(password),
             order_id=order_id
         )
-        
         return JsonResponse({'message': 'User created successfully', 'uuid': user.uuid}, status=201)
-    
     return JsonResponse({'error': 'Invalid request method'}, status=405)
 
 
