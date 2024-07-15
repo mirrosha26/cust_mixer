@@ -1,0 +1,93 @@
+{% extends 'customizer/base/index.html' %}
+{% load static %}
+{% block link-css %}
+
+{% endblock %}
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets-admin/highlight/atom-one-dark.min.css' %}"></link>
+
+<style>
+    .code-block {
+        position: relative;
+        border-radius: 5px !important;
+        overflow: hidden;
+    }
+    pre {
+        display: block;
+        margin-bottom: 0;
+        }
+
+    .copy-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 5px 10px;
+        background-color: #f5f5f5;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+</style>
+
+</head>
+<body>
+<div class="container content-space-2 content-space-lg-2">
+    {{domain}}
+<!-- Heading -->
+<div class="mb-6">
+    <h2>Внедрите код</h2>
+    <p class="fs-4">Скопируйте скрипт вашей темы и добавьте его в раздел <a href="https://admin.accelonline.io/settings/school/code">внедрение</a> кода в настройках школы, в поле «Код заголовка»</p>
+</div>
+
+<div class="code-block">
+    <button class="copy-button">Copy</button>
+    <pre><code class="language-javascript">
+        &lt;script&gt;
+            var uuid = `{{uuid}}`;
+            var cssUrl = `https://customize.technoguru.club/user/style.css?uuid=${uuid}&amp;d=${window.location.hostname}&amp;4`;
+            var linkElement = document.createElement("link");
+            linkElement.rel = "stylesheet";
+            linkElement.href = cssUrl;
+            var headElement = document.getElementsByTagName("head")[0];
+            headElement.appendChild(linkElement);
+        &lt;/script&gt;
+                </code></pre>
+</div>
+<script src="{% static 'assets-admin/highlight/highlight.min.js' %}"></script>
+<script src="{% static 'assets-admin/highlight/clipboard.min.js' %}"></script>
+<script>
+hljs.highlightAll();
+
+document.addEventListener('DOMContentLoaded', function () {
+    var clipboard = new ClipboardJS('.copy-button', {
+        target: function(trigger) {
+            return trigger.nextElementSibling.querySelector('code');
+        }
+    });
+
+    clipboard.on('success', function(e) {
+        e.clearSelection();
+        e.trigger.textContent = 'Copied!';
+        setTimeout(function() {
+            e.trigger.textContent = 'Copy';
+        }, 2000);
+    });
+
+    clipboard.on('error', function(e) {
+        e.trigger.textContent = 'Failed!';
+        setTimeout(function() {
+            e.trigger.textContent = 'Copy';
+        }, 2000);
+    });
+
+    new ClipboardJS('.js-clipboard');
+});
+</script>
+{% endblock %}
+{% block my_scripts %}
+{% endblock %}
+
+

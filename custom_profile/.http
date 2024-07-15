@@ -1,0 +1,11 @@
+POST http://localhost:8001/user/create-user/
+Content-Type: application/x-www-form-urlencoded
+
+email=test@example.com&password=yourpassword&order_id=12345
+
+
+###
+POST http://localhost:8001/user/update-user-status/
+Content-Type: application/x-www-form-urlencoded
+
+order_id=12345&is_connected=0

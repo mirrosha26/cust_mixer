@@ -20,6 +20,7 @@
             {% url 'custom_card' as custom_card_url %}
             {% url 'custom_login' as custom_login_url %}
             {% url 'custom_navigation' as custom_navigation_url %}
+            {% url 'custom_script' as custom_script_url %}
             
             <!-- Пункт "Курсы" -->
             <div class="nav-item{% if request.path == custom_main_url %} active{% endif %}">
@@ -59,7 +60,12 @@
           </a>
       </div>
 
-        
+      <div class="nav-item{% if request.path == custom_script_url %} active{% endif %}">
+        <a class="nav-link{% if request.path == custom_script_url %} active{% endif %}" href="{{ custom_script_url }}" role="button">
+            <i class="bi bi-menu-button nav-icon"></i>
+            <span class="nav-link-title">Скрипт</span>
+        </a>
+    </div>
           </div>
 
         </div>

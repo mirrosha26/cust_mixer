@@ -108,8 +108,6 @@ class ThemeSettings(models.Model):
     def __str__(self):
         return f"{self.user.username}'s Theme Settings"
 
-
-
 @receiver(post_save, sender=User)
 def create_theme_settings(sender, instance, created, **kwargs):
     if created:

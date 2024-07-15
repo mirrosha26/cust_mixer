@@ -621,9 +621,9 @@ class NavigationCustomizerView(View):
                 },
             ]
         }
-        
         return render(request, 'customizer/customizer.html', context)
-
+        
+    
 
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
@@ -636,3 +636,17 @@ class NavigationCustomizerView(View):
 
 
 
+class ScriptCustomizerView(View):
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('signin') 
+        return super().dispatch(request, *args, **kwargs)
+
+
+    def get(self, request):
+        context = {
+            'uuid': request.user.uuid,
+            'domain': request.user.domain,
+        }
+        return render(request, 'customizer/script.html', context)

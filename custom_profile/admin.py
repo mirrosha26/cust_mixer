@@ -24,7 +24,7 @@ class CustomUserAdmin(BaseUserAdmin):
         }),
     )
 
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'uuid')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'uuid', 'is_connected', 'order_id')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     search_fields = ('username', 'first_name', 'last_name', 'email')
     ordering = ('username',)
