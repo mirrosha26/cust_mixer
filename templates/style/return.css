@@ -230,7 +230,7 @@ span.ant-menu-title-content {
     top: 105px;
 }
 
-.material-card-main-btn .ant-btn.ant-btn-default, .course-complete-theory-button .ant-btn.ant-btn-default, .license-card-navigate-button  .ant-btn.ant-btn-default, .course-next-button {
+.material-card-btns .material-card-main-btn, .material-card-btns .course-complete-theory-button, .license-card-navigate-button, .course-next-button{
       color: var(--card-button-color-primary) !important;
       border-color: var(--card-button-border-color) !important;
       background: var(--card-button-color) !important;
@@ -239,7 +239,7 @@ span.ant-menu-title-content {
       border-width: var(--card-button-border-width)  !important;
       min-height: 40px;
       text-transform: uppercase;
-}
+  }
 
 
 .ant-switch {
