@@ -35,13 +35,34 @@
 </head>
 <body>
 <div class="container content-space-2 content-space-lg-2">
-    {{domain}}
 <!-- Heading -->
-<div class="mb-6">
+<div class="mb-4">
+
+    
+    {% if domain == "example.com" %}
+    <h2>Добавьте домен вашей школы</h2>
+    <p class="fs-4">Чтобы получить скрипт, введите домен вашей школы и нажмите кнопку «Сохранить»</p>
+    {% else %}
     <h2>Внедрите код</h2>
-    <p class="fs-4">Скопируйте скрипт вашей темы и добавьте его в раздел <a href="https://admin.accelonline.io/settings/school/code">внедрение</a> кода в настройках школы, в поле «Код заголовка»</p>
+    <p class="fs-4">Скопируйте скрипт вашей темы и добавьте его в раздел <a class="link"  target="_blank" href="https://admin.accelonline.io/settings/school/code">внедрение</a> кода в настройках школы, в поле «Код заголовка»</p>
+    {% endif %}
 </div>
 
+<div class="mt-2">
+<form action="" method="POST">
+    {% csrf_token %}
+<label for="basic-url" class="form-label">Домен школы</label>
+<div class="input-group mb-3">
+    <span class="input-group-text" name="domains" id="basic-addon3">https://</span>
+    <input name="domain" placeholder="example.com" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" required value="{% if domain != "example.com" %}{{domain}}{% endif %}">
+    <button type="submit" class="btn btn-primary" >Сохранить</a>
+  </div>
+</form>
+</div>
+
+{% if domain != "example.com" %}
+<div class="mt-2">
+<label for="basic-url" class="form-label">Ваш скрипт</label>
 <div class="code-block">
     <button class="copy-button">Copy</button>
     <pre><code class="language-javascript">
@@ -54,8 +75,10 @@
             var headElement = document.getElementsByTagName("head")[0];
             headElement.appendChild(linkElement);
         &lt;/script&gt;
-                </code></pre>
+    </code></pre>
 </div>
+</div>
+{% endif %}
 <script src="{% static 'assets-admin/highlight/highlight.min.js' %}"></script>
 <script src="{% static 'assets-admin/highlight/clipboard.min.js' %}"></script>
 <script>

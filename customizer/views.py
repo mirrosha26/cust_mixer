@@ -650,3 +650,9 @@ class ScriptCustomizerView(View):
             'domain': request.user.domain,
         }
         return render(request, 'customizer/script.html', context)
+
+
+    def post(self, request):
+        request.user.domain = request.POST.get('domain')
+        request.user.save()
+        return redirect('custom_script')
