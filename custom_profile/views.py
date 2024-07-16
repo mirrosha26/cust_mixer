@@ -112,7 +112,7 @@ class CustomPasswordResetDoneView(auth_views.PasswordResetDoneView):
 
 class CustomPasswordResetConfirmView(auth_views.PasswordResetConfirmView):
     template_name = 'registration/password_reset_confirm.html'
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('password_reset_complete')
 
 
 def custom_password_reset_complete(request):
