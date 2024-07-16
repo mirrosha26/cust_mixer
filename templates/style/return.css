@@ -290,7 +290,7 @@ ul.ant-pagination > li > a{
     padding: 20px; /* Упрощение padding */
     background-color: var(--card-back-color) !important;
     border-radius: var(--card-border-radius) !important;
-    border: var(--card-border-width)  solid var(--card-border-color) !important; /* Объединенное свойство border */
+    border: var(--card-border-width)  solid var(--card-border-color) !important;
 }
 html .material-card-image img {
     border: var(--card-image-border-width) solid var(--card-image-border-color) !important;
@@ -298,9 +298,9 @@ html .material-card-image img {
     height: 60% !important;
 }
 
-html .LicenseCard_preview__1cqFW .license-card-preview-image, .LicenseCard_preview__1cqFW .license-card-preview-placeholder {
-    border-radius: var(--card-image-border-radius)  !important;
-    border: var(--card-image-border-radius)  solid var(--card-image-border-radius) !important; /* Объединенное свойство border */
+.license-card-preview-placeholder {
+    border: var(--card-image-border-width) solid var(--card-image-border-color) !important;
+    border-radius: var(--card-image-border-radius) !important;
 }
 
 .material-card-image-placeholder {
