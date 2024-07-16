@@ -293,7 +293,7 @@ ul.ant-pagination > li > a{
     border: var(--card-border-width)  solid var(--card-border-color) !important; /* Объединенное свойство border */
 }
 
-.material-card-image img {
+html .material-card-image img {
     border-radius: var(--card-image-border-radius)  !important;
     border: var(--card-image-border-radius)  solid var(--card-image-border-radius) !important; /* Объединенное свойство border */
     height: 60% !important;

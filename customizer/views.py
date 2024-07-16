@@ -99,16 +99,7 @@ class MainCustomizerView(View):
         el_dropdown = shape_factory(72, 14, "#fafafa", 615, 47, "el_dropdown", border_radius=0.1, border_color=ts.border_accent_color, border_width=0.2)
         el_search = shape_factory(118, 14, "ffffff90", 499, 47, "el_search", border_radius=0.1, border_width=0.1, border_color=ts.border_accent_color)
         el_h1 = text_factory(12, 46, "el_h1", "Курсы", 14, ts.text_color, 14)
-
-
-        # Карточки
-        el_card1 = shape_factory(145, 180, ts.card_back_color, 12, 78, "el_card", border_radius=0.2, border_width=round(ts.card_border_width / 1.5, 1), border_color=ts.card_border_color)
-        el_card2 = shape_factory(145, 180, ts.card_back_color, 166, 78, "el_card", border_radius=0.2, border_width=round(ts.card_border_width / 1.5, 1), border_color=ts.card_border_color)
-        el_card3 = shape_factory(145, 180, ts.card_back_color, 321, 78, "el_card", border_radius=0.2, border_width=round(ts.card_border_width / 1.5, 1), border_color=ts.card_border_color)
-        el_card4 = shape_factory(145, 180, ts.card_back_color, 476, 78, "el_card", border_radius=0.2, border_width=round(ts.card_border_width / 1.5, 1), border_color=ts.card_border_color)
-        el_card5 = shape_factory(145, 133, ts.card_back_color, 12, 267, "el_card", border_radius=0.2, border_width=round(ts.card_border_width / 1.5, 1), border_color=ts.card_border_color)
-        el_card6 = shape_factory(145, 133, ts.card_back_color, 166, 267, "el_card", border_radius=0.2, border_width=round(ts.card_border_width / 1.5, 1), border_color=ts.card_border_color)
-
+    
         # Создание элементов для каждой карточки с различными координатами
         card1 = create_card_elements(ts, base_x=12, base_y=78)
         card2 = create_card_elements(ts, base_x=166, base_y=78)
@@ -126,7 +117,7 @@ class MainCustomizerView(View):
             'title': 'Основные настройки страницы курсов',
             'device_browser_header' : True,
             'base_layer': [el_menu_background, el_main_background],
-            'content_layer': [el_menu_line, el_nav1, el_nav2, el_nav3, el_nav4, el_nav5, el_avatar, el_icon1, el_icon2, el_h1, el_card1, el_card2, el_card3, el_card4, el_card5, el_card6,  el_search],
+            'content_layer': [el_menu_line, el_nav1, el_nav2, el_nav3, el_nav4, el_nav5, el_avatar, el_icon1, el_icon2, el_h1,  el_search],
             'overlay_layer': [el_dropdown, el_avatar_text],
             'top_layer': [el_scroll_bar, el_logo] + cards,
             'emulator_size': emulator_size,
