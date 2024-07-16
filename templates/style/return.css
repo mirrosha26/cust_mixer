@@ -298,7 +298,7 @@ html .material-card-image img {
     height: 60% !important;
 }
 
-.license-card-preview-placeholder {
+.license-card-preview-placeholder, ._preview_1t7be_11 .license-card-preview-image, ._preview_1t7be_11 .license-card-preview-placeholder {
     border: var(--card-image-border-width) solid var(--card-image-border-color) !important;
     border-radius: var(--card-image-border-radius) !important;
 }
