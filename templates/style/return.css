@@ -292,10 +292,9 @@ ul.ant-pagination > li > a{
     border-radius: var(--card-border-radius) !important;
     border: var(--card-border-width)  solid var(--card-border-color) !important; /* Объединенное свойство border */
 }
-
 html .material-card-image img {
-    border-radius: var(--card-image-border-radius)  !important;
-    border: var(--card-image-border-radius)  solid var(--card-image-border-radius) !important; /* Объединенное свойство border */
+    border: var(--card-image-border-width) solid var(--card-image-border-color) !important;
+    border-radius: var(--card-image-border-radius) !important;
     height: 60% !important;
 }
 
