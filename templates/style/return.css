@@ -121,12 +121,12 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
     box-shadow: none;
     border-bottom: var(--menu-line-height)  solid var(--menu-line-color) !important;
 }
-ant-layout-header.ant-drawer-body > .ant-layout-header, .ant-menu, .ant-layout > .shadow-sm {
+ant-layout-header.ant-drawer-body > .ant-layout-header, .ant-layout > .shadow-sm {
     box-shadow: none;
     border-bottom: var(--menu-line-height)  solid var(--menu-line-color) !important;
 }
 
-.border-b .course-header {
+.ant-layout .ant-layout-header.border-b {
     border-bottom: var(--menu-line-height)  solid var(--menu-line-color) !important;
 }
 
