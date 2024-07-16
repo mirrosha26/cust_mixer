@@ -29,6 +29,16 @@
                   <span class="nav-link-title">Вход</span>
               </a>
           </div>
+
+
+           <!-- Пункт "Карточка" -->
+           <div class="nav-item{% if request.path == custom_card_url %} active{% endif %}">
+            <a class="nav-link{% if request.path == custom_card_url %} active{% endif %}" href="{{ custom_card_url }}" role="button">
+                <i class="bi bi-card-heading nav-icon"></i>
+                <span class="nav-link-title">Карточка</span>
+            </a>
+        </div>
+        
           
             <!-- Пункт "Курсы" -->
             <div class="nav-item{% if request.path == custom_main_url %} active{% endif %}">
@@ -46,13 +56,7 @@
                 </a>
             </div>
 
-            <!-- Пункт "Карточка" -->
-            <div class="nav-item{% if request.path == custom_card_url %} active{% endif %}">
-              <a class="nav-link{% if request.path == custom_card_url %} active{% endif %}" href="{{ custom_card_url }}" role="button">
-                  <i class="bi bi-card-heading nav-icon"></i>
-                  <span class="nav-link-title">Карточка</span>
-              </a>
-          </div>
+           
 
           
         <!-- Пункт "Логин" -->
