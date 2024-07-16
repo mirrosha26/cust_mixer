@@ -536,7 +536,7 @@ class NavigationCustomizerView(View):
         el_shape7 = shape_factory(20, 20, ts.nps_back_color, base_left + 6 * offset, 102, "el_shape", border_radius=ts.nps_border_radius, border_width=ts.nps_border_width, border_color=ts.nps_border_color)
         el_shape8 = shape_factory(20, 20, ts.nps_back_color, base_left + 7 * offset, 102, "el_shape", border_radius=ts.nps_border_radius, border_width=ts.nps_border_width, border_color=ts.nps_border_color)
         el_shape9 = shape_factory(20, 20, ts.nps_back_color, base_left + 8 * offset, 102, "el_shape", border_radius=ts.nps_border_radius, border_width=ts.nps_border_width, border_color=ts.nps_border_color)
-        el_shape10 = shape_factory(20, 20, "#46D04C", base_left + 9 * offset, 102, "el_shape_end", border_radius=ts.nps_border_radius, border_width=ts.nps_border_width, border_color=ts.nps_border_color)
+        el_shape10 = shape_factory(20, 20, ts.nps_back_color, base_left + 9 * offset, 102, "el_shape", border_radius=ts.nps_border_radius, border_width=ts.nps_border_width, border_color=ts.nps_border_color)
 
         el_num_shape_1 = text_factory(text_base_left, 107, "el_num_shape", "1", 8, ts.nps_text_color)
         el_num_shape_2 = text_factory(text_base_left + text_offset, 107, "el_num_shape", "2", 8, ts.nps_text_color)
@@ -559,7 +559,7 @@ class NavigationCustomizerView(View):
 
         el_form_button = shape_factory(60, 15, ts.form_button_back_color , 18, 180, "el_form_button", border_radius=ts.form_button_border_radius, border_width=ts.form_button_border_width, border_color=ts.form_button_border_color)
 
-        el_form_button_text = text_factory(27, 184, "el_form_button_text", 'Отправить <i class="bi bi-send"></i>', 6, ts.form_button_text_color, 6)
+        el_form_button_text = text_factory(27, 184, "None", 'Отправить <i class="bi bi-send"></i>', 6, ts.form_button_text_color, 6)
 
         el_form_text = text_factory(25, 155, "el_form_text", 'Потому, что ...', 6, ts.form_button_text_color, 6)
 
@@ -598,21 +598,13 @@ class NavigationCustomizerView(View):
                         {'label': 'Цвет обводки', 'type': 'borderColor', 'name': 'form_border_color', 'value': ts.form_border_color, 'elements': ['el_form']},
                         {'label': 'Толщина линии обводки', 'type': 'borderWidth', 'name': 'form_border_width', 'value': ts.form_border_width, 'elements': ['el_form']},
                         {'label': 'Радиус скругления обводки', 'type': 'borderRadius', 'name': 'form_border_radius', 'value': ts.form_border_radius, 'elements': ['el_form']},
-                    ],
-                },
-                {
-                    'name': 'Стиль кнопки',
-                    'inputs': [
-                        {'label': 'Цвет кнопки', 'type': 'backgroundColor', 'name': 'form_button_back_color', 'value': ts.form_button_back_color, 'elements': ['el_form_button']},
-                        {'label': 'Цвет текста кнопки', 'type': 'color', 'name': 'form_button_text_color', 'value': ts.form_button_text_color, 'elements': ['el_form_button_text']},
-                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'form_button_border_color', 'value': ts.form_button_border_color, 'elements': ['el_form_button']},
-                        {'label': 'Толщина линии обводки кнопки', 'type': 'borderWidth', 'name': 'form_button_border_width', 'value': ts.form_button_border_width, 'elements': ['el_form_button']},
-                        {'label': 'Радиус скругления обводки кнопки', 'type': 'borderRadius', 'name': 'form_button_border_radius', 'value': ts.form_button_border_radius, 'elements': ['el_form_button']},
-                    ],
-                },
+                    ]
+                }
             ]
         }
         return render(request, 'customizer/customizer.html', context)
+
+    
         
     
 
@@ -647,3 +639,18 @@ class ScriptCustomizerView(View):
         request.user.domain = request.POST.get('domain')
         request.user.save()
         return redirect('custom_script')
+
+
+
+'''
+old_button = {
+            'name': 'Стиль кнопки',
+            'inputs': [
+                {'label': 'Цвет кнопки', 'type': 'backgroundColor', 'name': 'form_button_back_color', 'value': ts.form_button_back_color, 'elements': ['el_form_button']},
+                {'label': 'Цвет текста кнопки', 'type': 'color', 'name': 'form_button_text_color', 'value': ts.form_button_text_color, 'elements': ['el_form_button_text']},
+                {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'form_button_border_color', 'value': ts.form_button_border_color, 'elements': ['el_form_button']},
+                {'label': 'Толщина линии обводки кнопки', 'type': 'borderWidth', 'name': 'form_button_border_width', 'value': ts.form_button_border_width, 'elements': ['el_form_button']},
+                {'label': 'Радиус скругления обводки кнопки', 'type': 'borderRadius', 'name': 'form_button_border_radius', 'value': ts.form_button_border_radius, 'elements': ['el_form_button']},
+            ],
+        },
+'''

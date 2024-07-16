@@ -8,6 +8,8 @@ from custom_profile.models import User
 from customizer.models import ThemeSettings
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth import views as auth_views
+from django.urls import reverse_lazy
 
 class SigninView(View):
     def get(self, request):
@@ -39,7 +41,6 @@ class LogoutView(View):
         logout(request)
         return redirect('signin')
 
-
 def theme_view(request):
     uuid = request.GET.get('uuid')
     domain = request.GET.get('d')
@@ -50,7 +51,6 @@ def theme_view(request):
         return HttpResponseForbidden("Access Denied")
     theme_settings = get_object_or_404(ThemeSettings, user=user)
     return render(request, 'style/return.css', {'theme_settings': theme_settings}, content_type='text/css')
-
 
 @csrf_exempt
 def create_user(request):
@@ -73,7 +73,6 @@ def create_user(request):
         )
         return JsonResponse({'message': 'User created successfully', 'uuid': user.uuid}, status=201)
     return JsonResponse({'error': 'Invalid request method'}, status=405)
-
 
 @csrf_exempt
 def update_user_status(request):
@@ -100,3 +99,19 @@ def update_user_status(request):
         return JsonResponse({'message': 'User status updated successfully'}, status=200)
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+
+class CustomPasswordResetView(auth_views.PasswordResetView):
+    template_name = 'registration/password_reset.html'
+    email_template_name = 'registration/password_reset_email.html'
+    success_url = reverse_lazy('password_reset_done')
+
+class CustomPasswordResetDoneView(auth_views.PasswordResetDoneView):
+    template_name = 'registration/password_reset_done.html'
+
+class CustomPasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    template_name = 'registration/password_reset_confirm.html'
+    success_url = reverse_lazy('password_reset_complete')
+
+class CustomPasswordResetCompleteView(auth_views.PasswordResetCompleteView):
+    template_name = 'registration/password_reset_complete.html'
