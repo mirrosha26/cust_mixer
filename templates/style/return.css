@@ -126,6 +126,9 @@ ant-layout-header.ant-drawer-body > .ant-layout-header, .ant-menu, .ant-layout >
     border-bottom: var(--menu-line-height)  solid var(--menu-line-color) !important;
 }
 
+.border-b .course-header {
+    border-bottom: var(--menu-line-height)  solid var(--menu-line-color) !important;
+}
 
 .ant-menu-inline > li.ant-menu-item-selected {
      font-weight: bold;
