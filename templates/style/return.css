@@ -145,7 +145,7 @@ span.ant-menu-title-content {
     color: var(--unaccent-color) !important;
     background-color: var(--accent-color) !important;
 }
-.ant-avatar-circle, .ant-btn-circle {
+.ant-avatar-circle, .ant-btn-circle, .chat-msg-content {
     background-color: var(--accent-color) !important;
     color: var(--unaccent-color) !important;
 }
