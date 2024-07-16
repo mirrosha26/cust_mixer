@@ -118,10 +118,10 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
 }
 
 .ant-layout > .shadow-sm {
-      box-shadow: none;
+    box-shadow: none;
+    border-bottom: var(--menu-line-height)  solid var(--menu-line-color) !important;
 }
-
-.ant-layout > .shadow-sm {
+ant-layout-header.ant-drawer-body > .ant-layout-header, .ant-menu, .ant-layout > .shadow-sm {
     box-shadow: none;
     border-bottom: var(--menu-line-height)  solid var(--menu-line-color) !important;
 }
@@ -262,9 +262,7 @@ span.ant-menu-title-content {
      margin-inline: auto;
   }
 
-.ant-drawer-body > .ant-layout-header, .ant-menu {
-    background-color: #ffffff !important;
-}
+
 
   .flex.flex-wrap.gap-16.mt-10 {
     margin-top: 30px;
