@@ -606,24 +606,12 @@ span.course-item-tab-title {
     display: none;
 }
 
-.ant-input-affix-wrapper {
-    border: 1px solid var(--border-accent-color) !important;
-    background: var(--main-color) !important;
-}
 
 .auth_form_button_item__9SIMB button {
     width: 100%;
     color: var(--main-color) !important;
     border-color: var(--border-accent-color) !important;
     background: var(--border-accent-color) !important;
-}
-
-.ant-input {
-    background-color: var(--main-color) !important;
-}
-
-.ant-input-affix-wrapper>.ant-input {
-    color: var(--text-color) !important;
 }
 
 .login-content .ant-form-item-label>label, .auth_auth_form_wrapper_footer__2oN3C{
@@ -680,11 +668,6 @@ span.course-item-tab-title {
 
 ._auth_form_wrapper_p3cc9_46 .flex.flex-col.align-center {
     display: none;
-}
-
-.ant-input-affix-wrapper {
-    border: 1px solid var(--border-accent-color) !important;
-    color: var(--menu-text-color) !important;
 }
 
 
