@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Title -->
+  <title>{% block title %}Technoguru{% endblock %}</title>
+  <link rel="shortcut icon" href="{% static 'img/logo/technoguru.png' %}">
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="{% static 'assets-admin/vendor/bootstrap-icons/font/bootstrap-icons.css' %}">
+
+  <!-- CSS Front Template -->
+  <link rel="preload" href="{% static 'assets-admin/css/theme-dark.min.css' %}" data-hs-appearance="default" as="style">
+  <link rel="preload" href="{% static 'assets-admin/css/theme-dark.min.css' %}" data-hs-appearance="dark" as="style">
+  {% block link-css %}{% endblock %}
+  {% include 'customizer/base/onload-styles&script.html' %}
+
+</head>
+<body class="">
+  <script src="{% static 'assets-admin/js/hs.theme-appearance.js' %}"></script>
+
+  <!-- ========== HEADER ========== -->
+  <header class="position-absolute top-0 start-0 end-0 mt-3 mx-3">
+    <div class="d-flex d-lg-none justify-content-between">
+    </div>
+  </header>
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main" class="main pt-0">
+    <!-- Content -->
+    <div class="container-fluid px-3">
+      <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center align-items-center min-vh-lg-100">
+          <div class="w-100 content-space-t-4 content-space-t-lg-2 content-space-b-1" style="max-width: 25rem;">
+            <!-- Form -->
+            {% block content %}
+               
+            {% endblock %}
+          </div>
+        </div>
+        <!-- End Col -->
+      </div>
+      <!-- End Row -->
+    </div>
+    <!-- End Content -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+   
+  <!-- JS Global Compulsory  -->
+  <script src="{% static 'assets-admin/vendor/jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'assets-admin/vendor/jquery-migrate/dist/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'assets-admin/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="{% static 'assets-admin/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside.min.js' %}"></script>
+
+  <!-- JS Front -->
+  <script src="{% static 'assets-admin/js/theme.min.js' %}"></script>
+
+{% block my_scripts %}
+{% endblock %}
+
+</body>
+</html>

@@ -605,8 +605,6 @@ class NavigationCustomizerView(View):
         return render(request, 'customizer/customizer.html', context)
 
     
-        
-    
 
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
