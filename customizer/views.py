@@ -254,8 +254,8 @@ class LessonCustomizerView(View):
                 el_ltext_nav7, el_ltext_nav9, el_divider, el_progress_bar_back,
                 el_corse_menu_background_selected],
             'overlay_layer': [el_avatar_text, video_image, el_progress, el_ltext_nav8, el_courese_menu_indicator1, 
-                                el_courese_menu_indicator2, el_course_line, el_course_menu_active, el_form_button, el_form_button_start],
-            'top_layer': [el_scroll_bar, el_form_button_text, el_form_button_text_start, el_footer_line],
+                                el_courese_menu_indicator2, el_footer_line, el_course_menu_active, el_form_button, el_form_button_start],
+            'top_layer': [el_scroll_bar, el_form_button_text, el_form_button_text_start, el_course_line],
             'emulator_size': emulator_size,
             'blocks': [
                 {
