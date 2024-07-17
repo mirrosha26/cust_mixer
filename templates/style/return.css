@@ -361,8 +361,12 @@ html .material-card-image img {
     background-color: var(--border-accent-color);
 }
 
-.border-r {
-    border-right: 2px solid var(--border-accent-color);
+.course-sidebar.border-r {
+    border-right: var(--course-line-height) solid var(--course-line-color);
+}
+
+.course-footer.sticky {
+    border-top: var(--footer-line-height) solid var(--footer-line-color);
 }
 
 .course-sidebar-header > a >.ant-btn-text ,

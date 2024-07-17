@@ -1,9 +1,16 @@
 :root {
     --menu-color: {{ theme_settings.menu_color }};
     --menu-text-color: {{ theme_settings.menu_text_color }};
+
     --menu-line-height: {{ theme_settings.menu_line_height }}px;
     --menu-line-color: {{ theme_settings.menu_line_color }};
-    
+
+    --course-line-height: {{ theme_settings.course_line_height }}px;
+    --course-line-color: {{ theme_settings.course_line_color }};
+
+    --footer-line-height: {{ theme_settings.footer_line_height }}px;
+    --footer-line-color: {{ theme_settings.footer_line_color }};
+
     --main-color: {{ theme_settings.main_color }};
     --text-color: {{ theme_settings.text_color }};
     --scroll-bar-size: {{ theme_settings.scroll_bar_size }}px;
@@ -94,4 +101,11 @@
     --form-button-border-color: {{ theme_settings.form_button_border_color }};
     --form-button-border-radius: {{ theme_settings.form_button_border_radius }}rem;
     --form-button-text-color: {{ theme_settings.form_button_text_color }};
+
+
+    --form-button-back-default-color: {{ theme_settings.form_button_back_default_color }};
+    --form-button-border-default-width: {{ theme_settings.form_button_border_default_width }}px;
+    --form-button-border-default-color: {{ theme_settings.form_button_border_default_color }};
+    --form-button-border-default-radius: {{ theme_settings.form_button_border_default_radius }}rem;
+    --form-button-text-default-color: {{ theme_settings.form_button_text_default_color }};
 }

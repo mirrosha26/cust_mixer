@@ -9,8 +9,15 @@ class ThemeSettings(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="theme_settings")
     menu_color = models.CharField(max_length=7, default="#292929")
     menu_text_color = models.CharField(max_length=7, default="#ffffff")
+    
     menu_line_height = models.FloatField(default=1.5)
     menu_line_color = models.CharField(max_length=7, default="#000000")
+
+    footer_line_height = models.FloatField(default=1.5)
+    footer_line_color = models.CharField(max_length=7, default="#000000")
+
+    course_line_height = models.FloatField(default=1.5)
+    course_line_color = models.CharField(max_length=7, default="#000000")
 
     main_color = models.CharField(max_length=7, default="#ffffff")
     text_color = models.CharField(max_length=7, default="#000000")
@@ -104,6 +111,12 @@ class ThemeSettings(models.Model):
     form_button_border_color = models.CharField(max_length=7, default="#111111")
     form_button_border_radius = models.FloatField(default=0.1)
     form_button_text_color = models.CharField(max_length=7, default="#ffffff")
+
+    form_button_back_default_color = models.CharField(max_length=7, default="#111111")
+    form_button_border_default_width = models.FloatField(default=0.1)
+    form_button_border_default_color = models.CharField(max_length=7, default="#111111")
+    form_button_border_default_radius = models.FloatField(default=0.1)
+    form_button_text_default_color = models.CharField(max_length=7, default="#ffffff")
 
     def __str__(self):
         return f"{self.user.username}'s Theme Settings"

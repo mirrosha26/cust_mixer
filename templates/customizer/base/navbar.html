@@ -4,7 +4,7 @@
     <div class="navbar-vertical-container">
       <div class="navbar-brand d-flex justify-content-center">
         <!-- Logo -->
-        <a class="navbar-brand" href="{% url 'custom_main' %}" aria-label="Batler">
+        <a class="navbar-brand" href="{% url 'custom_login' %}" aria-label="Batler">
           <img class="navbar-brand-logo-short" src="{% static 'img/logo/technoguru.png' %}" alt="Logo" data-hs-theme-appearance="default">
           <img class="navbar-brand-logo-short" src="{% static 'img/logo/technoguru.png' %}" alt="Logo" data-hs-theme-appearance="dark">
         </a>
@@ -78,6 +78,34 @@
         </div>
       </div>
       <!-- End Content -->
+
+      
+    </div>
+    <div class="navbar-vertical-footer">
+      <ul class="navbar-vertical-footer-list">
+        <li class="navbar-vertical-footer-list-item">
+          <!-- Other Links -->
+          <div class="dropdown dropup">
+            <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="otherLinksDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation="">
+              <div class="avatar avatar-sm avatar-soft-primary avatar-circle">
+                <span class="avatar-initials">{{ request.user.username|slice:":1" }}</span>
+              </div>
+            </button>
+
+            <div class="dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="otherLinksDropdown">
+              <a class="dropdown-item" href="https://t.me/mirroshnikov" target="_blank">
+                <i class="bi-chat-left-dots dropdown-item-icon"></i>
+                <span class="text-truncate" title="Contact support">Связаться с поддержкой 🙋</span>
+              </a>
+              <a class="dropdown-item" href="{% url 'logout' %}" >
+                <i class="bi bi-box-arrow-right  dropdown-item-icon"></i>
+                <span class="text-truncate" title="Contact support">Выйти</span>
+              </a>
+            </div>
+          </div>
+          <!-- End Other Links -->
+        </li>
+      </ul>
     </div>
   </aside>
   <!-- End Navbar Vertical -->

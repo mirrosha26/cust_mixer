@@ -230,10 +230,19 @@ class LessonCustomizerView(View):
         el_corse_menu_background_selected = shape_factory(169, 21, ts.menu_course_background_selected , 0, 130, "el_corse_menu_background_selected")  #настройка [+]
         el_courese_menu_indicator1 = circle_factory(4, f"{ts.left_menu_text_color}", 156, 111, "el_lmenu_text")
         el_courese_menu_indicator2 = circle_factory(4, f"{ts.left_menu_select_text_color}", 156, 139, "el_courese_menu_indicator2")
-        el_course_line = shape_factory(round(ts.menu_line_height / 1.5, 1), 400, ts.menu_line_color, 170, 0, "el_menu_line")
+        el_course_line = shape_factory(round(ts.course_line_height / 1.5, 1), 400, ts.course_line_color, 170, 0, "el_course_line")
         
         el_course_menu_active = shape_factory( 2, 21, ts.menu_course_right_selected , 168, 130, "el_menu_course_right_selected", border_radius=0)  #настройка [+]
         video_border = shape_factory(435, 240, "ffffff00", 215, 55, "el_video_border", ts.video_border_radius , ts.video_border_width, ts.video_border_color)  
+
+        el_form_button = shape_factory(60, 21, ts.form_button_back_color , 635, 372, "el_form_button", border_radius=ts.form_button_border_radius, border_width=ts.form_button_border_width, border_color=ts.form_button_border_color)
+        el_form_button_text = text_factory(644, 377, "el_form_button_text", 'ВПЕРЕД <i class="bi-arrow-right"></i>', 8, ts.form_button_text_color)
+
+        el_form_button_start = shape_factory(60, 21, ts.form_button_back_default_color , 181, 372, "el_form_button_start", border_radius=ts.form_button_border_default_radius, border_width=ts.form_button_border_default_width, border_color=ts.form_button_border_default_color)
+        el_form_button_text_start = text_factory(189, 377, "el_form_button_text_start", '<i class="bi-arrow-left"></i> НАЗАД', 8, ts.form_button_text_default_color)
+
+        el_footer_line = shape_factory(530, round(ts.footer_line_height / 1.5, 1), ts.footer_line_color, 170, 364, "el_footer_line") 
+
 
         # Контекст для передачи в шаблон
         context = {
@@ -245,8 +254,8 @@ class LessonCustomizerView(View):
                 el_ltext_nav7, el_ltext_nav9, el_divider, el_progress_bar_back,
                 el_corse_menu_background_selected],
             'overlay_layer': [el_avatar_text, video_image, el_progress, el_ltext_nav8, el_courese_menu_indicator1, 
-                                el_courese_menu_indicator2, el_course_line, el_course_menu_active],
-            'top_layer': [el_scroll_bar],
+                                el_courese_menu_indicator2, el_course_line, el_course_menu_active, el_form_button, el_form_button_start],
+            'top_layer': [el_scroll_bar, el_form_button_text, el_form_button_text_start, el_footer_line],
             'emulator_size': emulator_size,
             'blocks': [
                 {
@@ -264,7 +273,6 @@ class LessonCustomizerView(View):
                         {'label': 'Цвет текста активной вкладки', 'type': 'color', 'name': 'left_menu_select_text_color', 'value': ts.left_menu_select_text_color, 'elements': ['el_lmenu_select_text', 'el_courese_menu_indicator2']  }
                     ],
                 },
-                # ts.progress_border_radius, 1, ts.progress_border_color)  #настройка [+]
                 {
                     'name': 'Прогресс-бар',
                     'inputs': [
@@ -280,6 +288,40 @@ class LessonCustomizerView(View):
                         {'label': 'Толщина линии обводки', 'type': 'borderWidth', 'name': 'video_border_width', 'value': ts.video_border_width, 'elements': ['el_video_border']  },      
                         {'label': 'Радиус скругленя обводки', 'type': 'borderRadius', 'name': 'video_border_radius', 'value': ts.video_border_radius, 'elements': ['el_video_border']  },             
                     ],
+                },
+                {
+                    'name': 'Стиль основных кнопок (В примере кнопка "ВПЕРЕД")',
+                    'inputs': [
+                        {'label': 'Цвет кнопки', 'type': 'backgroundColor', 'name': 'form_button_back_color', 'value': ts.form_button_back_color, 'elements': ['el_form_button']},
+                        {'label': 'Цвет текста кнопки', 'type': 'color', 'name': 'form_button_text_color', 'value': ts.form_button_text_color, 'elements': ['el_form_button_text']},
+                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'form_button_border_color', 'value': ts.form_button_border_color, 'elements': ['el_form_button']},
+                        {'label': 'Толщина линии обводки кнопки', 'type': 'borderWidth', 'name': 'form_button_border_width', 'value': ts.form_button_border_width, 'elements': ['el_form_button']},
+                        {'label': 'Радиус скругления обводки кнопки', 'type': 'borderRadius', 'name': 'form_button_border_radius', 'value': ts.form_button_border_radius, 'elements': ['el_form_button']},
+                    ],
+                },
+                {
+                    'name': 'Стиль кнопок по умолчанию (В примере кнопка "НАЗАД")',
+                    'inputs': [
+                        {'label': 'Цвет кнопки', 'type': 'backgroundColor', 'name': 'form_button_back_default_color', 'value': ts.form_button_back_default_color, 'elements': ['el_form_button_start']},
+                        {'label': 'Цвет текста кнопки', 'type': 'color', 'name': 'form_button_text_default_color', 'value': ts.form_button_text_default_color, 'elements': ['el_form_button_text_start']},
+                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'form_button_border_default_color', 'value': ts.form_button_border_default_color, 'elements': ['el_form_button_start']},
+                        {'label': 'Толщина линии обводки кнопки', 'type': 'borderWidth', 'name': 'form_button_border_default_width', 'value': ts.form_button_border_default_width, 'elements': ['el_form_button_start']},
+                        {'label': 'Радиус скругления обводки кнопки', 'type': 'borderRadius', 'name': 'form_button_border_default_radius', 'value': ts.form_button_border_default_radius, 'elements': ['el_form_button_start']},
+                    ],
+                },
+                {
+                    'name': 'Линия над кнопками подвала',
+                    'inputs': [
+                        {'label': 'Цвет линии', 'type': 'backgroundColor', 'name': 'footer_line_color', 'value': ts.footer_line_color, 'elements': ['el_footer_line']  },
+                        {'label': 'Толщина линии (px)', 'type': 'lineHeight', 'name': 'footer_line_height', 'value': ts.footer_line_height, 'elements': ['el_footer_line']  },
+                    ]
+                },
+                {
+                    'name': 'Линия левого меню',
+                    'inputs': [
+                        {'label': 'Цвет линии', 'type': 'backgroundColor', 'name': 'course_line_color', 'value': ts.course_line_color, 'elements': ['el_course_line']  },
+                        {'label': 'Толщина линии (px)', 'type': 'lineHeight', 'name': 'course_line_height', 'value': ts.course_line_height, 'elements': ['el_course_line']  },
+                    ]
                 },
             ]
         }
@@ -616,7 +658,6 @@ class NavigationCustomizerView(View):
         return redirect('custom_navigation')
 
 
-
 class ScriptCustomizerView(View):
 
     def dispatch(self, request, *args, **kwargs):
@@ -639,8 +680,7 @@ class ScriptCustomizerView(View):
         return redirect('custom_script')
 
 
-
-'''
+'''F
 old_button = {
             'name': 'Стиль кнопки',
             'inputs': [

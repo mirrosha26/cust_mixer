@@ -32,7 +32,7 @@ class SigninView(View):
 
         if user is not None:
             login(request, user)
-            return redirect('custom_main')
+            return redirect('custom_login')
         else:
             return render(request, 'custom_profile/index.html', {'error': 'Неверный пароль. Попробуйте снова.'})
 
@@ -113,7 +113,6 @@ class CustomPasswordResetDoneView(auth_views.PasswordResetDoneView):
 class CustomPasswordResetConfirmView(auth_views.PasswordResetConfirmView):
     template_name = 'registration/password_reset_confirm.html'
     success_url = reverse_lazy('password_reset_complete')
-
 
 def custom_password_reset_complete(request):
     return render(request, 'registration/password_reset_complete.html')
