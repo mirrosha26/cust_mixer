@@ -31,6 +31,24 @@
           </div>
 
 
+            <!-- Пункт "Курсы" -->
+            <div class="nav-item{% if request.path == custom_main_url %} active{% endif %}">
+              <a class="nav-link{% if request.path == custom_main_url %} active{% endif %}" href="{{ custom_main_url }}" role="button">
+                  <i class="bi bi-grid nav-icon"></i>
+                  <span class="nav-link-title">Курсы</span>
+              </a>
+          </div>
+
+          <!-- Пункт "Курс" -->
+          <div class="nav-item{% if request.path == custom_lesson_url %} active{% endif %}">
+              <a class="nav-link{% if request.path == custom_lesson_url %} active{% endif %}" href="{{ custom_lesson_url }}" role="button">
+                  <i class="bi bi-layout-text-window-reverse nav-icon"></i>
+                  <span class="nav-link-title">Курс</span>
+              </a>
+          </div>
+
+
+
            <!-- Пункт "Карточка" -->
            <div class="nav-item{% if request.path == custom_card_url %} active{% endif %}">
             <a class="nav-link{% if request.path == custom_card_url %} active{% endif %}" href="{{ custom_card_url }}" role="button">
@@ -40,22 +58,7 @@
         </div>
         
           
-            <!-- Пункт "Курсы" -->
-            <div class="nav-item{% if request.path == custom_main_url %} active{% endif %}">
-                <a class="nav-link{% if request.path == custom_main_url %} active{% endif %}" href="{{ custom_main_url }}" role="button">
-                    <i class="bi bi-grid nav-icon"></i>
-                    <span class="nav-link-title">Курсы</span>
-                </a>
-            </div>
-
-            <!-- Пункт "Курс" -->
-            <div class="nav-item{% if request.path == custom_lesson_url %} active{% endif %}">
-                <a class="nav-link{% if request.path == custom_lesson_url %} active{% endif %}" href="{{ custom_lesson_url }}" role="button">
-                    <i class="bi bi-layout-text-window-reverse nav-icon"></i>
-                    <span class="nav-link-title">Курс</span>
-                </a>
-            </div>
-
+          
            
 
           
