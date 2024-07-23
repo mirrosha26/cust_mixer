@@ -872,6 +872,10 @@ main.ant-layout-content {
 main.ant-layout-content .bg-white {
     background-color: transparent !important;
 }
+
+._item_content_wrapper_1pr2a_1 {
+    background-color: var(--main-color) !important;
+}
 {% else %}
 
 .bg-white {
