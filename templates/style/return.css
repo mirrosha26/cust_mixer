@@ -868,32 +868,13 @@ html body ._course_item_18ox6_1 .ant-menu-submenu-title {
 
 {% if theme_settings.background_option == 'background_image' %}
 
-/* Убедитесь, что main занимает всю высоту экрана */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 main.ant-layout-content {
-    position: relative; /* Позиционирование контейнера относительно */
-    min-height: 100vh; /* Минимальная высота контейнера - 100% высоты окна просмотра */
-    isolation: isolate;
-    background: url('https://customize.technoguru.club/media/backgrounds/image_25_tZl5mA3.png') no-repeat center center fixed; /* Настройки фона */
-    background-size: cover; /* Изображение фона покрывает весь контейнер */
+    background: url('https://customize.technoguru.club/media/backgrounds/image_25_tZl5mA3.png') !important; 
+    background-size: auto;
 }
 
-/* Псевдо-элемент для дополнительного содержания или стилей */
-main.ant-layout-content:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('https://customize.technoguru.club/media/backgrounds/image_25_tZl5mA3.png') no-repeat center center fixed; 
-    background-size: cover;
-    z-index: -1; /* Псевдо-элемент находится позади основного контента */
+main.ant-layout-content .flex-1 .bg-white {
+    background-color: transparent !important;
 }
 
 {% endif %}
