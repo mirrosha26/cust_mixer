@@ -16,7 +16,7 @@ class BaseElement:
 
 
 class Shape(BaseElement):
-    def __init__(self, width, height, background_color, left, top, class_id, border_radius=None, border_width=None, border_color=None):     
+    def __init__(self, width, height, background_color, left, top, class_id, border_radius=None, border_width=None, border_color=None, background_image=""):     
         super().__init__(left, top, class_id)
         self.width = width
         self.height = height
@@ -24,16 +24,21 @@ class Shape(BaseElement):
         self.border_radius = border_radius or 0
         self.border_width = border_width or 0
         self.border_color = border_color or "transparent"
+        self.background_image = str(background_image)
 
     def render(self):
+        print(f'background-image: url("media/{self.background_image}");')
         shape_html = f'''
         <div class="{self.class_id}"
+            id="{self.class_id}" 
             style="
             width: {self.width}px;
             height: {self.height}px;
             background-color: {self.background_color};
             border-radius: {self.border_radius}rem;
-            border: {self.border_width}px solid {self.border_color};">
+            border: {self.border_width}px solid {self.border_color};
+            background-image: url('media/{self.background_image}');
+            ">
         </div>
         '''
         return super().render(inner_html=shape_html)

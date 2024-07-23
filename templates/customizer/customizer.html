@@ -1,6 +1,9 @@
 {% extends 'customizer/base/index.html' %}
 {% load static %}
-{% block link-css %}<link rel="preload"  href="{% static 'assets-admin/emulator/style.css' %}" as="style">{% endblock %}
+{% block link-css %}
+<link rel="preload"  href="{% static 'assets-admin/emulator/style.css' %}" as="style">
+<link rel="stylesheet" href="{% static 'assets-admin/vendor/tom-select/dist/css/tom-select.bootstrap5.css' %}">
+{% endblock %}
 {% block title %}{{title}}{% endblock %}
 
 {% block content %}
@@ -133,7 +136,7 @@
           </div>
 
 
-          <form action="" method="POST">
+          <form action="" method="POST" enctype="multipart/form-data">
             <!-- CSRF токен для безопасности формы -->
             {% csrf_token %}
           <div class="container mt-6">
@@ -141,15 +144,18 @@
             <span class="divider-start">{{block.name}}</span>
               {% for input in block.inputs %}
                 {% if input.type == 'backgroundColor' or input.type == 'color' or input.type == 'borderColor' %}
-                  {% include 'customizer/emulators/color_input.html' with label=input.label name=input.name value=input.value %} 
+                  {% include 'customizer/emulators/color_input.html' with label=input.label name=input.name display_none=input.display_none value=input.value %} 
                   {% elif input.type == 'lineHeight' or input.type == 'borderWidth' %}
-                  {% include 'customizer/emulators/height_input.html' with label=input.label name=input.name value=input.value  id='decimal_input' %}
+                  {% include 'customizer/emulators/height_input.html' with label=input.label name=input.name display_none=input.display_none value=input.value  id='decimal_input' %}
                   {% elif input.type == 'borderRadius' %}
-                  {% include 'customizer/emulators/height_input.html' with label=input.label name=input.name value=input.value id='to_one_input' %}
+                  {% include 'customizer/emulators/height_input.html' with label=input.label name=input.name display_none=input.display_none value=input.value id='to_one_input' %}
+                  {% elif input.type == 'select' %}
+                  {% include 'customizer/emulators/select-custom.html' with label=input.label name=input.name display_none=input.display_none options=input.options  id='select_custom' %}
+                  {% elif input.type == 'img' %}
+                  {% include 'customizer/emulators/img_imput.html' with label=input.label name=input.name display_none=input.display_none value=input.value  id='select_custom' %}
                 {% endif %}
               {% endfor %}
             {% endfor %}
-            </div>
             <div class="d-grid mb-2 mt-6">
               <button type="submit" class="btn btn-primary btn-lg">Сохранить изменения</button>
             </div>
@@ -160,6 +166,15 @@
 {% endblock %}
 {% block my_scripts %}
 
+<script src="{% static 'assets-admin/vendor/tom-select/dist/js/tom-select.complete.min.js' %}"></script>
+<script src="{% static 'assets-admin/vendor/hs-file-attach/dist/hs-file-attach.min.js' %}"></script>
+<script>
+  (function() {
+    // INITIALIZATION OF FILE ATTACH
+    // =======================================================
+    new HSFileAttach('.js-file-attach')
+  })();
+</script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
       // Функция для синхронизации цветового пикера, hex ввода и изменения стиля
@@ -310,5 +325,38 @@
   });
 </script>
 
+<script>
+  (function() {
+    // INITIALIZATION OF SELECT
+    // =======================================================
+    HSCore.components.HSTomSelect.init('.js-select')
+  })();
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const selectElements = document.querySelectorAll("select.js-select");
+
+    selectElements.forEach(function(selectElement) {
+        selectElement.addEventListener("change", function() {
+            const selectedValue = selectElement.value;
+
+            // Получаем все элементы, которые имеют id начинающийся с "display_" и соответствуют option values
+            const options = selectElement.querySelectorAll("option");
+            options.forEach(function(option) {
+                const displayElement = document.getElementById("display_" + option.value);
+                if (displayElement) {
+                    displayElement.style.display = option.value === selectedValue ? "" : "none";
+                }
+            });
+        });
+
+        // Инициализация при загрузке страницы
+        const event = new Event('change');
+        selectElement.dispatchEvent(event);
+    });
+});
+
+</script>
 
 {% endblock %}

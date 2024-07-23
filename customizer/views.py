@@ -7,6 +7,7 @@ from .models import ThemeSettings
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from .models import BACKGROUND_OPTIONS
 
 def create_card_elements(ts, base_x=0, base_y=0):
     """
@@ -71,10 +72,14 @@ class MainCustomizerView(View):
     def get(self, request):
         emulator_size = {'width': 700, 'height': 560 }
         ts = ThemeSettings.objects.get(user=request.user)
-        
+
+        if ts.background_option == "background_image":
+            background_image = ts.background_image
+        else:
+            background_image = ""
         # Заливки
         el_menu_background = shape_factory(emulator_size['width'], 32, ts.menu_color, 0, 0, "el_menu_background")
-        el_main_background = shape_factory(emulator_size['width'], 460, ts.main_color, 0, 32, "el_main_background")
+        el_main_background = shape_factory(emulator_size['width'], 460, ts.main_color, 0, 32, "el_main_background",  background_image=background_image)
 
         el_menu_line = shape_factory(emulator_size['width'], round(ts.menu_line_height / 1.5, 1), ts.menu_line_color, 0, 32, "el_menu_line")
         el_scroll_bar = shape_factory(round(ts.scroll_bar_size / 1.5, 1), 220, ts.scroll_bar_color, emulator_size['width'] - round(ts.scroll_bar_size / 1.5, 1), 50, "el_scroll_bar", border_radius=ts.scroll_bar_round)
@@ -110,7 +115,13 @@ class MainCustomizerView(View):
 
         # Объединение всех элементов в один список
         cards = card1 + card2 + card3 + card4 + card5 + card6
+        sorted_options = [opt for opt in BACKGROUND_OPTIONS if opt[0] == ts.background_option]
+        sorted_options += [opt for opt in BACKGROUND_OPTIONS if opt[0] != ts.background_option]
 
+        if ts.background_image == 'backgrounds/default_background.png':
+            reset = 'true'
+        else:
+            reset = 'false'
 
         # Контекст для передачи в шаблон
         context = {
@@ -139,7 +150,9 @@ class MainCustomizerView(View):
                 {
                     'name': 'Базовые цвета',
                     'inputs': [
-                        {'label': 'Основной фон', 'type': 'backgroundColor', 'name': 'main_color', 'value': ts.main_color, 'elements': ['el_main_background']  },
+                        {'label': 'Вариант оформления фона', 'type': 'select', 'name': 'background_option', 'options': sorted_options, 'elements': ['select']  },
+                        {'label': 'Фоновая заливка', 'type': 'backgroundColor', 'name': 'main_color', 'value': ts.main_color, 'elements': ['el_main_background']  },
+                        {'label': 'Фоновое изображение', 'type': 'img', 'name': 'background_image', 'value': ts.background_image, 'elements': ['el_main_background']  },
                         {'label': 'Цвет текста', 'type': 'color', 'name': 'text_color', 'value': ts.text_color, 'elements': ['el_h1']  },
                     ]
                 },
@@ -162,18 +175,39 @@ class MainCustomizerView(View):
                         {'label': 'Цвет обводки (для всех элементов на сайте с обводкой)', 'type': 'borderColor', 'name': 'border_accent_color', 'value': ts.border_accent_color, 'elements': ['el_search', 'el_dropdown'] },
                     ]
                 },
-            ]
+            ],
+            "reset" : reset
         }
         return render(request, 'customizer/customizer.html', context)
 
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
-    
+        
+        # Обновляем значения других полей из POST данных
         for key, value in request.POST.items():
-            if hasattr(ts, key):
+            if hasattr(ts, key) and key != 'background_image':
                 setattr(ts, key, value)
+
+        # Проверяем и обрабатываем файл, если он существует
+        if 'background_image' in request.FILES and request.FILES['background_image'].size > 0:
+            ts.background_image = request.FILES['background_image']
+        else:
+            # Если файл не был загружен или пуст, не изменяем поле background_image
+            pass
+        
+        # Проверяем значение reset и обновляем поле если необходимо
+        reset = request.POST.get('reset', 'false')
+        if reset == 'true':
+            # Устанавливаем изображение по умолчанию из папки media
+            default_image_path = 'backgrounds/default_background.png'
+            ts.background_image = default_image_path
+        
+        # Сохраняем изменения в базе данных
         ts.save()
+        
+        # Перенаправляем пользователя на нужную страницу
         return redirect('custom_main')
+
 
 class LessonCustomizerView(View):
 
@@ -679,16 +713,3 @@ class ScriptCustomizerView(View):
         request.user.save()
         return redirect('custom_script')
 
-
-'''F
-old_button = {
-            'name': 'Стиль кнопки',
-            'inputs': [
-                {'label': 'Цвет кнопки', 'type': 'backgroundColor', 'name': 'form_button_back_color', 'value': ts.form_button_back_color, 'elements': ['el_form_button']},
-                {'label': 'Цвет текста кнопки', 'type': 'color', 'name': 'form_button_text_color', 'value': ts.form_button_text_color, 'elements': ['el_form_button_text']},
-                {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'form_button_border_color', 'value': ts.form_button_border_color, 'elements': ['el_form_button']},
-                {'label': 'Толщина линии обводки кнопки', 'type': 'borderWidth', 'name': 'form_button_border_width', 'value': ts.form_button_border_width, 'elements': ['el_form_button']},
-                {'label': 'Радиус скругления обводки кнопки', 'type': 'borderRadius', 'name': 'form_button_border_radius', 'value': ts.form_button_border_radius, 'elements': ['el_form_button']},
-            ],
-        },
-'''

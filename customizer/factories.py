@@ -1,7 +1,7 @@
 from .utils import Shape, Circle, Text, Image,CustomElement
 
 # Фабрики для создания элементов
-def shape_factory(width, height, background_color, left, top, class_id, border_radius=0, border_width=0, border_color="transparent"):
+def shape_factory(width, height, background_color, left, top, class_id, border_radius=0, border_width=0, border_color="transparent",background_image=""):
     return Shape(
         width=width,
         height=height,
@@ -11,7 +11,8 @@ def shape_factory(width, height, background_color, left, top, class_id, border_r
         class_id=class_id,
         border_radius=border_radius,
         border_width=border_width,
-        border_color=border_color
+        border_color=border_color,
+        background_image=background_image
     )
 
 def circle_factory(diameter, background_color, left, top, class_id, border_width=0, border_color="transparent"):

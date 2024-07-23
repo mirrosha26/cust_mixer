@@ -1,0 +1,18 @@
+<div class="row mb-3">
+    <label class="col-sm-5 col-form-label">
+        {{ label }}
+    </label>
+    <div class="col-sm-7">
+        <div class="tom-select-custom">
+            <select name="{{name}}" class="js-select form-select" autocomplete="off"
+                data-hs-tom-select-options='{
+                    "placeholder": "<div><i class=\"bi-image me-2\"></i>Выберите подходящий вариант</div>",
+                    "hideSearch": true
+                    }'>
+                {% for option in options %}
+                <option value="{{ option.0 }}">{{ option.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>

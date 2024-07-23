@@ -5,6 +5,11 @@ from django.dispatch import receiver
 
 User = get_user_model()
 
+BACKGROUND_OPTIONS = [
+        ('background_image', 'Фоновое  изображение'),
+        ('main_color', 'Цвет'),
+    ]
+
 class ThemeSettings(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="theme_settings")
     menu_color = models.CharField(max_length=7, default="#292929")
@@ -117,6 +122,19 @@ class ThemeSettings(models.Model):
     form_button_border_default_color = models.CharField(max_length=7, default="#111111")
     form_button_border_default_radius = models.FloatField(default=0.1)
     form_button_text_default_color = models.CharField(max_length=7, default="#ffffff")
+
+
+    background_image = models.ImageField(
+        upload_to='backgrounds/',
+        blank=True,
+        null=True,
+        default='backgrounds/default_background.png'
+    )
+    background_option = models.CharField(
+        max_length=20,
+        choices=BACKGROUND_OPTIONS,
+        default='main_color',
+    )
 
     def __str__(self):
         return f"{self.user.username}'s Theme Settings"

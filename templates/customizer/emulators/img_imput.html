@@ -1,0 +1,94 @@
+{% load static %}
+
+<div class="row mb-3" id="display_{{name}}" {% if display_none %}style="display: none;"{% endif %}>
+  <label class="col-sm-5 col-form-label" >{{ label }}</label>
+  <div class="col-sm-7">
+    <div class="d-flex align-items-center" >
+      <span class="avatar avatar-4x3">
+      <img id="avatarImg" class="avatar-img" src="media/{{value}}">
+      </span>
+      <input type="hidden" id="resetField" name="reset" value="{{reset}}">
+
+      <div class="d-flex gap-3 ms-4">
+      <div class="form-attachment-btn btn btn-sm btn-primary">Загрузить фото
+          <input name="{{name}}" type="file" class="js-file-attach form-attachment-btn-label" id="avatarUploader"
+                  data-hs-file-attach-options='{
+                  "textTarget": "#avatarImg",
+                  "mode": "image",
+                  "targetAttr": "src",
+                  "resetTarget": ".js-file-attach-reset-img",
+                  "resetImg": "media/backgrounds/default_background.png",
+                  "allowTypes": [".png", ".jpeg", ".jpg"]
+                  }'>
+      </div>
+      <!-- End Avatar -->
+      <button type="button" class="js-file-attach-reset-img btn btn-white btn-sm">Сбросить</button>
+      </div>
+  </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('avatarUploader').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  const resetField = document.getElementById('resetField');
+
+  reader.onload = function(e) {
+    // Устанавливаем изображение как источник для тега <img>
+    document.getElementById('avatarImg').src = e.target.result;
+    
+    // Устанавливаем изображение как фон для нужного элемента и убираем цвет
+    const el_main_background = document.getElementById('el_main_background');
+    el_main_background.style.backgroundImage = `url(${e.target.result})`;
+    el_main_background.style.backgroundColor = 'transparent';
+    
+    resetField.value = 'false';
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+});
+
+// Обработчик для кнопки "Удалить"
+document.querySelector('.js-file-attach-reset-img').addEventListener('click', function() {
+  // Сброс изображение для тега <img>
+  document.getElementById('avatarImg').src = 'media/backgrounds/default_background.png';
+
+  // Сброс фона для нужного элемента к исходным значениям
+  const el_main_background = document.getElementById('el_main_background');
+  el_main_background.style.backgroundImage = `url('media/backgrounds/default_background.png')`;
+  el_main_background.style.backgroundColor = 'transparent';
+
+  // Устанавливаем reset поле в false
+  document.getElementById('resetField').value = 'true';
+});
+
+// Обработчик для изменения цвета
+document.getElementById('main_colorPicker').addEventListener('input', function(event) {
+  const color = event.target.value;
+  
+  // Устанавливаем цвет в текстовое поле
+  document.getElementById('main_colorHex').value = color;
+  
+  // Устанавливаем цвет фона для нужного элемента и убираем изображение
+  const el_main_background = document.getElementById('el_main_background');
+  el_main_background.style.backgroundColor = color;
+  el_main_background.style.backgroundImage = 'none';
+});
+
+// Синхронизация текстового поля с color picker
+document.getElementById('main_colorHex').addEventListener('input', function(event) {
+  const color = event.target.value;
+  
+  // Устанавливаем значение color picker
+  document.getElementById('main_colorPicker').value = color;
+  
+  // Устанавливаем цвет фона для нужного элемента и убираем изображение
+  const el_main_background = document.getElementById('el_main_background');
+  el_main_background.style.backgroundColor = color;
+  el_main_background.style.backgroundImage = 'none';
+});
+
+</script>
