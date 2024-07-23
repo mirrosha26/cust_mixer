@@ -875,10 +875,7 @@ main.ant-layout-content {
 main.ant-layout-content:before {
     content: '';
     position: absolute;
-    background: url({{theme_settings.background_image}}); 
-    width: 100%;
-    height: 100%;
-    background-size: cover;
+    background: url('media/{{theme_settings.background_image}}'); 
     bottom: 0;
 }
 
