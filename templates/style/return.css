@@ -873,7 +873,7 @@ main.ant-layout-content .bg-white {
     background-color: transparent !important;
 }
 
-._item_content_wrapper_1pr2a_1 {
+._item_content_wrapper_1pr2a_1, ._item_content_footer_t8lnz_1, ._tabs_nav_16yb2_1 {
     background-color: var(--main-color) !important;
 }
 {% else %}
