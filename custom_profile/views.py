@@ -139,9 +139,8 @@ def get_html_content(request):
     if user.domain != domain or not user.is_connected:
         return HttpResponseForbidden("Access Denied")
     
-    theme_settings = get_object_or_404(ThemeSettings, user=user)
     response_data = {
-        'body_html': theme_settings.body_html,
-        'head_html': theme_settings.head_html,
+        'body_html': user.body_html,
+        'head_html': user.head_html,
     }
     return JsonResponse(response_data)
