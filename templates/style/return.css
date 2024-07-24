@@ -880,7 +880,7 @@ main.ant-layout-content .bg-white {
 {% else %}
 
 .bg-white {
-    background-color: var(--main-color) !important;
+    background-color: var(--main-color);
 }
 
 {% endif %}
