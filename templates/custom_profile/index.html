@@ -19,14 +19,10 @@
   </div>
   {% endif %}
 {% csrf_token %}
-  <!-- Form -->
   <div class="mb-4">
     <label class="form-label" for="username">Ваш почтовый ящик ( логин ) </label>
     <input type="text" class="form-control form-control-lg" name="username" id="username" tabindex="1" placeholder="example@example.com" aria-label="username" required>
   </div>
-  <!-- End Form -->
-
-  <!-- Form -->
   <div class="mb-4">
     <label class="form-label w-100" for="password" tabindex="0">
       <span class="d-flex justify-content-between align-items-center">
@@ -38,8 +34,6 @@
     </div>
     <p class="small mt-2">Забыли пароль? <a class="link" href="{% url 'reset_password' %}">Сбросить пароль</a></p>
   </div>
-  <!-- End Form -->
-
   <div class="d-grid">
     <button type="submit" class="btn btn-primary btn-lg">Войти</button>
     <div class="text-center">
@@ -49,5 +43,4 @@
     </div>
   </div>
 </form>
-<!-- End Form -->
 {% endblock %}

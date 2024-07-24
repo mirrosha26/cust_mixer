@@ -7,7 +7,6 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block content %}
-
 <!-- Начало слоёв эмулятора ( перенос в assets-admin/emulator/style.css ) -->
 <style>
   .base-layer {
@@ -34,7 +33,6 @@
       position: relative;
       z-index: 4;
   }
-
 
   /* Настройка элементов в .input-group */
   .input-group-md-vertical {
@@ -79,102 +77,93 @@
 <script src="https://cdn.jsdelivr.net/npm/imask"></script>
 
 <div class="card">
-    <div class="card-header">
-      <h3 class="card-header-title">{{title}}</h3>
-      </div>
-        <div class="card-body">
-          <div class="container-custom border border-2 p-4 {% if not device_browser_background %}bg-soft-secondary"{% else %}"style="background-color: {{device_browser_background}}"{% endif %}>
-            <!-- начало эмулятора -->
-            <figure class="device-browser" style="width: {{emulator_size.width}}px;">
-              {% if device_browser_header %}
-              <div class="device-browser-header">
-                <div class="device-browser-header-btn-list">
-                  <span class="device-browser-header-btn-list-btn"></span>
-                  <span class="device-browser-header-btn-list-btn"></span>
-                  <span class="device-browser-header-btn-list-btn"></span>
-                </div>
-                <div class="device-browser-header-browser-bar">https://themes.technoguru.club/</div>
-              </div>
-              {% endif%}
-
-              <!-- base-layer  -->
-              <div class="base-layer position-relative">
-                {% for element in base_layer %}
-                  {{ element.render|safe }}
-                {% endfor %}
-              </div>
-
-              <!-- content-layer  -->
-              <div class="content-layer position-relative">
-                {% for element in content_layer %}
-                  {{ element.render|safe }}
-                {% endfor %}
-              </div>
-
-              <!-- overlay-layer  -->
-              <div class="overlay-layer position-relative">
-                {% for element in overlay_layer %}
-                  {{ element.render|safe }}
-                {% endfor %}
-              </div>
-
-              <!-- top-layer  -->
-              <div class="top-layer position-relative">
-                {% for element in top_layer %}
-                  {{ element.render|safe }}
-                {% endfor %}
-              </div>
-
-              <!-- device-browser-frame  -->
-              <div class="device-browser-frame shadow-none">
-                <div style="width: {{emulator_size.width}}px; height: {{emulator_size.height}}px">
-                </div>
-              </div>
-
-            </figure>
-            <!-- конец эмулятора -->
+  <div class="card-header">
+    <h3 class="card-header-title">{{title}}</h3>
+  </div>
+  <div class="card-body">
+    <div class="container-custom border border-2 p-4 {% if not device_browser_background %}bg-soft-secondary"{% else %}"style="background-color: {{device_browser_background}}"{% endif %}>
+      <!-- начало эмулятора -->
+      <figure class="device-browser" style="width: {{emulator_size.width}}px;">
+        {% if device_browser_header %}
+        <div class="device-browser-header">
+          <div class="device-browser-header-btn-list">
+            <span class="device-browser-header-btn-list-btn"></span>
+            <span class="device-browser-header-btn-list-btn"></span>
+            <span class="device-browser-header-btn-list-btn"></span>
           </div>
-
-
-          <form action="" method="POST" enctype="multipart/form-data">
-            <!-- CSRF токен для безопасности формы -->
-            {% csrf_token %}
-          <div class="container mt-6">
-            {% for block in blocks %}
-            <span class="divider-start">{{block.name}}</span>
-              {% for input in block.inputs %}
-                {% if input.type == 'backgroundColor' or input.type == 'color' or input.type == 'borderColor' %}
-                  {% include 'customizer/emulators/color_input.html' with label=input.label name=input.name display_none=input.display_none value=input.value %} 
-                  {% elif input.type == 'lineHeight' or input.type == 'borderWidth' %}
-                  {% include 'customizer/emulators/height_input.html' with label=input.label name=input.name display_none=input.display_none value=input.value  id='decimal_input' %}
-                  {% elif input.type == 'borderRadius' %}
-                  {% include 'customizer/emulators/height_input.html' with label=input.label name=input.name display_none=input.display_none value=input.value id='to_one_input' %}
-                  {% elif input.type == 'select' %}
-                  {% include 'customizer/emulators/select-custom.html' with label=input.label name=input.name display_none=input.display_none options=input.options  id='select_custom' %}
-                  {% elif input.type == 'img' %}
-                  {% include 'customizer/emulators/img_imput.html' with label=input.label name=input.name display_none=input.display_none value=input.value  id='select_custom' %}
-                {% endif %}
-              {% endfor %}
-            {% endfor %}
-            <div class="d-grid mb-2 mt-6">
-              <button type="submit" class="btn btn-primary btn-lg">Сохранить изменения</button>
-            </div>
-      </form>
+          <div class="device-browser-header-browser-bar">https://themes.technoguru.club/</div>
         </div>
+        {% endif%}
+
+        <!-- base-layer  -->
+        <div class="base-layer position-relative">
+          {% for element in base_layer %}
+            {{ element.render|safe }}
+          {% endfor %}
         </div>
+
+        <!-- content-layer  -->
+        <div class="content-layer position-relative">
+          {% for element in content_layer %}
+            {{ element.render|safe }}
+          {% endfor %}
+        </div>
+
+        <!-- overlay-layer  -->
+        <div class="overlay-layer position-relative">
+          {% for element in overlay_layer %}
+            {{ element.render|safe }}
+          {% endfor %}
+        </div>
+
+        <!-- top-layer  -->
+        <div class="top-layer position-relative">
+          {% for element in top_layer %}
+            {{ element.render|safe }}
+          {% endfor %}
+        </div>
+
+        <!-- device-browser-frame  -->
+        <div class="device-browser-frame shadow-none">
+          <div style="width: {{emulator_size.width}}px; height: {{emulator_size.height}}px">
+          </div>
+        </div>
+
+      </figure>
+      <!-- конец эмулятора -->
+    </div>
+    <form action="" method="POST" enctype="multipart/form-data">
+      <!-- CSRF токен для безопасности формы -->
+      {% csrf_token %}
+    <div class="container mt-6">
+      {% for block in blocks %}
+      <span class="divider-start">{{block.name}}</span>
+        {% for input in block.inputs %}
+          {% if input.type == 'backgroundColor' or input.type == 'color' or input.type == 'borderColor' %}
+            {% include 'customizer/emulators/color_input.html' with label=input.label name=input.name display_none=input.display_none value=input.value %} 
+            {% elif input.type == 'lineHeight' or input.type == 'borderWidth' %}
+            {% include 'customizer/emulators/height_input.html' with label=input.label name=input.name display_none=input.display_none value=input.value  id='decimal_input' %}
+            {% elif input.type == 'borderRadius' %}
+            {% include 'customizer/emulators/height_input.html' with label=input.label name=input.name display_none=input.display_none value=input.value id='to_one_input' %}
+            {% elif input.type == 'select' %}
+            {% include 'customizer/emulators/select-custom.html' with label=input.label name=input.name display_none=input.display_none options=input.options  id='select_custom' %}
+            {% elif input.type == 'img' %}
+            {% include 'customizer/emulators/img_imput.html' with label=input.label name=input.name display_none=input.display_none value=input.value  id='select_custom' %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+      <div class="d-grid mb-2 mt-6">
+        <button type="submit" class="btn btn-primary btn-lg">Сохранить изменения</button>
+      </div>
+    </form>
+    </div>
+  </div>
 </div>
 {% endblock %}
 {% block my_scripts %}
 
 <script src="{% static 'assets-admin/vendor/tom-select/dist/js/tom-select.complete.min.js' %}"></script>
 <script src="{% static 'assets-admin/vendor/hs-file-attach/dist/hs-file-attach.min.js' %}"></script>
-<script>
-  (function() {
-    // INITIALIZATION OF FILE ATTACH
-    // =======================================================
-    new HSFileAttach('.js-file-attach')
-  })();
-</script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
       // Функция для синхронизации цветового пикера, hex ввода и изменения стиля
@@ -327,21 +316,20 @@
 
 <script>
   (function() {
-    // INITIALIZATION OF SELECT
+    // INITIALIZATION OF FILE ATTACH AND SELECT
     // =======================================================
-    HSCore.components.HSTomSelect.init('.js-select')
+    new HSFileAttach('.js-file-attach');
+    HSCore.components.HSTomSelect.init('.js-select');
   })();
 </script>
 
-<script>
+<!-- 
+  <script>
   document.addEventListener("DOMContentLoaded", function() {
     const selectElements = document.querySelectorAll("select.js-select");
-
     selectElements.forEach(function(selectElement) {
         selectElement.addEventListener("change", function() {
             const selectedValue = selectElement.value;
-
-            // Получаем все элементы, которые имеют id начинающийся с "display_" и соответствуют option values
             const options = selectElement.querySelectorAll("option");
             options.forEach(function(option) {
                 const displayElement = document.getElementById("display_" + option.value);
@@ -350,13 +338,11 @@
                 }
             });
         });
-
-        // Инициализация при загрузке страницы
         const event = new Event('change');
         selectElement.dispatchEvent(event);
     });
 });
-
 </script>
+-->
 
 {% endblock %}
