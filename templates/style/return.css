@@ -867,7 +867,7 @@ html body ._course_item_18ox6_1 .ant-menu-submenu-title {
 
 main.ant-layout-content {
     background: url('https://customize.technoguru.club/media/{{theme_settings.background_image}}') no-repeat center center fixed !important; 
-    background-size: cover;
+    background-size: cover !important;
 }
 
 
