@@ -68,18 +68,23 @@
     <pre><code class="language-javascript">
         &lt;script&gt;
             var uuid = `{{uuid}}`;
-            var cssUrl = `https://customize.technoguru.club/user/style.css?uuid=${uuid}&amp;d=${window.location.hostname}&amp;4`;
-            var linkElement = document.createElement("link");
-            linkElement.rel = "stylesheet";
-            linkElement.href = cssUrl;
-            var headElement = document.getElementsByTagName("head")[0];
-            headElement.appendChild(linkElement);
-            var jsUrl = `https://customize.technoguru.club/user/script.js?uuid=${uuid}&amp;d=${window.location.hostname}&amp;4`;
-            var scriptElement = document.createElement("script");
-            scriptElement.src = jsUrl;
-            headElement.appendChild(scriptElement);
+            var domain = window.location.hostname;
+            var baseUrl = `https://customize.technoguru.club/user/`;
+            var headElement = document.head;
+    
+            ['style.css', 'script.js'].forEach(function(file) {
+                var element = document.createElement(file.endsWith('.css') ? 'link' : 'script');
+                if (file.endsWith('.css')) {
+                    element.rel = 'stylesheet';
+                    element.href = `${baseUrl}${file}?uuid=${uuid}&amp;d=${domain}&amp;4`;
+                } else {
+                    element.src = `${baseUrl}${file}?uuid=${uuid}&amp;d=${domain}&amp;4`;
+                }
+                headElement.appendChild(element);
+            });
         &lt;/script&gt;
     </code></pre>
+    
     
 </div>
 </div>
