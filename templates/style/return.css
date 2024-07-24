@@ -864,6 +864,7 @@ html body ._course_item_18ox6_1 .ant-menu-submenu-title {
 
 {% if theme_settings.background_option == 'background_image' %}
 
+
 main.ant-layout-content {
     background: url('https://customize.technoguru.club/media/{{theme_settings.background_image}}') !important; 
     background-size: auto;

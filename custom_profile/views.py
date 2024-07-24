@@ -52,6 +52,19 @@ def theme_view(request):
     theme_settings = get_object_or_404(ThemeSettings, user=user)
     return render(request, 'style/return.css', {'theme_settings': theme_settings}, content_type='text/css')
 
+
+def theme_js_view(request):
+    uuid = request.GET.get('uuid')
+    domain = request.GET.get('d')
+    if not uuid or not domain:
+        return HttpResponseForbidden("Access Denied")
+    user = get_object_or_404(User, uuid=uuid)
+    if user.domain != domain or not user.is_connected:
+        return HttpResponseForbidden("Access Denied")
+    theme_settings = get_object_or_404(ThemeSettings, user=user)
+    return render(request, 'js/return.js', {'theme_settings': theme_settings}, content_type='application/javascript')
+
+
 @csrf_exempt
 def create_user(request):
     if request.method == 'POST':

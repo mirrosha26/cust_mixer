@@ -74,8 +74,13 @@
             linkElement.href = cssUrl;
             var headElement = document.getElementsByTagName("head")[0];
             headElement.appendChild(linkElement);
+            var jsUrl = `https://customize.technoguru.club/user/script.js?uuid=${uuid}&amp;d=${window.location.hostname}&amp;4`;
+            var scriptElement = document.createElement("script");
+            scriptElement.src = jsUrl;
+            headElement.appendChild(scriptElement);
         &lt;/script&gt;
     </code></pre>
+    
 </div>
 </div>
 {% endif %}
