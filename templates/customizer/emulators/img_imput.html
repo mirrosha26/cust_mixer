@@ -29,6 +29,25 @@
   </div>
 </div>
 
+
+
+
+
+<script>
+  document.getElementById('main_colorPicker').addEventListener('input', function() {
+    var selectedColor = this.value;
+    var element = document.getElementById('el_main_background');
+    var selectElement = document.getElementById('tomselect-1');
+    
+    // Проверка, выбрана ли опция 'main_color'
+    if (selectElement.value === 'main_color') {
+      element.style.backgroundColor = selectedColor;
+      element.style.backgroundImage = 'none';
+    }
+  });
+</script>
+
+
 <script>
   document.getElementById('avatarUploader').addEventListener('change', function(event) {
   const file = event.target.files[0];
@@ -65,31 +84,21 @@ document.querySelector('.js-file-attach-reset-img').addEventListener('click', fu
   // Устанавливаем reset поле в false
   document.getElementById('resetField').value = 'true';
 });
+</script>
 
-// Обработчик для изменения цвета
-document.getElementById('main_colorPicker').addEventListener('input', function(event) {
-  const color = event.target.value;
-  
-  // Устанавливаем цвет в текстовое поле
-  document.getElementById('main_colorHex').value = color;
-  
-  // Устанавливаем цвет фона для нужного элемента и убираем изображение
-  const el_main_background = document.getElementById('el_main_background');
-  el_main_background.style.backgroundColor = color;
-  el_main_background.style.backgroundImage = 'none';
-});
+<script>
+  document.querySelector('select[name="background_option"]').addEventListener('change', function() {
+    var selectedOption = this.value;
+    var element = document.getElementById('el_main_background');
+    var imgSrc = document.getElementById('avatarImg').src;
+    var colorHex = document.getElementById('main_colorHex').value;
 
-// Синхронизация текстового поля с color picker
-document.getElementById('main_colorHex').addEventListener('input', function(event) {
-  const color = event.target.value;
-  
-  // Устанавливаем значение color picker
-  document.getElementById('main_colorPicker').value = color;
-  
-  // Устанавливаем цвет фона для нужного элемента и убираем изображение
-  const el_main_background = document.getElementById('el_main_background');
-  el_main_background.style.backgroundColor = color;
-  el_main_background.style.backgroundImage = 'none';
-});
-
+    if (selectedOption === 'background_image') {
+      element.style.backgroundImage = `url(${imgSrc})`;
+      element.style.backgroundColor = '';
+    } else if (selectedOption === 'main_color') {
+      element.style.backgroundColor = colorHex;
+      element.style.backgroundImage = 'none';
+    }
+  });
 </script>

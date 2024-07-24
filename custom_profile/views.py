@@ -1,15 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth import authenticate, login, get_user_model, logout
-from django.http import JsonResponse
-from customizer.models import ThemeSettings
-from django.http import HttpResponseForbidden
 from custom_profile.models import User
 from customizer.models import ThemeSettings
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
+from django.http import JsonResponse, HttpResponseForbidden
 
 class SigninView(View):
     def get(self, request):
@@ -129,3 +127,21 @@ class CustomPasswordResetConfirmView(auth_views.PasswordResetConfirmView):
 
 def custom_password_reset_complete(request):
     return render(request, 'registration/password_reset_complete.html')
+
+
+def get_html_content(request):
+    uuid = request.GET.get('uuid')
+    domain = request.GET.get('d')
+    if not uuid or not domain:
+        return HttpResponseForbidden("Access Denied")
+    
+    user = get_object_or_404(User, uuid=uuid)
+    if user.domain != domain or not user.is_connected:
+        return HttpResponseForbidden("Access Denied")
+    
+    theme_settings = get_object_or_404(ThemeSettings, user=user)
+    response_data = {
+        'body_html': theme_settings.body_html,
+        'head_html': theme_settings.head_html,
+    }
+    return JsonResponse(response_data)

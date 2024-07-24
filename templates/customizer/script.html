@@ -34,7 +34,7 @@
 
 </head>
 <body>
-<div class="container content-space-2 content-space-lg-2">
+<div class="container ">
 <!-- Heading -->
 <div class="mb-4">
 
@@ -57,7 +57,7 @@
     <input name="domain" placeholder="example.com" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" required value="{% if domain != "example.com" %}{{domain}}{% endif %}">
     <button type="submit" class="btn btn-primary" >Сохранить</a>
   </div>
-</form>
+
 </div>
 
 {% if domain != "example.com" %}
@@ -71,23 +71,61 @@
             var domain = window.location.hostname;
             var baseUrl = `https://customize.technoguru.club/user/`;
             var headElement = document.head;
-    
+        
             ['style.css', 'script.js'].forEach(function(file) {
                 var element = document.createElement(file.endsWith('.css') ? 'link' : 'script');
                 if (file.endsWith('.css')) {
                     element.rel = 'stylesheet';
-                    element.href = `${baseUrl}${file}?uuid=${uuid}&amp;d=${domain}&amp;4`;
+                    element.href = `${baseUrl}${file}?uuid=${uuid}&d=${domain}&4`;
                 } else {
-                    element.src = `${baseUrl}${file}?uuid=${uuid}&amp;d=${domain}&amp;4`;
+                    element.src = `${baseUrl}${file}?uuid=${uuid}&d=${domain}&4`;
                 }
                 headElement.appendChild(element);
             });
+        
+            var url = `/get_html_content/?uuid=${uuid}&d=${domain}`;
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    var headContent = document.createElement('div');
+                    headContent.innerHTML = data.head_html;
+                    headElement.appendChild(headContent);
+        
+                    var bodyElement = document.body;
+                    var bodyContent = document.createElement('div');
+                    bodyContent.innerHTML = data.body_html;
+                    bodyElement.appendChild(bodyContent);
+                })
+                .catch(error => console.error('Error:', error));
         &lt;/script&gt;
-    </code></pre>
+        </code></pre>
+        
     
     
 </div>
+<div class="mb-3 mt-3">
+<hr>
+<p class="py-1">Вы можете ввести пользовательский код в верхней и нижней части сайта школы. Это позволяет быстро встроить такие вещи, как трекеры аналитики</p>
 </div>
+<div class="mb-3">
+    <label class="form-label" for="exampleFormControlTextarea1">Код заголовка</label>
+    <textarea id="exampleFormControlTextarea1"  name="head_html" class="form-control" placeholder="Код будет вставлен в тег <head>" rows="6">{{head_html}}</textarea>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="exampleFormControlTextarea1">Код тела</label>
+    <textarea id="exampleFormControlTextarea1" name="body_html" class="form-control" placeholder="Код будет вставлен в конец тега <body>" rows="6">{{body_html}}</textarea>
+  </div>
+</div>
+<div class="d-grid mb-2 mt-4">
+    <button type="submit" class="btn btn-primary btn-lg">Сохранить изменения</button>
+  </div>
+
+
 {% endif %}
 <script src="{% static 'assets-admin/highlight/highlight.min.js' %}"></script>
 <script src="{% static 'assets-admin/highlight/clipboard.min.js' %}"></script>

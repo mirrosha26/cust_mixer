@@ -7,6 +7,8 @@ class User(AbstractUser):
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     order_id = models.CharField(max_length=255)
     is_connected = models.BooleanField(default=True)
+    body_html = models.TextField(default='', blank=True)
+    head_html = models.TextField(default='', blank=True)
 
     def __str__(self):
         return self.username

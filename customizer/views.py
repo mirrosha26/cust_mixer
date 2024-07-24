@@ -150,8 +150,8 @@ class MainCustomizerView(View):
                 {
                     'name': 'Базовые цвета',
                     'inputs': [
-                        {'label': 'Вариант оформления фона', 'type': 'select', 'name': 'background_option', 'options': sorted_options, 'elements': ['select']  },
-                        {'label': 'Фоновая заливка', 'type': 'backgroundColor', 'name': 'main_color', 'value': ts.main_color, 'elements': ['el_main_background']  },
+                        {'label': 'Основной фон (используется на всем сайте)', 'type': 'backgroundColor', 'name': 'main_color', 'value': ts.main_color, 'elements': ['el_main_background']  },
+                        {'label': 'Вариант оформления фона курса', 'type': 'select', 'name': 'background_option', 'options': sorted_options, 'elements': ['select']  },
                         {'label': 'Фоновое изображение', 'type': 'img', 'name': 'background_image', 'value': ts.background_image, 'elements': ['el_main_background']  },
                         {'label': 'Цвет текста', 'type': 'color', 'name': 'text_color', 'value': ts.text_color, 'elements': ['el_h1']  },
                     ]
@@ -601,7 +601,6 @@ class NavigationCustomizerView(View):
 
         text_base_left = 25
         text_offset = 25
-        
 
         el_shape1 = shape_factory(20, 20, ts.nps_back_color, base_left, 102, "el_shape", border_radius=ts.nps_border_radius, border_width=ts.nps_border_width, border_color=ts.nps_border_color)
         el_shape2 = shape_factory(20, 20, ts.nps_back_color, base_left + offset, 102, "el_shape", border_radius=ts.nps_border_radius, border_width=ts.nps_border_width, border_color=ts.nps_border_color)
@@ -680,7 +679,6 @@ class NavigationCustomizerView(View):
         }
         return render(request, 'customizer/customizer.html', context)
 
-    
 
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
@@ -701,15 +699,21 @@ class ScriptCustomizerView(View):
 
 
     def get(self, request):
+        ts = ThemeSettings.objects.get(user=request.user)
         context = {
             'uuid': request.user.uuid,
             'domain': request.user.domain,
+            'body_html': request.user.body_html,
+            'head_html': request.user.head_html,
         }
         return render(request, 'customizer/script.html', context)
 
 
     def post(self, request):
         request.user.domain = request.POST.get('domain')
+        if request.POST.get('body_html'):
+            request.user.body_html = request.POST.get('body_html')
+        if request.POST.get('head_html'):
+            request.user.head_html = request.POST.get('head_html')
         request.user.save()
         return redirect('custom_script')
-

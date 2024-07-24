@@ -5,7 +5,8 @@ from .views import (
     CustomPasswordResetView,
     CustomPasswordResetDoneView,
     CustomPasswordResetConfirmView,
-    custom_password_reset_complete
+    custom_password_reset_complete,
+    get_html_content
 )
 
 urlpatterns = [
@@ -19,4 +20,5 @@ urlpatterns = [
     path('reset_password_sent/', CustomPasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('password_reset_complete/', custom_password_reset_complete, name='password_reset_complete'),
+    path('get_html_content/', get_html_content, name='get_html_content')
 ]

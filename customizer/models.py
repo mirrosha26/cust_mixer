@@ -7,7 +7,7 @@ User = get_user_model()
 
 BACKGROUND_OPTIONS = [
         ('background_image', 'Фоновое  изображение'),
-        ('main_color', 'Цвет'),
+        ('main_color', 'Цвет основного фона'),
     ]
 
 class ThemeSettings(models.Model):
