@@ -720,13 +720,6 @@ span.course-item-tab-title {
 
 
 
-
-
-._auth_layout_p3cc9_8 {
-    background: var(--login-background-color) !important;
-}
-
-
 ._comment_editor_f0hw1_1 {
     background: var(--main-color) !important;
 }
@@ -882,6 +875,21 @@ main.ant-layout-content .bg-white {
 
 .bg-white {
     background-color: var(--main-color);
+}
+
+{% endif %}
+
+
+
+{% if theme_settings.login_background_option == 'login_background_image' %}
+._auth_layout_p3cc9_8 {
+    background: url('https://customize.technoguru.club/media/{{theme_settings.login_background_image}}') no-repeat center center fixed !important; 
+    background-size: cover !important;
+}
+
+{% else %}
+._auth_layout_p3cc9_8 {
+    background: var(--login-background-color) !important;
 }
 
 {% endif %}

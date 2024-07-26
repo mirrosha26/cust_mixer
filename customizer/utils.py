@@ -27,20 +27,33 @@ class Shape(BaseElement):
         self.background_image = str(background_image)
 
     def render(self):
-        print(f'background-image: url("media/{self.background_image}");')
-        shape_html = f'''
-        <div class="{self.class_id}"
-            id="{self.class_id}" 
-            style="
-            width: {self.width}px;
-            height: {self.height}px;
-            background-color: {self.background_color};
-            border-radius: {self.border_radius}rem;
-            border: {self.border_width}px solid {self.border_color};
-            background-image: url('media/{self.background_image}');
-            ">
-        </div>
-        '''
+        if not self.background_image:
+            shape_html = f'''
+            <div class="{self.class_id}"
+                id="{self.class_id}" 
+                style="
+                width: {self.width}px;
+                height: {self.height}px;
+                background-color: {self.background_color};
+                border-radius: {self.border_radius}rem;
+                border: {self.border_width}px solid {self.border_color};
+                ">
+            </div>
+            '''
+        else:
+            shape_html = f'''
+            <div class="{self.class_id}"
+                id="{self.class_id}" 
+                style="
+                width: {self.width}px;
+                height: {self.height}px;
+                background-color: {self.background_color};
+                border-radius: {self.border_radius}rem;
+                border: {self.border_width}px solid {self.border_color};
+                background: url(/media/{self.background_image}) no-repeat center center !important; background-size: cover !important;
+                ">
+            </div>
+            '''
         return super().render(inner_html=shape_html)
 
 

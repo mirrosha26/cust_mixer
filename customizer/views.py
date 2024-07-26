@@ -7,7 +7,7 @@ from .models import ThemeSettings
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .models import BACKGROUND_OPTIONS
+from .models import BACKGROUND_OPTIONS, LOGIN_BACKGROUND_OPTIONS
 
 def create_card_elements(ts, base_x=0, base_y=0):
     """
@@ -208,14 +208,12 @@ class MainCustomizerView(View):
         # Перенаправляем пользователя на нужную страницу
         return redirect('custom_main')
 
-
 class LessonCustomizerView(View):
 
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             return redirect('signin') 
         return super().dispatch(request, *args, **kwargs)
-
 
     def get(self, request):
         emulator_size = {'width': 700, 'height': 400 }
@@ -249,17 +247,14 @@ class LessonCustomizerView(View):
         el_ltext_nav4 = text_factory(142, 57, "el_lmenu_text", "100%", 6, ts.left_menu_text_color ,6)
         el_ltext_nav5 = text_factory(8, 82, "el_lmenu_text", "[ ] Поиск", 7, ts.left_menu_text_color ,7)
 
-
         el_ltext_nav6 = shape_factory(6, 6, f"{ts.left_menu_text_color}", 9, 109, "el_lmenu_text", border_radius=0.1)
         el_ltext_nav7 = text_factory(19, 110, "el_lmenu_text", "Бонусы от Техно Гуру", 7, ts.left_menu_text_color ,7, "bold")
         el_ltext_nav8 = text_factory(23, 137, "el_lmenu_select_text", "Воркшоп по Miro", 7, ts.left_menu_select_text_color ,7, "bold")
         el_ltext_nav9 = text_factory(23, 162, "el_lmenu_text", "Воркшоп по Figma", 7, ts.left_menu_text_color ,7, "bold")
 
-
         el_divider = shape_factory(153, 0.4, f"{ts.left_menu_text_color}", 8, 70, "el_lmenu_text", border_radius=0.1)  #настройка [+]
         el_progress_bar_back = shape_factory(153, 5, ts.menu_course_color, 8, 47.5, "el_progress_back", ts.progress_border_radius, 1, ts.progress_border_color)  #настройка [+]
         el_progress = shape_factory(133, 4, ts.progress_bar_color, 8.5, 48, "el_progress", border_radius=0.1)  #настройка [+]
-
 
         el_corse_menu_background_selected = shape_factory(169, 21, ts.menu_course_background_selected , 0, 130, "el_corse_menu_background_selected")  #настройка [+]
         el_courese_menu_indicator1 = circle_factory(4, f"{ts.left_menu_text_color}", 156, 111, "el_lmenu_text")
@@ -277,8 +272,6 @@ class LessonCustomizerView(View):
 
         el_footer_line = shape_factory(530, round(ts.footer_line_height / 1.5, 1), ts.footer_line_color, 170, 364, "el_footer_line") 
 
-
-        # Контекст для передачи в шаблон
         context = {
             'title': 'Настройка страницы курса',
             'device_browser_header' : True,
@@ -359,8 +352,8 @@ class LessonCustomizerView(View):
                 },
             ]
         }
-        return render(request, 'customizer/customizer.html', context)
 
+        return render(request, 'customizer/customizer.html', context)
 
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
@@ -395,11 +388,16 @@ class CardCustomizerView(View):
         el_button_title = text_factory(68, 235, "el_button_title", "ПРОДОЛЖИТЬ", 11, ts.card_button_color_primary,11)
 
 
+        if ts.background_option == "background_image":
+            device_browser_style = f''' style="background: url(/media/{ts.background_image}) no-repeat center center !important; background-size: cover !important;" '''
+        else:
+            device_browser_style = f'style="background-color: {ts.main_color}"'
+
         # Контекст для передачи в шаблон
         context = {
             'title': 'Настройка карточки курса',
             'device_browser_header' : False,
-            'device_browser_background': ts.main_color,
+            'device_browser_style': device_browser_style,
             'base_layer': [el_card_body],
             'content_layer': [el_material_card_image, el_card_button, el_card_progress_bar_back],
             'overlay_layer': [el_card_progress, el_card_progress_text, el_card_secondary_text, el_card_title],
@@ -475,9 +473,15 @@ class LoginCustomizerView(View):
         emulator_size = {'width': 700, 'height': 400 }
         ts = ThemeSettings.objects.get(user=request.user)
 
-        el_login_card_body = shape_factory(220, 320, ts.login_card_back_color, 240, 40, "el_login_card_body", border_radius=ts.login_card_border_radius, border_width=ts.login_card_border_width, border_color=ts.login_card_border_color)
-        el_login_background = shape_factory(emulator_size['width'], emulator_size['height'], ts.login_background_color, 0, 0, "el_login_background")
+        if ts.login_background_option == "login_background_image":
+            background_image = ts.login_background_image
+        else:
+            background_image = ""
 
+        el_login_card_body = shape_factory(220, 320, ts.login_card_back_color, 240, 40, "el_login_card_body", border_radius=ts.login_card_border_radius, border_width=ts.login_card_border_width, border_color=ts.login_card_border_color)
+        el_login_background = shape_factory(emulator_size['width'], emulator_size['height'], ts.login_background_color, 0, 0, "el_login_background", background_image=background_image)
+
+            
         el_logo = shape_factory(50, 50, "#858585", 325, 64, "el_logo", border_radius=0.1, border_width=0)
         el_login_school_name = text_factory(314, 133, "el_login_school_name", "School.name", 11, ts.login_school_color,12,"bold")
         el_title = text_factory(311, 154, "el_login_title", "Авторизация", 12, ts.login_title_color,12)
@@ -496,11 +500,15 @@ class LoginCustomizerView(View):
         el_button_text = text_factory(338, 265, "el_button_text", "Войти", 8, ts.login_button_text_color,8)
         el_text_footer = text_factory(299, 284, "el_label", "У вас нет аккаунта?", 7, ts.login_label_color,7)
 
+
+        sorted_options = [opt for opt in LOGIN_BACKGROUND_OPTIONS if opt[0] == ts.login_background_option]
+        sorted_options += [opt for opt in LOGIN_BACKGROUND_OPTIONS if opt[0] != ts.login_background_option]
+
         # Контекст для передачи в шаблон
         context = {
             'title': 'Настройка карточки курса',
             'device_browser_header' : True,
-            'device_browser_background': False,
+            'device_browser_style': False,
             'base_layer': [el_login_background],
             'content_layer': [el_login_card_body],
             'overlay_layer': [el_logo, el_login_school_name, el_input_email, el_input_password, el_title, el_button],
@@ -510,7 +518,9 @@ class LoginCustomizerView(View):
                 {
                     'name': 'Фон',
                     'inputs': [
+                        {'label': 'Вариант оформления фона курса', 'type': 'select', 'name': 'login_background_option', 'options': sorted_options, 'elements': ['select']  },
                         {'label': 'Цвет фона', 'type': 'backgroundColor', 'name': 'login_background_color', 'value': ts.login_background_color, 'elements': ['el_login_background']},
+                        {'label': 'Фоновое изображение', 'type': 'img', 'name': 'login_background_image', 'value': ts.login_background_image, 'elements': ['el_login_background']  },
                     ],
                 },
                 {
@@ -555,16 +565,25 @@ class LoginCustomizerView(View):
         }
         return render(request, 'customizer/customizer.html', context)
 
-
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
-    
+
         for key, value in request.POST.items():
-            if hasattr(ts, key):
+            if hasattr(ts, key) and key != 'login_background_image':
                 setattr(ts, key, value)
+
+        if 'login_background_image' in request.FILES and request.FILES['login_background_image'].size > 0:
+            ts.login_background_image = request.FILES['login_background_image']
+        else:
+            pass
+
+        reset = request.POST.get('reset', 'false')
+        if reset == 'true':
+            default_image_path = 'backgrounds/default_background.png'
+            ts.login_background_image = default_image_path
+
         ts.save()
         return redirect('custom_login')
-
 
 class NavigationCustomizerView(View):
 
@@ -642,7 +661,7 @@ class NavigationCustomizerView(View):
         context = {
             'title': 'Настройка кнопок, форм и элементов ввода',
             'device_browser_header' : True,
-            'device_browser_background': False,
+            'device_browser_style': False,
             'base_layer': [el_main_background],
             'content_layer': [el_hr, el_icon, el_title_first_step, el_sub_title_first_step, el_icon2, el_title_first_step2, el_sub_title_first_step2],
             'overlay_layer': [el_hr_active,text1, text2, text3, text4, el_form, el_form_button]  + shapes,
@@ -688,7 +707,6 @@ class NavigationCustomizerView(View):
                 setattr(ts, key, value)
         ts.save()
         return redirect('custom_navigation')
-
 
 class ScriptCustomizerView(View):
 

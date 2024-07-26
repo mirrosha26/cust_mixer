@@ -1,4 +1,4 @@
-<div class="row mb-3" id="display_{{name}}_"  {% if display_none %}style="display: none;"{% endif %}>
+<div class="row mb-3" {% if name == 'main_color' %}id="display_{{name}}_"{% else %}id="display_{{name}}"{% endif %}  {% if display_none %}style="display: none;"{% endif %}>
     <label class="col-sm-5 col-form-label">{{ label }}</label>
     <div class="col-sm-7">
         <div class="input-group input-group-md-vertical">

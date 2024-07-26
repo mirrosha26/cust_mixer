@@ -29,9 +29,19 @@
   </div>
 </div>
 
-
-
-
+<script>
+  document.getElementById('login_background_colorPicker').addEventListener('input', function() {
+    var selectedColor = this.value;
+    
+    var element = document.getElementById('el_login_background');
+    var selectElement = document.getElementById('tomselect-1');
+    
+    if (selectElement.value === 'login_background_color') {
+      element.style.backgroundColor = selectedColor;
+      element.style.backgroundImage = 'none';
+    }
+  });
+</script>
 
 <script>
   document.getElementById('main_colorPicker').addEventListener('input', function() {
@@ -39,7 +49,6 @@
     var element = document.getElementById('el_main_background');
     var selectElement = document.getElementById('tomselect-1');
     
-    // Проверка, выбрана ли опция 'main_color'
     if (selectElement.value === 'main_color') {
       element.style.backgroundColor = selectedColor;
       element.style.backgroundImage = 'none';
@@ -48,6 +57,7 @@
 </script>
 
 
+<!-- el_login_background -->
 <script>
   document.getElementById('avatarUploader').addEventListener('change', function(event) {
   const file = event.target.files[0];
@@ -55,9 +65,46 @@
   const resetField = document.getElementById('resetField');
 
   reader.onload = function(e) {
-    // Устанавливаем изображение как источник для тега <img>
     document.getElementById('avatarImg').src = e.target.result;
+
+    // Устанавливаем изображение как фон для нужного элемента и убираем цвет
+    const el_main_background = document.getElementById('el_login_background');
+    el_main_background.style.backgroundImage = `url(${e.target.result})`;
+    el_main_background.style.backgroundColor = 'transparent';
     
+    resetField.value = 'false';
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+});
+
+
+// ==> Обработчик для кнопки "Удалить"
+document.querySelector('.js-file-attach-reset-img').addEventListener('click', function() {
+  // Сброс изображение для тега <img>
+  document.getElementById('avatarImg').src = 'media/backgrounds/default_background.png';
+
+  // Сброс фона для нужного элемента к исходным значениям
+  const el_main_background = document.getElementById('el_login_background');
+  el_main_background.style.backgroundImage = `url('media/backgrounds/default_background.png')`;
+  el_main_background.style.backgroundColor = 'transparent';
+
+  // Устанавливаем reset поле в false
+  document.getElementById('resetField').value = 'true';
+});
+</script>
+
+<script>
+  document.getElementById('avatarUploader').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  const resetField = document.getElementById('resetField');
+
+  reader.onload = function(e) {
+    document.getElementById('avatarImg').src = e.target.result;
+
     // Устанавливаем изображение как фон для нужного элемента и убираем цвет
     const el_main_background = document.getElementById('el_main_background');
     el_main_background.style.backgroundImage = `url(${e.target.result})`;
@@ -71,7 +118,8 @@
   }
 });
 
-// Обработчик для кнопки "Удалить"
+
+// ==> Обработчик для кнопки "Удалить"
 document.querySelector('.js-file-attach-reset-img').addEventListener('click', function() {
   // Сброс изображение для тега <img>
   document.getElementById('avatarImg').src = 'media/backgrounds/default_background.png';
@@ -85,6 +133,26 @@ document.querySelector('.js-file-attach-reset-img').addEventListener('click', fu
   document.getElementById('resetField').value = 'true';
 });
 </script>
+
+
+<!-- login_background_option -->
+<script>
+  document.querySelector('select[name="login_background_option"]').addEventListener('change', function() {
+    var selectedOption = this.value;
+    var element = document.getElementById('el_login_background');
+    var imgSrc = document.getElementById('avatarImg').src;
+    var colorHex = document.getElementById('login_background_colorHex').value;
+
+    if (selectedOption === 'login_background_image') {
+      element.style.backgroundImage = `url(${imgSrc})`;
+      element.style.backgroundColor = '';
+    } else if (selectedOption === 'login_background_color') {
+      element.style.backgroundColor = colorHex;
+      element.style.backgroundImage = 'none';
+    }
+  });
+</script>
+
 
 <script>
   document.querySelector('select[name="background_option"]').addEventListener('change', function() {

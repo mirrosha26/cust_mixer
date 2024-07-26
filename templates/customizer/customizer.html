@@ -81,7 +81,7 @@
     <h3 class="card-header-title">{{title}}</h3>
   </div>
   <div class="card-body">
-    <div class="container-custom border border-2 p-4 {% if not device_browser_background %}bg-soft-secondary"{% else %}"style="background-color: {{device_browser_background}}"{% endif %}>
+    <div class="container-custom border border-2 p-4 {% if not device_browser_style %}bg-soft-secondary" {% else %}" {{device_browser_style|safe}}{% endif %}>
       <!-- начало эмулятора -->
       <figure class="device-browser" style="width: {{emulator_size.width}}px;">
         {% if device_browser_header %}
@@ -166,12 +166,10 @@
 <script src="{% static 'assets-admin/vendor/hs-file-attach/dist/hs-file-attach.min.js' %}"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-      // Функция для синхронизации цветового пикера, hex ввода и изменения стиля
       const setupColorSync = (pickerId, hexId, elementClassNames, cssProperty) => {
           const picker = document.getElementById(pickerId);
           const hex = document.getElementById(hexId);
 
-          // Функция для применения цвета к указанному CSS-свойству
           const applyColor = (color) => {
               elementClassNames.forEach(className => {
                   const elements = document.querySelectorAll(`.${className}`);
@@ -181,16 +179,13 @@
               });
           };
 
-          // Обновление hex ввода и CSS-свойства при изменении цветового пикера
           picker.addEventListener('input', function () {
               const selectedColor = this.value;
               hex.value = selectedColor;
               applyColor(selectedColor);
           });
 
-          // Обновление цветового пикера и CSS-свойства при изменении hex ввода
           hex.addEventListener('input', function () {
-              // Проверка корректности hex ввода
               if (/^#[0-9A-F]{6}$/i.test(this.value)) {
                   const hexColor = this.value;
                   picker.value = hexColor;
@@ -227,8 +222,8 @@
   });
 </script>
 
+
 <script>
-  // Скрипт для элементов с классом 'toOneInput'
   var toOneInputs = document.querySelectorAll('.to_one_input');
   toOneInputs.forEach(function(input) {
     var decimalMask = IMask(input, {
@@ -239,10 +234,11 @@
       mapToRadix: ['.'],
       normalizeZeros: true,
       min: 0,
-      max: 1,  // Измените максимальное значение по необходимости
+      max: 1,
     });
   });
 </script>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -273,6 +269,7 @@
   });
 </script>
 
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
       const setupBorderWidthSync = (widthInputName, elementClassNames) => {
@@ -301,29 +298,19 @@
     });
 };
 
-
-      {% for block in blocks %}
-        {% for input in block.inputs %}
-          {% if input.type == 'borderWidth' %}
-            setupBorderWidthSync('{{input.name}}', [{% for item in input.elements %}'{{ item }}'{% if not forloop.last %}, {% endif %}{% endfor %}]);
-          {% elif input.type == 'borderRadius' %}
-            setupBorderRadiusSync('{{input.name}}', [{% for item in input.elements %}'{{ item }}'{% if not forloop.last %}, {% endif %}{% endfor %}]);
-          {% endif %}
-        {% endfor %}
-      {% endfor %}
-  });
+{% for block in blocks %}
+  {% for input in block.inputs %}
+    {% if input.type == 'borderWidth' %}
+      setupBorderWidthSync('{{input.name}}', [{% for item in input.elements %}'{{ item }}'{% if not forloop.last %}, {% endif %}{% endfor %}]);
+    {% elif input.type == 'borderRadius' %}
+      setupBorderRadiusSync('{{input.name}}', [{% for item in input.elements %}'{{ item }}'{% if not forloop.last %}, {% endif %}{% endfor %}]);
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+});
 </script>
 
 <script>
-  (function() {
-    // INITIALIZATION OF FILE ATTACH AND SELECT
-    // =======================================================
-    new HSFileAttach('.js-file-attach');
-    HSCore.components.HSTomSelect.init('.js-select');
-  })();
-</script>
-
-  <script>
   document.addEventListener("DOMContentLoaded", function() {
     const selectElements = document.querySelectorAll("select.js-select");
     selectElements.forEach(function(selectElement) {
@@ -341,6 +328,15 @@
         selectElement.dispatchEvent(event);
     });
 });
+</script>
+
+<script>
+  (function() {
+    // INITIALIZATION OF FILE ATTACH AND SELECT
+    // =======================================================
+    new HSFileAttach('.js-file-attach');
+    HSCore.components.HSTomSelect.init('.js-select');
+  })();
 </script>
 
 {% endblock %}
