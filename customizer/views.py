@@ -518,7 +518,7 @@ class LoginCustomizerView(View):
                 {
                     'name': 'Фон',
                     'inputs': [
-                        {'label': 'Вариант оформления фона курса', 'type': 'select', 'name': 'login_background_option', 'options': sorted_options, 'elements': ['select']  },
+                        {'label': 'Вариант оформления фона', 'type': 'select', 'name': 'login_background_option', 'options': sorted_options, 'elements': ['select']  },
                         {'label': 'Цвет фона', 'type': 'backgroundColor', 'name': 'login_background_color', 'value': ts.login_background_color, 'elements': ['el_login_background']},
                         {'label': 'Фоновое изображение', 'type': 'img', 'name': 'login_background_image', 'value': ts.login_background_image, 'elements': ['el_login_background']  },
                     ],
