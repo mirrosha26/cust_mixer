@@ -2,6 +2,19 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import os
+from django.utils.timezone import now
+from django.utils.crypto import get_random_string
+
+def unique_filename(instance, filename):
+    base, extension = os.path.splitext(filename)
+    user_id = instance.user.id
+    timestamp = now().strftime('%Y%m%d%H%M%S')
+    random_str = get_random_string(length=8)
+    new_filename = f"{user_id}_{timestamp}_{random_str}{extension}"
+    return os.path.join('backgrounds', new_filename)
+
+
 
 User = get_user_model()
 
@@ -130,14 +143,14 @@ class ThemeSettings(models.Model):
 
 
     background_image = models.ImageField(
-        upload_to='backgrounds/',
+        upload_to=unique_filename,
         blank=True,
         null=True,
         default='backgrounds/default_background.png'
     )
 
     login_background_image = models.ImageField(
-        upload_to='backgrounds/',
+        upload_to=unique_filename,
         blank=True,
         null=True,
         default='backgrounds/default_background.png'
