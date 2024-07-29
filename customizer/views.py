@@ -68,12 +68,10 @@ def create_card_elements(ts, base_x=0, base_y=0):
 
 class MainCustomizerView(View):
 
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return redirect('signin') 
-        return super().dispatch(request, *args, **kwargs)
-
     def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect('signin')
+
         emulator_size = {'width': 700, 'height': 560 }
         ts = ThemeSettings.objects.get(user=request.user)
 
@@ -185,6 +183,9 @@ class MainCustomizerView(View):
         return render(request, 'customizer/customizer.html', context)
 
     def post(self, request):
+        if not request.user.is_authenticated:
+            return redirect('signin')
+            
         ts = ThemeSettings.objects.get(user=request.user)
         
         # Обновление обычных полей
