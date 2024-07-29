@@ -168,6 +168,14 @@ class ThemeSettings(models.Model):
         default='login_background_color',
     )
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs) 
+        if self.background_image:
+            os.chmod(self.background_image.path, 0o644)
+        if self.login_background_image:
+            os.chmod(self.login_background_image.path, 0o644)
+
+
     def __str__(self):
         return f"{self.user.username}'s Theme Settings"
 
