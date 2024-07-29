@@ -8,6 +8,10 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import BACKGROUND_OPTIONS, LOGIN_BACKGROUND_OPTIONS
+import os
+import shutil
+from django.core.files.storage import default_storage
+
 
 def create_card_elements(ts, base_x=0, base_y=0):
     """
@@ -183,29 +187,28 @@ class MainCustomizerView(View):
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
         
-        # Обновляем значения других полей из POST данных
+        # Обновление обычных полей
         for key, value in request.POST.items():
             if hasattr(ts, key) and key != 'background_image':
                 setattr(ts, key, value)
 
-        # Проверяем и обрабатываем файл, если он существует
-        if 'background_image' in request.FILES and request.FILES['background_image'].size > 0:
-            ts.background_image = request.FILES['background_image']
-        else:
-            # Если файл не был загружен или пуст, не изменяем поле background_image
-            pass
+        # Обработка файла
+        file = request.FILES.get('background_image')
+        if file and file.size > 0:
+            # Сохранение файла во временное место
+            temp_file_path = default_storage.save('tmp/' + file.name, file)
+            # Изменение прав доступа
+            os.chmod(default_storage.path(temp_file_path), 0o644)
+            # Перемещение файла в окончательное местоположение
+            final_path = default_storage.save('backgrounds/' + file.name, open(default_storage.path(temp_file_path), 'rb'))
+            # Удаление временного файла
+            default_storage.delete(temp_file_path)
+            # Назначение файла в модель
+            ts.background_image = final_path
+        elif request.POST.get('reset', 'false') == 'true':
+            ts.background_image = 'backgrounds/default_background.png'
         
-        # Проверяем значение reset и обновляем поле если необходимо
-        reset = request.POST.get('reset', 'false')
-        if reset == 'true':
-            # Устанавливаем изображение по умолчанию из папки media
-            default_image_path = 'backgrounds/default_background.png'
-            ts.background_image = default_image_path
-        
-        # Сохраняем изменения в базе данных
         ts.save()
-        
-        # Перенаправляем пользователя на нужную страницу
         return redirect('custom_main')
 
 class LessonCustomizerView(View):
