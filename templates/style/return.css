@@ -921,8 +921,22 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
 
 
 .ant-layout-sider span.ant-menu-title-content {
-    color: var(--left-menu-select-text-color) !important;
+    color: var(--left-menu-text-color) !important;
+
 }
+
+
+.ant-layout-sider span.ant-menu-item-selected  {
+    color: var(--left-menu-select-text-color) !important;
+
+}
+
+
+
+
+
+
+
 
 
 ._course_item_18ox6_1 ._section_caret_icon_18ox6_36 {
@@ -940,3 +954,4 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
 .ant-breadcrumb .course-breadcrumb, .ant-breadcrumb a:hover, .ant-breadcrumb li:last-child, .ant-breadcrumb li:last-child a, .ant-breadcrumb-separator {
     color: var(--menu-text-color);
 }
+
