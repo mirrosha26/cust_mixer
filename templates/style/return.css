@@ -916,7 +916,7 @@ main.ant-layout-content .bg-white {
 [data-device=desktop] ._tabs_nav__pane_ga27q_23 {
     background-color: var(--main-color) !important;
 }
-._item_content_wrapper_ulzwc_1 > .bg-white {
+._item_content_wrapper_ulzwc_1 {
     background-color: var(--main-color) !important;
 }
 
