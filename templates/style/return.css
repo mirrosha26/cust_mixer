@@ -926,3 +926,8 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
     background-color: var(--menu-course-background-selected) !important;
     color: var(--left-menu-select-text-color) !important;
 }
+
+
+.ant-layout-sider span.ant-menu-title-content {
+    color: var(--left-menu-select-text-color) !important;
+}
