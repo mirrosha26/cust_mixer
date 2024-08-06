@@ -921,3 +921,6 @@ main.ant-layout-content .bg-white {
 }
 
 /* ---- */
+.overflow-hidden .ant-btn-text {
+    color: var(--text-color) !important;
+}
