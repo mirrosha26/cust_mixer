@@ -239,7 +239,7 @@ span.ant-menu-title-content {
 }
 
 
-.material-card-btns .material-card-main-btn, .material-card-btns .course-complete-theory-button, html .license-card .license-card-navigate-button, .course-next-button{
+.material-card-btns .material-card-main-btn, .material-card-main-green-btn, .material-card-btns .course-complete-theory-button, html .license-card .license-card-navigate-button, .course-next-button{
       color: var(--card-button-color-primary) !important;
       border-color: var(--card-button-border-color) !important;
       background: var(--card-button-color) !important;
@@ -851,9 +851,9 @@ html body ._course_item_18ox6_1 .ant-menu-submenu-title {
 
 
 
-
-
-
+._tabs_tabpane__active_16yb2_100 .bg-white {
+    background-color: var(--main-color) !important;  
+}
 
 {% if theme_settings.background_option == 'background_image' %}
 

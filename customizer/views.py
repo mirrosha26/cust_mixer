@@ -182,11 +182,15 @@ class MainCustomizerView(View):
 
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
-        
+
         # Обновляем значения других полей из POST данных
         for key, value in request.POST.items():
+            if value == '.' or value == '':
+                continue
             if hasattr(ts, key) and key != 'background_image':
                 setattr(ts, key, value)
+
+
 
         # Проверяем и обрабатываем файл, если он существует
         if 'background_image' in request.FILES and request.FILES['background_image'].size > 0:
@@ -357,10 +361,15 @@ class LessonCustomizerView(View):
 
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
-    
+
+
+        # Обновляем значения других полей из POST данных
         for key, value in request.POST.items():
+            if value == '.' or value == '':
+                continue
             if hasattr(ts, key):
                 setattr(ts, key, value)
+
         ts.save()
         return redirect('custom_lesson')
 
@@ -454,10 +463,14 @@ class CardCustomizerView(View):
 
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
-    
+        
         for key, value in request.POST.items():
+            if value == '.' or value == '':
+                continue
             if hasattr(ts, key):
                 setattr(ts, key, value)
+
+
         ts.save()
         return redirect('custom_card')
 
@@ -567,10 +580,13 @@ class LoginCustomizerView(View):
 
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
-
+        
         for key, value in request.POST.items():
+            if value == '.' or value == '':
+                continue
             if hasattr(ts, key) and key != 'login_background_image':
                 setattr(ts, key, value)
+
 
         if 'login_background_image' in request.FILES and request.FILES['login_background_image'].size > 0:
             ts.login_background_image = request.FILES['login_background_image']
@@ -607,7 +623,7 @@ class NavigationCustomizerView(View):
         el_sub_title_first_step = text_factory(134, 21, "None", "Завершено", 7, ts.text_color ,7)
 
 
-        el_icon2 = custom_element_factory(408-37, 9, "el_icon_active", f'<div style="width: 12px; height: 12px; background-color: {ts.hr_active_color}; border-radius: 50%; border: 0px solid transparent; display: flex; align-items: center; justify-content: center;" class="el_icon_active"><i class="bi bi-check" style="padding-top: 2px; color: #ffffff"></i></div>')
+        el_icon2 = custom_element_factory(408-37, 9, "el_icon_active", f'<div style="width: 12px; height: 12px; background-color: #52c41a; border-radius: 50%; border: 0px solid transparent; display: flex; align-items: center; justify-content: center;" class="el_icon_active"><i class="bi bi-check" style="padding-top: 2px; color: #ffffff"></i></div>')
         el_title_first_step2 = text_factory(425-37, 8, "None", "Оценка", 10, ts.text_color ,10)
         el_sub_title_first_step2 = text_factory(431-37, 21, "None", "10/10", 7, ts.text_color ,7)
 
@@ -671,7 +687,7 @@ class NavigationCustomizerView(View):
                 {
                     'name': 'Активный этапа',
                     'inputs': [
-                        {'label': 'Цвет активного этапа', 'type': 'backgroundColor', 'name': 'hr_active_color', 'value': ts.hr_active_color, 'elements': ['el_hr_active', 'el_icon_active']},
+                        {'label': 'Цвет активного этапа', 'type': 'backgroundColor', 'name': 'hr_active_color', 'value': ts.hr_active_color, 'elements': ['el_hr_active']},
                     ],
                 },
                 {
@@ -701,8 +717,10 @@ class NavigationCustomizerView(View):
 
     def post(self, request):
         ts = ThemeSettings.objects.get(user=request.user)
-    
+
         for key, value in request.POST.items():
+            if value == '.' or value == '':
+                continue
             if hasattr(ts, key):
                 setattr(ts, key, value)
         ts.save()
