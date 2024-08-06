@@ -893,3 +893,20 @@ main.ant-layout-content .bg-white {
 }
 
 {% endif %}
+
+
+/* Библиотека */
+
+._header_1f8yi_15 {
+    border-bottom: var(--menu-line-height) solid var(--menu-line-color) !important;
+}
+
+.ant-layout.ant-layout-has-sider>.ant-layout, .ant-layout.ant-layout-has-sider>.ant-layout-content {
+    border-left: var(--course-line-height) solid var(--course-line-color);
+}
+
+flex.align-center.justify-between.gap-10 {
+    background-color: var(--main-color) !important;
+}
+
+/* ---- */
