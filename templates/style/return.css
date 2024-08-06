@@ -905,7 +905,7 @@ main.ant-layout-content .bg-white {
     border-left: var(--course-line-height) solid var(--course-line-color);
 }
 
-flex.align-center.justify-between.gap-10 {
+.ant-layout-sider-children > .flex.align-center.justify-between.gap-10 {
     background-color: var(--main-color) !important;
 }
 
