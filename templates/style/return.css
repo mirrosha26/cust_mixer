@@ -396,10 +396,6 @@ html .material-card-image img {
     border-bottom: 1px solid var(--border-accent-color);
 }
 
-.ez-section-container {
-    background-color: var(--main-color) !important;
-}
-
 .ez-section {
     background-color: var(--main-color) !important;
 }
@@ -936,3 +932,11 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
 ._course_item_18ox6_1 ._section_caret_icon_18ox6_36 {
     color: var(--left-menu-text-color) !important;
 }
+
+
+/* 
+.ez-section-container {
+    background-color: var(--main-color) !important;
+}
+
+ */
