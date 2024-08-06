@@ -926,7 +926,7 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
 }
 
 
-.ant-layout-sider span.ant-menu-item-selected  {
+.ant-layout-sider .ant-menu-item-selected span.ant-menu-title-content  {
     color: var(--left-menu-select-text-color) !important;
 
 }
