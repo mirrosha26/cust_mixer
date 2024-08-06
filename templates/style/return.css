@@ -553,10 +553,6 @@ span.course-item-tab-title {
     color: var(--menu-text-color);
 }
 
-.ant-breadcrumb a:hover, .ant-breadcrumb li:last-child, .ant-breadcrumb li:last-child a, .ant-breadcrumb-separator {
-    color: var(--menu-text-color);
-}
-
 .ant-menu-horizontal  > li.ant-menu-item-selected > span.ant-menu-title-content{
     color: var(--menu-text-color) !important;
     font-weight: bold;
@@ -940,3 +936,7 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
 }
 
  */
+
+.ant-breadcrumb .course-breadcrumb, .ant-breadcrumb a:hover, .ant-breadcrumb li:last-child, .ant-breadcrumb li:last-child a, .ant-breadcrumb-separator {
+    color: var(--menu-text-color);
+}
