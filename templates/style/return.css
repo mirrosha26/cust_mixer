@@ -72,10 +72,7 @@ h2 {
 .ant-menu-item-selected .course-item {
     color: var(--left-menu-select-text-color) !important;
 }
-html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-    background-color: var(--menu-course-background-selected) !important;
-    color: var(--left-menu-select-text-color) !important;
-}
+
 .ant-btn-text {
     color: rgba(0,0,0,.85);
     border-color: transparent;
@@ -241,7 +238,7 @@ span.ant-menu-title-content {
 
 
 
-.material-card-btns > .ant-btn.ant-btn-default, .material-card-btns .material-card-main-btn, .material-card-main-green-btn, .material-card-btns .course-complete-theory-button, html .license-card .license-card-navigate-button, .course-next-button{
+.material-list .course-button, .material-card-btns > .ant-btn.ant-btn-default, .material-card-btns .material-card-main-btn, .material-card-main-green-btn, .material-card-btns .course-complete-theory-button, html .license-card .license-card-navigate-button, .course-next-button{
       color: var(--card-button-color-primary) !important;
       border-color: var(--card-button-border-color) !important;
       background: var(--card-button-color) !important;
@@ -570,9 +567,8 @@ span.course-item-tab-title {
 
 }
 
- .ant-menu-horizontal  > li.ant-menu-item > span.ant-menu-title-content {
+.ant-menu-horizontal  > li.ant-menu-item > span.ant-menu-title-content {
     color: var(--menu-text-color) !important;
-
 }
 
 
@@ -921,4 +917,12 @@ main.ant-layout-content .bg-white {
 /* ---- */
 .overflow-hidden .ant-btn-text {
     color: var(--text-color) !important;
+}
+
+
+/* Правки выделенного текста курса */
+
+html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: var(--menu-course-background-selected) !important;
+    color: var(--left-menu-select-text-color) !important;
 }
