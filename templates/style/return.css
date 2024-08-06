@@ -909,7 +909,11 @@ main.ant-layout-content .bg-white {
     background-color: var(--main-color) !important;
 }
 
- ._tabs_nav__pane_ga27q_23 {
+._tabs_nav__pane_ga27q_23 {
+    background-color: var(--main-color) !important;
+}
+
+[data-device=desktop] ._tabs_nav__pane_ga27q_23 {
     background-color: var(--main-color) !important;
 }
 
