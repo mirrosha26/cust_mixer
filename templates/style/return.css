@@ -955,3 +955,8 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
     color: var(--menu-text-color);
 }
 
+
+
+._auth_drawer_p3cc9_12 {
+    width: 90% !important;
+}
