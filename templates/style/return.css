@@ -396,10 +396,6 @@ html .material-card-image img {
     border-bottom: 1px solid var(--border-accent-color);
 }
 
-.ez-section {
-    background-color: var(--main-color) !important;
-}
-
 
 .ez-wrapper-content  {
     background-color: var(--main-color) !important;
@@ -934,31 +930,25 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
 
 
 
-
-
-
-
-
 ._course_item_18ox6_1 ._section_caret_icon_18ox6_36 {
     color: var(--left-menu-text-color) !important;
 }
 
 
-/* 
-.ez-section-container {
-    background-color: var(--main-color) !important;
-}
-
- */
 
 .ant-breadcrumb .course-breadcrumb, .ant-breadcrumb a:hover, .ant-breadcrumb li:last-child, .ant-breadcrumb li:last-child a, .ant-breadcrumb-separator {
     color: var(--menu-text-color);
 }
-
-
 
 @media (max-width: 768px) {
     ._auth_drawer_p3cc9_12 {
         width: 90% !important;
     }
 }
+
+
+{% if theme_settings.is_back_course_page_enabled %}
+.ez-section {
+    background-color: var(--main-color) !important;
+}
+{% endif %}

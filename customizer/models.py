@@ -32,6 +32,8 @@ class ThemeSettings(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="theme_settings")
     menu_color = models.CharField(max_length=7, default="#292929")
     menu_text_color = models.CharField(max_length=7, default="#ffffff")
+
+    is_back_course_page_enabled = models.BooleanField(default=True)
     
     menu_line_height = models.FloatField(default=1.5)
     menu_line_color = models.CharField(max_length=7, default="#000000")
