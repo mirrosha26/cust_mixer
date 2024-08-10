@@ -149,6 +149,8 @@
             {% include 'customizer/emulators/select-custom.html' with label=input.label name=input.name display_none=input.display_none options=input.options  id='select_custom' %}
             {% elif input.type == 'img' %}
             {% include 'customizer/emulators/img_imput.html' with label=input.label name=input.name display_none=input.display_none value=input.value  id='select_custom' %}
+            {% elif input.type == 'checkbox' %}
+            {% include 'customizer/emulators/checkbox.html' with label=input.label name=input.name  value=input.value %}
           {% endif %}
         {% endfor %}
       {% endfor %}

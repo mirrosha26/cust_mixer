@@ -290,6 +290,12 @@ class LessonCustomizerView(View):
             'emulator_size': emulator_size,
             'blocks': [
                 {
+                    'name': 'Фон контента',
+                    'inputs': [
+                        {'label': 'Использовать основной фон из настроек "Курсы". Если опция отключена, цвет фона нужно будет настроить отдельно для каждого урока в AXL', 'type': 'checkbox', 'name': 'is_back_course_page_enabled', 'value': ts.is_back_course_page_enabled },
+                    ],
+                },
+                {
                     'name': 'Боковое меню',
                     'inputs': [
                         {'label': 'Фон', 'type': 'backgroundColor', 'name': 'menu_course_color', 'value': ts.menu_course_color, 'elements': ['el_course_background'] },
@@ -364,9 +370,15 @@ class LessonCustomizerView(View):
 
 
         # Обновляем значения других полей из POST данных
+        print(request.POST.items())
         for key, value in request.POST.items():
             if value == '.' or value == '':
                 continue
+            if key == 'is_back_course_page_enabled':
+                print(value)
+                value = value == 'on'
+                print(value)
+
             if hasattr(ts, key):
                 setattr(ts, key, value)
 

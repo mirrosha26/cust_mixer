@@ -1,0 +1,43 @@
+<div class="row mb-3">
+    <label class="col-sm-5 col-form-label">{{ label }}</label>
+    <div class="col-sm-7">
+        <div class="input-group input-group-md-vertical">
+                        <!-- Checkbox Switch -->
+                <div class="form-check form-switch pt-4">
+                    <input type="checkbox" id="{{name}}" class="form-check-input" {% if value %} checked {% endif %}>
+                    <input type="hidden" name="{{name}}" id="hidden-{{name}}" value="">
+                </div>
+                <!-- End Checkbox Switch -->
+
+                <script>
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const checkbox = document.getElementById('{{name}}');
+                    const hiddenInput = document.getElementById('hidden-{{name}}');
+
+                    // Устанавливаем значение скрытого поля при загрузке страницы
+                    hiddenInput.value = checkbox.checked ? 'on' : 'off';
+
+                    // Обработчик события изменения состояния чекбокса
+                    checkbox.addEventListener('change', function() {
+                    hiddenInput.value = this.checked ? 'on' : 'off';
+                    });
+                });
+                </script>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const checkbox = document.getElementById('is_back_course_page_enabled');
+    
+    checkbox.addEventListener('change', function() {
+      // Изменяем значение на 'on' или 'off' в зависимости от состояния чекбокса
+      this.value = this.checked ? 'on' : 'off';
+    });
+  
+    // Устанавливаем значение по умолчанию при загрузке страницы
+    checkbox.value = checkbox.checked ? 'on' : 'off';
+  </script>
+
