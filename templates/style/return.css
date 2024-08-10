@@ -957,6 +957,8 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
 
 
 
-._auth_drawer_p3cc9_12 {
-    width: 90% !important;
+@media (max-width: 768px) {
+    ._auth_drawer_p3cc9_12 {
+        width: 90% !important;
+    }
 }
