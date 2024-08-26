@@ -111,6 +111,7 @@
 
     --card_bage_text_color: {{ theme_settings.card_bage_text_color }};
     --card_bage_background_color: {{ theme_settings.card_bage_background_color }};
+    --link_color : {{ts.link_color}};
 }
 
 

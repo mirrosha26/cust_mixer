@@ -970,3 +970,7 @@ main.ant-layout-content .license-card-activity-label.bg-white {
 }
 {% endif %}
 
+.ant-btn-link {
+color: var(--link_color) !important;
+}
+
