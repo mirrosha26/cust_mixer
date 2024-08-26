@@ -108,4 +108,9 @@
     --form-button-border-default-color: {{ theme_settings.form_button_border_default_color }};
     --form-button-border-default-radius: {{ theme_settings.form_button_border_default_radius }}rem;
     --form-button-text-default-color: {{ theme_settings.form_button_text_default_color }};
+
+    --card_bage_text_color: {{ theme_settings.card_bage_text_color }};
+    --card_bage_background_color: {{ theme_settings.card_bage_background_color }};
 }
+
+

@@ -401,6 +401,10 @@ class CardCustomizerView(View):
         el_material_card_image = shape_factory(192, 75, "#7ee4d7", 16, 16, "el_material_card_image", border_radius=ts.card_image_border_radius, border_width=ts.card_image_border_width, border_color=ts.card_image_border_color)
         el_card_button = shape_factory(192.5, 32.5, ts.card_button_color,16, 225, "el_card_button", border_radius=ts.card_button_border_radius, border_width=ts.card_button_border_width, border_color=ts.card_button_border_color)
 
+        el_card_bage = shape_factory(40, 15, ts.card_bage_background_color,20, 20, "el_card_bage", border_radius=0.9)
+        el_card_bage_title = text_factory(28, 23, "el_card_bage_title", "Папка", 8, ts.card_bage_text_color)
+
+
         el_card_progress_bar_back = shape_factory(162.5, 6, ts.card_back_color, 16, 212, "el_card_progress_bar_back", ts.progress_card_border_radius, 1, ts.progress_card_border_color)  #настройка [+]
         el_card_progress = shape_factory(109, 4.3, ts.progress_card_bar_color, 16.8, 212.5, "el_card_progress", border_radius=0.1)
         el_card_progress_text = text_factory(190, 212, "el_card_secondary_text", "70%", 9, ts.card_text_color_secondary, 9)
@@ -422,7 +426,7 @@ class CardCustomizerView(View):
             'base_layer': [el_card_body],
             'content_layer': [el_material_card_image, el_card_button, el_card_progress_bar_back],
             'overlay_layer': [el_card_progress, el_card_progress_text, el_card_secondary_text, el_card_title],
-            'top_layer': [el_button_title],
+            'top_layer': [el_button_title, el_card_bage, el_card_bage_title],
             'emulator_size': emulator_size,
             'blocks': [
                 {
@@ -432,6 +436,13 @@ class CardCustomizerView(View):
                         {'label': 'Цвет обводки', 'type': 'borderColor', 'name': 'card_border_color', 'value': ts.card_border_color, 'elements': ['el_card_body']},
                         {'label': 'Толщина линии обводки', 'type': 'borderWidth', 'name': 'card_border_width', 'value': ts.card_border_width, 'elements': ['el_card_body']},
                         {'label': 'Радиус скругления обводки', 'type': 'borderRadius', 'name': 'card_border_radius', 'value': ts.card_border_radius, 'elements': ['el_card_body']},
+                    ],
+                },
+                {
+                    'name': 'Бейдж',
+                    'inputs': [
+                        {'label': 'Фон', 'type': 'backgroundColor', 'name': 'card_bage_background_color', 'value': ts.card_bage_background_color, 'elements': ['el_card_bage']},
+                        {'label': 'Цвет текста', 'type': 'color', 'name': 'card_bage_color', 'value': ts.card_bage_text_color, 'elements': ['el_card_bage_title']},
                     ],
                 },
                 {
@@ -622,7 +633,7 @@ class NavigationCustomizerView(View):
 
 
     def get(self, request):
-        emulator_size = {'width': 530, 'height': 220 }
+        emulator_size = {'width': 530, 'height': 240 }
         ts = ThemeSettings.objects.get(user=request.user)
 
         el_main_background = shape_factory(emulator_size['width'], emulator_size['height'], ts.main_color, 0, 0, "None")
@@ -635,13 +646,16 @@ class NavigationCustomizerView(View):
         el_sub_title_first_step = text_factory(134, 21, "None", "Завершено", 7, ts.text_color ,7)
 
 
-        el_icon2 = custom_element_factory(408-37, 9, "el_icon_active", f'<div style="width: 12px; height: 12px; background-color: #52c41a; border-radius: 50%; border: 0px solid transparent; display: flex; align-items: center; justify-content: center;" class="el_icon_active"><i class="bi bi-check" style="padding-top: 2px; color: #ffffff"></i></div>')
+        el_icon2 = custom_element_factory(408-37, 9, "el_icon_active", f'<div style="width: 12px; height: 12px; background-color: {ts.hr_active_color}; border-radius: 50%; border: 0px solid transparent; display: flex; align-items: center; justify-content: center;" class="el_icon_active"><i class="bi bi-check" style="padding-top: 2px; color: #ffffff"></i></div>')
         el_title_first_step2 = text_factory(425-37, 8, "None", "Оценка", 10, ts.text_color ,10)
         el_sub_title_first_step2 = text_factory(431-37, 21, "None", "10/10", 7, ts.text_color ,7)
 
         text1 = text_factory(18, 48, "None", "Оцените пройденный шаг", 12, ts.text_color )
         text2 = text_factory(18, 68, "None", "Ваша оценка помогает нам улучшить продукт", 8, ts.text_color)
         text3 = text_factory(18, 87, "None", "Выберите оценку", 7, ts.text_color)
+        text5 = text_factory(18, 220, "None", "Пример цвета вашей", 7, ts.text_color)
+        link = text_factory(93, 220, "el_link", "ссылки", 7, ts.link_color)
+
 
         base_left = 18
         offset = 25
@@ -692,14 +706,14 @@ class NavigationCustomizerView(View):
             'device_browser_style': False,
             'base_layer': [el_main_background],
             'content_layer': [el_hr, el_icon, el_title_first_step, el_sub_title_first_step, el_icon2, el_title_first_step2, el_sub_title_first_step2],
-            'overlay_layer': [el_hr_active,text1, text2, text3, text4, el_form, el_form_button]  + shapes,
+            'overlay_layer': [el_hr_active,text1, text2, text3, text4, el_form, el_form_button, text5, link]  + shapes,
             'top_layer': [el_form_button_text, el_form_text] + num_shapes,
             'emulator_size': emulator_size,
             'blocks': [
                 {
                     'name': 'Активный этапа',
                     'inputs': [
-                        {'label': 'Цвет активного этапа', 'type': 'backgroundColor', 'name': 'hr_active_color', 'value': ts.hr_active_color, 'elements': ['el_hr_active']},
+                        {'label': 'Цвет активного этапа', 'type': 'backgroundColor', 'name': 'hr_active_color', 'value': ts.hr_active_color, 'elements': ['el_hr_active', 'el_icon_active']},
                     ],
                 },
                 {
@@ -721,7 +735,13 @@ class NavigationCustomizerView(View):
                         {'label': 'Толщина линии обводки', 'type': 'borderWidth', 'name': 'form_border_width', 'value': ts.form_border_width, 'elements': ['el_form']},
                         {'label': 'Радиус скругления обводки', 'type': 'borderRadius', 'name': 'form_border_radius', 'value': ts.form_border_radius, 'elements': ['el_form']},
                     ]
-                }
+                },
+                {
+                    'name': 'Цвет ссылки',
+                    'inputs': [
+                        {'label': 'Цвет ссылки', 'type': 'color', 'name': 'link_color', 'value': ts.link_color, 'elements': [ 'el_link']},
+                    ],
+                },
             ]
         }
         return render(request, 'customizer/customizer.html', context)

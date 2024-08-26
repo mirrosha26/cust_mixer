@@ -23,7 +23,7 @@ h2 {
 .ant-drawer-title .ant-btn-text,
 .course-sidebar-header .ant-btn-text, .course-title, 
 .course-current-step, .course-progress-percent,
-.course-sidebar, .ant-btn-link,
+.course-sidebar,
 .course-item {
     color: var(--left-menu-text-color) !important;
 }
@@ -947,8 +947,26 @@ html body .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
 }
 
 
+.ant-btn-primary > .flex.gap-5.align-center > img {
+display: none;
+}
+.overflow-hidden > .ant-btn.ant-btn-primary {
+    background-color: var(--menu-color) !important;
+    color: var(--menu-text-color) !important;
+}
+
+
+main.ant-layout-content .license-card-activity-label.bg-white {
+    background-color: var(--card_bage_background_color) !important;
+}
+
+.license-card-activity-label .color-success {
+    color: var(--card_bage_text_color) !important;
+}
+
 {% if theme_settings.is_back_course_page_enabled %}
 .ez-section {
     background-color: var(--main-color) !important;
 }
 {% endif %}
+

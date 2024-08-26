@@ -143,6 +143,10 @@ class ThemeSettings(models.Model):
     form_button_border_default_radius = models.FloatField(default=0.1)
     form_button_text_default_color = models.CharField(max_length=7, default="#ffffff")
 
+    card_bage_text_color = models.CharField(max_length=7, default="#111111")
+    card_bage_background_color = models.CharField(max_length=7, default="#ffffff")
+    link_color = models.CharField(max_length=7, default="#3762ff")
+
 
     background_image = models.ImageField(
         upload_to=unique_filename,
