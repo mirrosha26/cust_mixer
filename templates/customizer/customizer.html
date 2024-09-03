@@ -132,10 +132,11 @@
       </figure>
       <!-- конец эмулятора -->
     </div>
-    <form action="" method="POST" enctype="multipart/form-data">
-      <!-- CSRF токен для безопасности формы -->
-      {% csrf_token %}
+    
     <div class="container mt-6">
+      <form action="" id="c_main" method="POST" enctype="multipart/form-data">
+        <!-- CSRF токен для безопасности формы -->
+        {% csrf_token %}
       {% for block in blocks %}
       <span class="divider-start">{{block.name}}</span>
         {% for input in block.inputs %}
@@ -154,10 +155,31 @@
           {% endif %}
         {% endfor %}
       {% endfor %}
-      <div class="d-grid mb-2 mt-6">
-        <button type="submit" class="btn btn-primary btn-lg">Сохранить изменения</button>
-      </div>
     </form>
+
+
+    <form method="POST" id="reset"  action="{% url 'reset_theme_settings' %}">
+      {% csrf_token %}      
+      <input type="hidden" name="fields_to_reset" value="{% for block in blocks %}{% for field in block.inputs %}{{field.name}},{% endfor %}{% endfor %}" />
+  </form>
+
+      <!-- reset_fields_form.html -->
+       <div class="row mb-2 mt-6">
+        <div class="col-lg-3 lg-4">
+          <div class="d-grid">
+            <button class="btn btn-soft-danger btn-lg"  form="reset" type="submit">Сбросить все настройки</button>
+            </div>
+        </div>
+        
+        <div class="col-lg-9 lg-8">
+          <div class="d-grid">
+            <button type="submit" form="c_main"  class="btn btn-primary btn-lg">Сохранить изменения</button>
+          </div>
+        </div>
+    </div>
+    
+
+
     </div>
   </div>
 </div>

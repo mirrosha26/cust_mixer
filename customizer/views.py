@@ -1,13 +1,29 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .utils import Shape, Circle, Text, Image, CustomElement
 from .factories import text_factory, circle_factory, shape_factory, image_factory, custom_element_factory
-from django.shortcuts import render
 from django.views import View
 from .models import ThemeSettings
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .models import BACKGROUND_OPTIONS, LOGIN_BACKGROUND_OPTIONS
+from .models import BACKGROUND_OPTIONS, LOGIN_BACKGROUND_OPTIONS, reset_fields_to_default
+
+
+# Пример использования
+# theme_settings_instance = ThemeSettings.objects.get(id=1)  # Получите экземпляр модели
+# reset_fields_to_default(theme_settings_instance, ['menu_color', 'text_color', 'main_color'])  # Сброс значений нескольких полей
+
+
+@login_required
+def reset_theme_settings(request):
+    if request.method == 'POST':
+        fields_to_reset = request.POST.get('fields_to_reset', '')
+        fields_to_reset_list = [field.strip() for field in fields_to_reset.split(',')]        
+        theme_settings = ThemeSettings.objects.get(user=request.user)        
+        reset_fields_to_default(theme_settings, fields_to_reset_list)
+        referer_url = request.META.get('HTTP_REFERER', 'default_view_name')
+    return redirect(referer_url)
+
 
 def create_card_elements(ts, base_x=0, base_y=0):
     """
@@ -191,7 +207,6 @@ class MainCustomizerView(View):
                 setattr(ts, key, value)
 
 
-
         # Проверяем и обрабатываем файл, если он существует
         if 'background_image' in request.FILES and request.FILES['background_image'].size > 0:
             ts.background_image = request.FILES['background_image']
@@ -211,6 +226,7 @@ class MainCustomizerView(View):
         
         # Перенаправляем пользователя на нужную страницу
         return redirect('custom_main')
+
 
 class LessonCustomizerView(View):
 

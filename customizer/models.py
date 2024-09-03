@@ -189,3 +189,37 @@ class ThemeSettings(models.Model):
 def create_theme_settings(sender, instance, created, **kwargs):
     if created:
         ThemeSettings.objects.create(user=instance)
+
+
+
+
+
+def reset_fields_to_default(instance, field_names):
+    """
+    Сбрасывает значения указанных полей на значения по умолчанию.
+    Если возникает исключение, то поле пропускается.
+
+    :param instance: Экземпляр модели ThemeSettings
+    :param field_names: Список названий полей, которые нужно сбросить
+    """
+    for field_name in field_names:
+        try:
+            if not hasattr(instance, field_name):
+                print(f"Поле '{field_name}' не существует в модели '{instance.__class__.__name__}'. Пропуск...")
+                continue
+
+            field = instance._meta.get_field(field_name)
+            
+            if field.default == models.fields.NOT_PROVIDED:
+                print(f"Поле '{field_name}' не имеет значения по умолчанию. Пропуск...")
+                continue
+
+            # Устанавливаем значение по умолчанию
+            setattr(instance, field_name, field.default)
+
+        except Exception as e:
+            # Можно логировать исключение или просто пропустить
+            print(f"Ошибка при сбросе поля '{field_name}': {e}. Пропуск...")
+
+    # Сохраняем изменения только один раз после установки всех значений
+    instance.save()
