@@ -112,6 +112,14 @@
     --card_bage_text_color: {{ theme_settings.card_bage_text_color }};
     --card_bage_background_color: {{ theme_settings.card_bage_background_color }};
     --link_color : {{ts.link_color}};
+
+
+    --card-shadow-color:  {{ theme_settings.card_border_color }}60;
+    --card-button-shadow-color:  {{ theme_settings.card_button_border_color }}60;
+    --form-button-shadow-color: {{ theme_settings.form_button_border_color }}60;
+    --form-button-shadow-default-color: {{ theme_settings.form_button_border_default_color }}60;
+    --login-button-shadow-color: {{ theme_settings.login_button_border_color }}60;
+    --login-card-shadow-color: {{ theme_settings.login_card_border_color }}60;
 }
 
 

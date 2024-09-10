@@ -974,3 +974,42 @@ main.ant-layout-content .license-card-activity-label.bg-white {
 color: var(--link_color) !important;
 }
 
+
+
+
+.course-item-tab > .bg-success, .course-item-tab > .bg-primary {
+    background-color: var(--hr-active-color);
+}
+
+._card_1t7be_1:hover, .material-card:hover {
+    box-shadow: 1px 2px 12px var(--card-shadow-color) !important;
+}
+
+
+.material-card-btns > .ant-btn.ant-btn-primary:hover {
+    box-shadow: 1px 2px 12px var(--card-button-shadow-color) !important;
+}
+
+
+html .license-card .license-card-navigate-button:hover {
+    box-shadow: 1px 2px 12px var(--card-button-shadow-color) !important;
+}
+
+
+.ant-btn.ant-btn-primary:hover {
+    box-shadow: 1px 2px 12px var(--form-button-shadow-color) !important;
+}
+
+.ant-btn.ant-btn-default:hover {
+    box-shadow: 1px 2px 12px var(--form-button-shadow-default-color) !important;
+}
+
+.ant-form-item-control-input-content > .ant-btn.ant-btn-primary:hover {
+   box-shadow: 1px 2px 12px var(--login-button-shadow-color) !important;
+}
+
+._auth_drawer_p3cc9_12:hover {
+ box-shadow: 1px 2px 12px var(--login-card-shadow-color) !important;
+}
+
+
