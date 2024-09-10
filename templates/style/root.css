@@ -114,12 +114,12 @@
     --link_color : {{ts.link_color}};
 
 
-    --card-shadow-color:  {{ theme_settings.card_border_color }}60;
-    --card-button-shadow-color:  {{ theme_settings.card_button_border_color }}60;
-    --form-button-shadow-color: {{ theme_settings.form_button_border_color }}60;
-    --form-button-shadow-default-color: {{ theme_settings.form_button_border_default_color }}60;
-    --login-button-shadow-color: {{ theme_settings.login_button_border_color }}60;
-    --login-card-shadow-color: {{ theme_settings.login_card_border_color }}60;
+    --card-shadow-color:  {{ theme_settings.card_border_color }}35;
+    --card-button-shadow-color:  {{ theme_settings.card_button_border_color }}35;
+    --form-button-shadow-color: {{ theme_settings.form_button_border_color }}35;
+    --form-button-shadow-default-color: {{ theme_settings.form_button_border_default_color }}35;
+    --login-button-shadow-color: {{ theme_settings.login_button_border_color }}35;
+    --login-card-shadow-color: {{ theme_settings.login_card_border_color }}34;
 }
 
 
