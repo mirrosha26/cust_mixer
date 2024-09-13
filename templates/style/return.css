@@ -968,6 +968,14 @@ main.ant-layout-content .license-card-activity-label.bg-white {
 .ez-section {
     background-color: var(--main-color) !important;
 }
+
+.ant-form.ant-form-vertical > .bg-gray-3 {
+    background-color: var(--main-color) !important;
+}
+.flex.flex-col.lh-18 {
+    color: var(--text-color) !important; 
+}
+
 {% endif %}
 
 .ant-btn-link {
@@ -1012,4 +1020,8 @@ html .license-card .license-card-navigate-button:hover {
  box-shadow: 1px 2px 12px var(--login-card-shadow-color) !important;
 }
 
+
+.ant-spin-nested-loading .ant-typography {
+    color: var(--login-label-color) !important;
+}
 
