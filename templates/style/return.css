@@ -30,12 +30,16 @@ h2 {
 {% else %}
 
 
-body:not(.ez-text) {
+body {
     color: var(--text-color) !important;
 }
 
-h2:not(.ez-text) {
+h2 {
     color: var(--text-color) !important;
+}
+
+.ez-text, .ez-text * {
+    color: initial !important;
 }
 
 {% endif %}
