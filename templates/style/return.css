@@ -2,22 +2,43 @@
 {% include "style/root.css" %}
 
 
- /* background всего сайта  */
- body {
-    color: var(--text-color) !important;
-}
+/* background всего сайта  */
+/* применяй для всех, кроме эллементов с .ez-text */
 
-/*
-.ant-modal-content {
-    color: var(--text-color) !important;
+
+{% if theme_settings.is_back_course_page_enabled %}
+.ez-section {
     background-color: var(--main-color) !important;
 }
-*/
+
+.ant-form.ant-form-vertical > .bg-gray-3 {
+    background-color: var(--main-color) !important;
+}
+
+.flex.flex-col.lh-18 {
+    color: var(--text-color) !important; 
+}
+
+body {
+    color: var(--text-color) !important;
+}
 
 h2 {
     color: var(--text-color) !important;
 }
 
+{% else %}
+
+
+body:not(.ez-text) {
+    color: var(--text-color) !important;
+}
+
+h2:not(.ez-text) {
+    color: var(--text-color) !important;
+}
+
+{% endif %}
 
 
 .ant-drawer-title .ant-btn-text,
@@ -964,19 +985,6 @@ main.ant-layout-content .license-card-activity-label.bg-white {
     color: var(--card_bage_text_color) !important;
 }
 
-{% if theme_settings.is_back_course_page_enabled %}
-.ez-section {
-    background-color: var(--main-color) !important;
-}
-
-.ant-form.ant-form-vertical > .bg-gray-3 {
-    background-color: var(--main-color) !important;
-}
-.flex.flex-col.lh-18 {
-    color: var(--text-color) !important; 
-}
-
-{% endif %}
 
 .ant-btn-link {
 color: var(--link_color) !important;
