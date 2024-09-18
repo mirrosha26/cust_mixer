@@ -306,9 +306,9 @@ class LessonCustomizerView(View):
             'emulator_size': emulator_size,
             'blocks': [
                 {
-                    'name': 'Фон контента',
+                    'name': 'Фон и текст контента',
                     'inputs': [
-                        {'label': 'Использовать основной фон из настроек "Курсы". Если опция отключена, цвет фона нужно будет настроить отдельно для каждого урока в AXL', 'type': 'checkbox', 'name': 'is_back_course_page_enabled', 'value': ts.is_back_course_page_enabled },
+                        {'label': 'Использовать основной фон и цвет текста из настроек "Курсы". Если опция отключена, фон и текст нужно будет настроить отдельно для каждого урока в AXL', 'type': 'checkbox', 'name': 'is_back_course_page_enabled', 'value': ts.is_back_course_page_enabled },
                     ],
                 },
                 {
