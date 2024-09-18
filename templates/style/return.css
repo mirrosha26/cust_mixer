@@ -24,7 +24,7 @@ body {
 }
 
 h2 {
-    color: var(--text-color) !important;
+    color: var(--text-color);
 }
 
 {% else %}
@@ -35,7 +35,7 @@ body {
 }
 
 h2 {
-    color: var(--text-color) !important;
+    color: var(--text-color);
 }
 
 .ez-text, .ez-text * {
