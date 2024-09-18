@@ -1037,3 +1037,7 @@ html .license-card .license-card-navigate-button:hover {
     color: var(--login-label-color) !important;
 }
 
+span.anticon.anticon-arrow-left + span {
+    text-transform: uppercase;
+}
+
