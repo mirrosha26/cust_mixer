@@ -1054,7 +1054,14 @@ button.social-button {
     justify-content: center;
     align-items: center;
     padding: 0;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Плавный переход */
 }
+
+/* Эффект при наведении */
+button.social-button:hover {
+    transform: scale(1.1); /* Легкое увеличение кнопки */
+}
+
 
 .social-p {
     margin-top: 1rem;
