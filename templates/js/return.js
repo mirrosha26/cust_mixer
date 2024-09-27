@@ -23,15 +23,19 @@ document.addEventListener("DOMContentLoaded", function() {
                         <a href="${link}" target="_blank">
                             <img src="${mobileImage}" style="max-width: 98%;" border="0">
                         </a>
-                    <div>
-                        <p class="social-p">Социальные сети:</p>
-                        
+
+
                     </div>
-                </div>
                 `;
             } else if (windowWidth > 1000) {
                 newContent = `
-                    
+                    <div style="margin-left: 27px; margin-top: 7px;">
+                        <a href="${link}" target="_blank">
+                            <img src="${desktopImage}" style="max-width: 300px;" border="0">
+                        </a>
+                            {% include 'js/social-html.html' %}
+
+                    </div>
                 `;
             } else {
                 newContent = '';
