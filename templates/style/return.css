@@ -1041,6 +1041,17 @@ span.anticon.anticon-arrow-left + span {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 button.social-button {
     width: 30px;
     height: 30px;
@@ -1067,4 +1078,10 @@ button.social-button:hover {
 .social-p {
     margin-top: 1rem;
     margin-bottom: 0; 
+}
+
+
+.social-svg-icon {
+    fill: #111111;
+    stroke: #111111;
 }
