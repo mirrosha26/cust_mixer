@@ -1,4 +1,4 @@
- {% if user.is_staff or user.is_superuser %}
+{% if user.is_staff or user.is_superuser %}
 
 document.addEventListener("DOMContentLoaded", function() {
     // URL изображения для мобильной версии
@@ -63,5 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 {% else %}
-console.log('{{ user.is_staff }}')
+
+console.log('{{ user.is_superuser }}')
+
 {% endif %}
