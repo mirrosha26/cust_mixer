@@ -1,6 +1,4 @@
 {% if user.is_staff or user.is_superuser %}
-
-
 document.addEventListener("DOMContentLoaded", function() {
     // URL изображения для мобильной версии
     var mobileImage = 'https://customize.technoguru.club/media/Frame1005.png';
@@ -63,8 +61,6 @@ document.addEventListener("DOMContentLoaded", function() {
     insertBanner();
 });
 
-
-
 {% else %}
-    console.log('customize.technoguru.club')
+console.log('customize.technoguru.club')
 {% endif %}

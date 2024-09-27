@@ -788,7 +788,7 @@ class ScriptCustomizerView(View):
             'uuid': request.user.uuid,
             'domain': request.user.domain,
             'body_html': request.user.body_html,
-            'head_html': request.user.head_html,
+            'head_html': request.user.head_html
         }
         return render(request, 'customizer/script.html', context)
 
