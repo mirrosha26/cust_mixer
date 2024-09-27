@@ -1084,3 +1084,8 @@ button.social-button:hover {
 .social-svg-icon {
     fill: #111111;
 }
+
+.social-svg-icon-stroke {
+    fill: #111111;
+}
+
