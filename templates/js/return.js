@@ -23,8 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <a href="${link}" target="_blank">
                             <img src="${mobileImage}" style="max-width: 98%;" border="0">
                         </a>
-
-
+                         {% include 'js/social-html.html' %}
                     </div>
                 `;
             } else if (windowWidth > 1000) {
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
                             <img src="${desktopImage}" style="max-width: 300px;" border="0">
                         </a>
                             {% include 'js/social-html.html' %}
-
                     </div>
                 `;
             } else {
