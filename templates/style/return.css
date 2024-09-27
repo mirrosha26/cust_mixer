@@ -1047,5 +1047,6 @@ button.social-button {
     border-radius: 50%;
     border: none;
     vertical-align: top;
-    margin-top:10px;
+    margin-top: 10px;
+    margin-right: 5px;
 }
