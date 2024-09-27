@@ -1050,8 +1050,8 @@ button.social-button {
     vertical-align: top;
     margin-top: 10px;
     margin-right: 5px;
-    display: flex;
+    display: inline-grid;
     justify-content: center;
     align-items: center;
-    padding: 0; /* Удаляем внутренние отступы */
+    padding: 0;
 }
