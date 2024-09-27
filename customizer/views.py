@@ -801,3 +801,122 @@ class ScriptCustomizerView(View):
             request.user.head_html = request.POST.get('head_html')
         request.user.save()
         return redirect('custom_script')
+    
+
+
+
+
+
+
+class BanerCustomizerView(View):
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('signin') 
+        return super().dispatch(request, *args, **kwargs)
+
+
+    def get(self, request):
+        emulator_size = {'width': 225, 'height': 275 }
+        ts = ThemeSettings.objects.get(user=request.user)
+
+        el_card_body = shape_factory(225, 275, ts.card_back_color, 0, 0, "el_card_body", border_radius=ts.card_border_radius, border_width=ts.card_border_width, border_color=ts.card_border_color)
+        el_material_card_image = shape_factory(192, 75, "#7ee4d7", 16, 16, "el_material_card_image", border_radius=ts.card_image_border_radius, border_width=ts.card_image_border_width, border_color=ts.card_image_border_color)
+        el_card_button = shape_factory(192.5, 32.5, ts.card_button_color,16, 225, "el_card_button", border_radius=ts.card_button_border_radius, border_width=ts.card_button_border_width, border_color=ts.card_button_border_color)
+
+        el_card_bage = shape_factory(40, 15, ts.card_bage_background_color,20, 20, "el_card_bage", border_radius=0.9)
+        el_card_bage_title = text_factory(28, 23, "el_card_bage_title", "Папка", 8, ts.card_bage_text_color)
+
+
+        el_card_progress_bar_back = shape_factory(162.5, 6, ts.card_back_color, 16, 212, "el_card_progress_bar_back", ts.progress_card_border_radius, 1, ts.progress_card_border_color)  #настройка [+]
+        el_card_progress = shape_factory(109, 4.3, ts.progress_card_bar_color, 16.8, 212.5, "el_card_progress", border_radius=0.1)
+        el_card_progress_text = text_factory(190, 212, "el_card_secondary_text", "70%", 9, ts.card_text_color_secondary, 9)
+        el_card_secondary_text = text_factory(16, 190, "el_card_secondary_text", "Описание курса", 9, ts.card_text_color_secondary, 9)
+        el_card_title = text_factory(16, 105, "el_card_title", "Название курса", 13, ts.card_text_color_primary,13)
+        el_button_title = text_factory(68, 235, "el_button_title", "ПРОДОЛЖИТЬ", 11, ts.card_button_color_primary,11)
+
+
+        if ts.background_option == "background_image":
+            device_browser_style = f''' style="background: url(/media/{ts.background_image}) no-repeat center center !important; background-size: cover !important;" '''
+        else:
+            device_browser_style = f'style="background-color: {ts.main_color}"'
+
+        # Контекст для передачи в шаблон
+        context = {
+            'title': 'Настройка карточки курса',
+            'device_browser_header' : False,
+            'device_browser_style': device_browser_style,
+            'base_layer': [el_card_body],
+            'content_layer': [el_material_card_image, el_card_button, el_card_progress_bar_back],
+            'overlay_layer': [el_card_progress, el_card_progress_text, el_card_secondary_text, el_card_title],
+            'top_layer': [el_button_title, el_card_bage, el_card_bage_title],
+            'emulator_size': emulator_size,
+            'blocks': [
+                {
+                    'name': 'Карточка',
+                    'inputs': [
+                        {'label': 'Фон', 'type': 'backgroundColor', 'name': 'card_back_color', 'value': ts.card_back_color, 'elements': ['el_card_body']},
+                        {'label': 'Цвет обводки', 'type': 'borderColor', 'name': 'card_border_color', 'value': ts.card_border_color, 'elements': ['el_card_body']},
+                        {'label': 'Толщина линии обводки', 'type': 'borderWidth', 'name': 'card_border_width', 'value': ts.card_border_width, 'elements': ['el_card_body']},
+                        {'label': 'Радиус скругления обводки', 'type': 'borderRadius', 'name': 'card_border_radius', 'value': ts.card_border_radius, 'elements': ['el_card_body']},
+                    ],
+                },
+                {
+                    'name': 'Бейдж',
+                    'inputs': [
+                        {'label': 'Фон', 'type': 'backgroundColor', 'name': 'card_bage_background_color', 'value': ts.card_bage_background_color, 'elements': ['el_card_bage']},
+                        {'label': 'Цвет текста', 'type': 'color', 'name': 'card_bage_color', 'value': ts.card_bage_text_color, 'elements': ['el_card_bage_title']},
+                    ],
+                },
+                {
+                    'name': 'Изображение карточки',
+                    'inputs': [
+                        {'label': 'Цвет обводки', 'type': 'borderColor', 'name': 'card_image_border_color', 'value': ts.card_image_border_color, 'elements': ['el_material_card_image']},
+                        {'label': 'Толщина линии обводки', 'type': 'borderWidth', 'name': 'card_image_border_width', 'value': ts.card_image_border_width, 'elements': ['el_material_card_image']},
+                        {'label': 'Радиус скругления обводки', 'type': 'borderRadius', 'name': 'card_image_border_radius', 'value': ts.card_image_border_radius, 'elements': ['el_material_card_image']},
+                    ],
+                },
+                {
+                    'name': 'Текст карточки',
+                    'inputs': [
+                        {'label': 'Цвет заголовка', 'type': 'color', 'name': 'card_text_color_primary', 'value': ts.card_text_color_primary, 'elements': ['el_card_title']},
+                        {'label': 'Цвет текста', 'type': 'color', 'name': 'card_text_color_secondary', 'value': ts.card_text_color_secondary, 'elements': ['el_card_secondary_text']},
+                    ],
+                },
+                {
+                    'name': 'Кнопка карточки',
+                    'inputs': [
+                        {'label': 'Цвет кнопки', 'type': 'backgroundColor', 'name': 'card_button_color', 'value': ts.card_button_color, 'elements': ['el_card_button']},
+                        {'label': 'Цвет текста кнопки', 'type': 'color', 'name': 'card_button_color_primary', 'value': ts.card_button_color_primary, 'elements': ['el_button_title']},
+                        {'label': 'Цвет обводки кнопки', 'type': 'borderColor', 'name': 'card_button_border_color', 'value': ts.card_button_border_color, 'elements': ['el_card_button']},
+                        {'label': 'Толщина линии обводки кнопки', 'type': 'borderWidth', 'name': 'card_button_border_width', 'value': ts.card_button_border_width, 'elements': ['el_card_button']},
+                        {'label': 'Радиус скругления обводки кнопки', 'type': 'borderRadius', 'name': 'card_button_border_radius', 'value': ts.card_button_border_radius, 'elements': ['el_card_button']},
+                    ],
+                },
+                {
+                    'name': 'Прогресс-бар',
+                    'inputs': [
+                        {'label': 'Цвет прогресс-бара', 'type': 'backgroundColor', 'name': 'progress_card_bar_color', 'value': ts.progress_card_bar_color, 'elements': ['el_card_progress']},
+                        {'label': 'Цвет обводки прогресс-бара', 'type': 'borderColor', 'name': 'progress_card_border_color', 'value': ts.progress_card_border_color, 'elements': ['el_card_progress_bar_back']},
+                        {'label': 'Толщина линии обводки прогресс-бара', 'type': 'borderWidth', 'name': 'progress_card_border_width', 'value': ts.progress_card_border_width, 'elements': ['el_card_progress_bar_back']},
+                        {'label': 'Радиус скругления обводки прогресс-бара', 'type': 'borderRadius', 'name': 'progress_card_border_radius', 'value': ts.progress_card_border_radius, 'elements': ['el_card_progress_bar_back']},
+                    ],
+                },
+            ]
+        }
+        return render(request, 'customizer/customizer.html', context)
+
+
+    def post(self, request):
+        ts = ThemeSettings.objects.get(user=request.user)
+        
+        for key, value in request.POST.items():
+            if value == '.' or value == '':
+                continue
+            if hasattr(ts, key):
+                setattr(ts, key, value)
+
+
+        ts.save()
+        return redirect('custom_card')
+

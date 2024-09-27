@@ -8,7 +8,9 @@ urlpatterns = [
     path('card', views.CardCustomizerView.as_view(), name='custom_card'), 
     path('', views.LoginCustomizerView.as_view(), name='custom_login'), 
     path('navigation', views.NavigationCustomizerView.as_view(), name='custom_navigation'), 
+    path('baners', views.BanerCustomizerView.as_view(), name='baners'), 
     path('script', views.ScriptCustomizerView.as_view(), name='custom_script'), 
+
     path('reset-theme-settings/', views.reset_theme_settings, name='reset_theme_settings'),
 
 ]
