@@ -60,7 +60,7 @@ def theme_js_view(request):
     if user.domain != domain or not user.is_connected:
         return HttpResponseForbidden("Access Denied")
     theme_settings = get_object_or_404(ThemeSettings, user=user)
-    return render(request, 'js/return.js', {'theme_settings': theme_settings}, content_type='application/javascript')
+    return render(request, 'js/return.js', {'theme_settings': theme_settings }, content_type='application/javascript')
 
 
 @csrf_exempt
