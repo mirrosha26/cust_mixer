@@ -1054,6 +1054,7 @@ button.social-button {
     justify-content: center;
     align-items: center;
     padding: 0;
+    cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease; /* Плавный переход */
 }
 
