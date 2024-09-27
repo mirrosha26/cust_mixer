@@ -21,6 +21,9 @@
             {% url 'custom_login' as custom_login_url %}
             {% url 'custom_navigation' as custom_navigation_url %}
             {% url 'custom_script' as custom_script_url %}
+            {% url 'baner' as baner_url %}
+
+
             
 
             <div class="nav-item{% if request.path == custom_card_url %} active{% endif %}">
@@ -69,6 +72,17 @@
               <span class="nav-link-title">Навигация</span>
           </a>
       </div>
+
+
+      <div class="nav-item{% if request.path == baner_url %} active{% endif %}">
+        <a class="nav-link{% if request.path == baner_url %} active{% endif %}" href="{{ baner_url }}" role="button">
+          <i class="bi bi-layout-sidebar-inset-reverse"></i>
+            <span class="nav-link-title">Боковой банер</span>
+        </a>
+    </div>
+
+
+      
 
       <div class="nav-item{% if request.path == custom_script_url %} active{% endif %}">
         <a class="nav-link{% if request.path == custom_script_url %} active{% endif %}" href="{{ custom_script_url }}" role="button">
