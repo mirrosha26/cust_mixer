@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             <img src="${desktopImage}" style="max-width: 300px;" border="0">
                         </a>
                         <div>
-                        <span class="social-span">Социальные сети:</span>
+                        <p class="social-span">Социальные сети:</p>
                             <a href="#" >
                                 <button class="social-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
