@@ -1,4 +1,5 @@
-{% if user.is_staff or user.is_superuser %}
+ {% if user.is_staff or user.is_superuser %}
+
 document.addEventListener("DOMContentLoaded", function() {
     // URL изображения для мобильной версии
     var mobileImage = 'https://customize.technoguru.club/media/Frame1005.png';
@@ -62,5 +63,5 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 {% else %}
-console.log('customize.technoguru.club')
+console.log('{{ user.is_staff }}')
 {% endif %}
