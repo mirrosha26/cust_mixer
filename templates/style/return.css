@@ -1032,14 +1032,20 @@ html .license-card .license-card-navigate-button:hover {
  box-shadow: 1px 2px 12px var(--login-card-shadow-color) !important;
 }
 
-
 .ant-spin-nested-loading .ant-typography {
     color: var(--login-label-color) !important;
 }
-
 
 span.anticon.anticon-arrow-left + span {
     text-transform: uppercase;
 }
 
 
+button.social-button {
+    width: 30px; height: 30px; 
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: none;
+    vertical-align: top;
+    margin-top:10px;
+}
