@@ -1042,11 +1042,16 @@ span.anticon.anticon-arrow-left + span {
 
 
 button.social-button {
-    width: 30px; height: 30px; 
+    width: 30px;
+    height: 30px;
     background-color: #ffffff;
     border-radius: 50%;
     border: none;
     vertical-align: top;
     margin-top: 10px;
     margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* Удаляем внутренние отступы */
 }
