@@ -1,0 +1,62 @@
+{% load static %}
+
+<div class="row mb-3">
+  <label class="col-sm-5 col-form-label" >{{ label }}</label>
+  <div class="col-sm-7">
+    <div class="d-flex align-items-center" >
+      <span class="avatar avatar-4x3">
+      <img id="avatarImgB" class="avatar-img" src="media/{{value}}">
+      </span>
+      <input type="hidden" id="reset_baner" name="reset_baner" value="{{reset_baner}}">
+
+      <div class="d-flex gap-3 ms-4">
+      <div class="form-attachment-btn btn btn-sm btn-primary">Загрузить фото 
+          <input name="{{name}}" type="file" class="js-file-attach form-attachment-btn-label" id="avatarUploader"
+                  data-hs-file-attach-options='{
+                  "textTarget": "#avatarImgB",
+                  "mode": "image",
+                  "maxFileSize": 10000,
+                  "targetAttr": "src",
+                  "resetTarget": ".reset-baner-button",
+                  "resetImg": "media/baners/default_baner.png",
+                  "allowTypes": [".png", ".jpeg", ".jpg"]
+                  }'>
+      </div>
+      <!-- End Avatar -->
+      <button type="button" class="js-file-attach-reset-img reset-baner-button btn btn-white btn-sm">Сбросить</button>
+      </div>
+  </div>
+  </div>
+</div>
+
+
+<script>
+
+// ==> Обработчик для кнопки "Удалить"
+document.querySelector('.reset-baner-button').addEventListener('click', function() {
+  // Сброс изображение для тега <img>
+  document.getElementById('avatarImgB').src = 'media/baners/default_baner.png';
+
+  // Устанавливаем reset поле в false
+  document.getElementById('reset_baner').value = 'true';
+});
+</script>
+
+
+
+<script>
+    document.getElementById('avatarUploader').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    const resetField = document.getElementById('reset_baner');
+  
+    reader.onload = function(e) {
+      document.getElementById('avatarImgB').src = e.target.result;
+      resetField.value = 'false';
+    }
+  
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  });
+</script>

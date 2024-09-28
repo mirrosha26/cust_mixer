@@ -1,0 +1,62 @@
+{% load static %}
+
+<div class="row mb-3">
+  <label class="col-sm-5 col-form-label" >{{ label }}</label>
+  <div class="col-sm-7">
+    <div class="d-flex align-items-center" >
+      <span class="avatar avatar-4x3">
+      <img id="avatarImgBM" class="avatar-img" src="media/{{value}}">
+      </span>
+      <input type="hidden" id="reset_baner_mob" name="reset_baner_mob" value="{{reset_baner_mob}}">
+
+      <div class="d-flex gap-3 ms-4">
+      <div class="form-attachment-btn btn btn-sm btn-primary">Загрузить фото 
+          <input name="{{name}}" type="file" class="js-file-attach form-attachment-btn-label" id="avatarUploaderM"
+                  data-hs-file-attach-options='{
+                  "textTarget": "#avatarImgBM",
+                  "mode": "image",
+                  "maxFileSize": 10000,
+                  "targetAttr": "src",
+                  "resetTarget": ".reset-baner-button-mob",
+                  "resetImg": "media/baners/default_baner.png",
+                  "allowTypes": [".png", ".jpeg", ".jpg"]
+                  }'>
+      </div>
+      <!-- End Avatar -->
+      <button type="button" class="js-file-attach-reset-img reset-baner-button-mob btn btn-white btn-sm">Сбросить</button>
+      </div>
+  </div>
+  </div>
+</div>
+
+
+<script>
+
+// ==> Обработчик для кнопки "Удалить"
+document.querySelector('.reset-baner-button-mob').addEventListener('click', function() {
+  // Сброс изображение для тега <img>
+  document.getElementById('avatarImgBM').src = 'media/baners/default_baner.png';
+
+  // Устанавливаем reset поле в false
+  document.getElementById('reset_baner_mob').value = 'true';
+});
+</script>
+
+
+
+<script>
+    document.getElementById('avatarUploaderM').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    const resetField = document.getElementById('reset_baner_mob');
+  
+    reader.onload = function(e) {
+      document.getElementById('avatarImgBM').src = e.target.result;
+      resetField.value = 'false';
+    }
+  
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  });
+</script>

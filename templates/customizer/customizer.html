@@ -81,6 +81,7 @@
     <h3 class="card-header-title">{{title}}</h3>
   </div>
   <div class="card-body">
+    {% if not emulator_hide %}
     <div class="container-custom border border-2 p-4 {% if not device_browser_style %}bg-soft-secondary" {% else %}" {{device_browser_style|safe}}{% endif %}>
       <!-- начало эмулятора -->
       <figure class="device-browser" style="width: {{emulator_size.width}}px;">
@@ -132,6 +133,7 @@
       </figure>
       <!-- конец эмулятора -->
     </div>
+    {% endif %}
     
     <div class="container mt-6">
       <form action="" id="c_main" method="POST" enctype="multipart/form-data">
@@ -150,6 +152,14 @@
             {% include 'customizer/emulators/select-custom.html' with label=input.label name=input.name display_none=input.display_none options=input.options  id='select_custom' %}
             {% elif input.type == 'img' %}
             {% include 'customizer/emulators/img_imput.html' with label=input.label name=input.name display_none=input.display_none value=input.value  id='select_custom' %}
+            {% elif input.type == 'baner' %}
+            {% include 'customizer/emulators/baner_input.html' with label=input.label name=input.name display_none=input.display_none value=input.value  id='select_custom' %}
+            {% elif input.type == 'baner_mob' %}
+            {% include 'customizer/emulators/baner_mob_input.html' with label=input.label name=input.name display_none=input.display_none value=input.value  id='select_custom' %}
+            
+            {% elif input.type == 'url' %}
+            {% include 'customizer/emulators/url.html' with label=input.label name=input.name value=input.value %}
+
             {% elif input.type == 'checkbox' %}
             {% include 'customizer/emulators/checkbox.html' with label=input.label name=input.name  value=input.value %}
           {% endif %}

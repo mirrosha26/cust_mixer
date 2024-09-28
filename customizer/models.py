@@ -14,6 +14,14 @@ def unique_filename(instance, filename):
     new_filename = f"{user_id}_{timestamp}_{random_str}{extension}"
     return os.path.join('backgrounds', new_filename)
 
+def unique_filename_b(instance, filename):
+    base, extension = os.path.splitext(filename)
+    user_id = instance.user.id
+    timestamp = now().strftime('%Y%m%d%H%M%S')
+    random_str = get_random_string(length=8)
+    new_filename = f"{user_id}_{timestamp}_{random_str}{extension}"
+    return os.path.join('baners', new_filename)
+
 
 
 User = get_user_model()
@@ -174,12 +182,35 @@ class ThemeSettings(models.Model):
         default='login_background_color',
     )
 
+    baner_image = models.ImageField(
+        upload_to=unique_filename_b,
+        default='baners/default_baner.png',
+    )
+
+    baner_mob_image = models.ImageField(
+        upload_to=unique_filename_b,
+        default='baners/default_baner.png',
+    )
+
+    banner_url = models.URLField(max_length=200, default='')
+
+
+    telegram_url = models.URLField(default='', blank=True, verbose_name="Ссылка на Телеграм")
+    instagram_url = models.URLField(default='', blank=True, verbose_name="Ссылка на Инстаграм")
+    vk_url = models.URLField(default='', blank=True, verbose_name="Ссылка на ВК")
+    x_url = models.URLField(default='', blank=True, verbose_name="Ссылка на X (Twitter)")
+    youtube_url = models.URLField(default='', blank=True, verbose_name="Ссылка на YouTube")
+    
+
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs) 
         if self.background_image:
             os.chmod(self.background_image.path, 0o644)
         if self.login_background_image:
             os.chmod(self.login_background_image.path, 0o644)
+
+    
 
 
     def __str__(self):

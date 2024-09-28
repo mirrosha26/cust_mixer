@@ -1,14 +1,14 @@
-{% if user.is_staff or user.is_superuser %}
+{% if ts.baner_image != 'backgrounds/default_background.png' and ts.baner_mob_image  != 'backgrounds/default_background.png'   %}
 
 document.addEventListener("DOMContentLoaded", function() {
     // URL изображения для мобильной версии
-    var mobileImage = 'https://customize.technoguru.club/media/Frame1005.png';
+    var mobileImage = '{{ts.baner_mob_image}}';
 
     // URL изображения для десктопной версии
-    var desktopImage = 'https://customize.technoguru.club/media/Frame1005.png';
+    var desktopImage = '{{ts.baner_image}}';
 
     // Ссылка, куда будет вести баннер
-    var link = 'https://technoguru.club/veb2';
+    var link = '{{ts.banner_url}}';
 
     function insertBanner() {
         var container = document.querySelector(".material-page-container-r-col");
