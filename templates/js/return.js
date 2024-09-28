@@ -2,10 +2,10 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     // URL изображения для мобильной версии
-    var mobileImage = 'media/{{ts.baner_mob_image}}';
+    var mobileImage = 'https://customize.technoguru.club/media/{{ts.baner_mob_image}}';
 
     // URL изображения для десктопной версии
-    var desktopImage = 'media/{{ts.baner_image}}';
+    var desktopImage = 'https://customize.technoguru.club/media/{{ts.baner_image}}';
 
     // Ссылка, куда будет вести баннер
     var link = '{{ts.banner_url}}';
