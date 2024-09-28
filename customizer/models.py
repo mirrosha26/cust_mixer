@@ -200,7 +200,9 @@ class ThemeSettings(models.Model):
     vk_url = models.URLField(default='', blank=True, verbose_name="Ссылка на ВК")
     x_url = models.URLField(default='', blank=True, verbose_name="Ссылка на X (Twitter)")
     youtube_url = models.URLField(default='', blank=True, verbose_name="Ссылка на YouTube")
-    
+    whatsapp_url = models.URLField(max_length=255, blank=True, default='')
+
+
 
 
     def save(self, *args, **kwargs):

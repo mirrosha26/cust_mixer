@@ -851,6 +851,7 @@ class BanerCustomizerView(View):
                         {'label': 'Ссылка на ВКонтакте', 'type': 'url', 'name': 'vk_url', 'value': ts.vk_url, 'elements': []},
                         {'label': 'Ссылка на X (Twitter)', 'type': 'url', 'name': 'x_url', 'value': ts.x_url, 'elements': []},
                         {'label': 'Ссылка на YouTube', 'type': 'url', 'name': 'youtube_url', 'value': ts.youtube_url, 'elements': []},
+                        {'label': 'Ссылка на WhatsApp', 'type': 'url', 'name': 'whatsapp_url', 'value': ts.whatsapp_url, 'elements': []},
                     ],
                 },
             ]

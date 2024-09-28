@@ -1,11 +1,11 @@
-{% if ts.baner_image != 'backgrounds/default_background.png' and ts.baner_mob_image  != 'backgrounds/default_background.png'   %}
+{% if ts.baner_image != 'baners/default_background.png' and ts.baner_mob_image  != 'baners/default_background.png'   %}
 
 document.addEventListener("DOMContentLoaded", function() {
     // URL изображения для мобильной версии
-    var mobileImage = '{{ts.baner_mob_image}}';
+    var mobileImage = 'media/{{ts.baner_mob_image}}';
 
     // URL изображения для десктопной версии
-    var desktopImage = '{{ts.baner_image}}';
+    var desktopImage = 'media/{{ts.baner_image}}';
 
     // Ссылка, куда будет вести баннер
     var link = '{{ts.banner_url}}';
