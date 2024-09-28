@@ -1,4 +1,4 @@
-{% if theme_settings.baner_image != 'baners/default_background.png' and theme_settings.baner_mob_image  != 'baners/default_background.png'   %}
+{% if theme_settings.baner_image != 'baners/default_background.png' and theme_settings.baner_mob_image  != 'baners/default_background.png'  and theme_settings.banner_url != '' %}
 
 document.addEventListener("DOMContentLoaded", function() {
     // URL изображения для мобильной версии
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <a href="${link}" target="_blank">
                             <img src="${mobileImage}" style="max-width: 98%;" border="0">
                         </a>
-                         {% if ts.telegram_url or ts.instagram_url or ts.vk_url or ts.x_url or ts.youtube_url or ts.whatsapp_url %}
+                         {% if theme_settings.telegram_url or theme_settings.instagram_url or theme_settings.vk_url or theme_settings.x_url or theme_settings.youtube_url or theme_settings.whatsapp_url %}
                                 {% include 'js/social-html.html' %}
                             {% endif %}
 
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <a href="${link}" target="_blank">
                             <img src="${desktopImage}" style="max-width: 300px;" border="0">
                         </a>
-                            {% if ts.telegram_url or ts.instagram_url or ts.vk_url or ts.x_url or ts.youtube_url or ts.whatsapp_url %}
+                            {% if theme_settings.telegram_url or theme_settings.instagram_url or theme_settings.vk_url or theme_settings.x_url or theme_settings.youtube_url or theme_settings.whatsapp_url %}
                                 {% include 'js/social-html.html' %}
                             {% endif %}
 
