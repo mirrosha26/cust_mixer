@@ -1055,7 +1055,7 @@ span.anticon.anticon-arrow-left + span {
 button.social-button {
     width: 30px;
     height: 30px;
-    background-color: #ffffff;
+    background-color: var(--form-button-back-color);
     border-radius: 50%;
     border: none;
     vertical-align: top;
@@ -1072,6 +1072,7 @@ button.social-button {
 /* Эффект при наведении */
 button.social-button:hover {
     transform: scale(1.1); /* Легкое увеличение кнопки */
+    color: var(--text-color);
 }
 
 
@@ -1082,10 +1083,10 @@ button.social-button:hover {
 
 
 .social-svg-icon {
-    fill: #111111;
+    fill: var(--form-button-text-color);
 }
 
 .social-svg-icon-stroke {
-    fill: #111111;
+    fill: var(--form-button-text-color);
 }
 
