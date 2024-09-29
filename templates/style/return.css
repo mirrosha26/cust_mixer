@@ -645,6 +645,11 @@ span.course-item-tab-title {
     background: none;
 }
 
+@media (max-width: 370px) {
+    ._auth_layout_p3cc9_8 ._auth_drawer_p3cc9_12 {
+        height: 94vh;
+    }
+}
 
 .login-wrapper ._auth_drawer_p3cc9_12 {
     background-color: var(--login-card-back-color) !important;
@@ -1089,4 +1094,9 @@ button.social-button:hover {
 .social-svg-icon-stroke {
     fill: var(--form-button-text-color);
 }
+
+.test_renderer {
+    background-color: var(--main-color) !important;
+}
+
 
