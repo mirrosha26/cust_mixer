@@ -13,6 +13,11 @@
 
 .ant-form.ant-form-vertical > .bg-gray-3 {
     background-color: var(--main-color) !important;
+    color: var(--text-color) !important;
+}
+
+._item_content_wrapper_1pr2a_  .bg-white {
+    background-color: var(--main-color) !important;
 }
 
 .flex.flex-col.lh-18 {
@@ -1044,9 +1049,6 @@ html .license-card .license-card-navigate-button:hover {
 span.anticon.anticon-arrow-left + span {
     text-transform: uppercase;
 }
-
-
-
 
 
 
