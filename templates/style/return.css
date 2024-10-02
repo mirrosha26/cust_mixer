@@ -1102,3 +1102,6 @@ button.social-button:hover {
 }
 
 
+.ant-form.ant-form-vertical .ant-form-item {
+    color: var(--text-color) !important;
+}
