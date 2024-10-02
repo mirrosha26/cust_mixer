@@ -1106,7 +1106,7 @@ button.social-button:hover {
     color: var(--text-color) !important;
 }
 
-.anticon.anticon-smile, .anticon.anticon-audio {
+.anticon.anticon-smile, .anticon.anticon-audio, .anticon.anticon-paper-clip {
     color: var(--text-color) !important;
 }
 
