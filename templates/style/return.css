@@ -1105,3 +1105,8 @@ button.social-button:hover {
 .ant-form.ant-form-vertical .ant-form-item {
     color: var(--text-color) !important;
 }
+
+.anticon.anticon-smile, .anticon.anticon-audio {
+    color: var(--text-color) !important;
+}
+
