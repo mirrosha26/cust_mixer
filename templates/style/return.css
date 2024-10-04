@@ -1110,3 +1110,14 @@ button.social-button:hover {
     color: var(--text-color) !important;
 }
 
+
+
+.test_renderer .bg-red-1 {
+    background-color: rgba(128, 39, 40, 0.4) !important;
+    border-color: #802728 !important;
+}
+
+.test_renderer .bg-green-1 {
+    background-color: rgba(59, 162, 8, 0.4) !important; 
+    border-color: #3ba208 !important;
+}
