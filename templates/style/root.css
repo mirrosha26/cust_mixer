@@ -13,6 +13,7 @@
 
     --main-color: {{ theme_settings.main_color }};
     --text-color: {{ theme_settings.text_color }};
+    --60text-color: {{ theme_settings.text_color }}60;
     --scroll-bar-size: {{ theme_settings.scroll_bar_size }}px;
     --scroll-bar-color: {{ theme_settings.scroll_bar_color }};
     --scroll-bar-round: {{ theme_settings.scroll_bar_round }}rem;
@@ -121,5 +122,7 @@
     --login-button-shadow-color: {{ theme_settings.login_button_border_color }}45;
     --login-card-shadow-color: {{ theme_settings.login_card_border_color }}45;
 }
+
+
 
 

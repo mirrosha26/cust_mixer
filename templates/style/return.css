@@ -1121,3 +1121,9 @@ button.social-button:hover {
     background-color: rgba(59, 162, 8, 0.4) !important; 
     border-color: #3ba208 !important;
 }
+
+
+
+.msg-edit-input::placeholder {
+    color: var(--60text-color) !important; 
+}
