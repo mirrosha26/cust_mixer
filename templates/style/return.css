@@ -1127,3 +1127,16 @@ button.social-button:hover {
 .msg-edit-input::placeholder {
     color: var(--60text-color) !important; 
 }
+
+
+
+._gamification_card_1u4bb_1 .ant-card-body {
+    padding: 8px 16px 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--card-back-color) !important;
+    border-radius: var(--card-border-radius) !important;
+    border: var(--card-border-width) solid var(--card-border-color) !important;
+}
