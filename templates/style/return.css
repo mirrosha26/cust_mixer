@@ -1146,3 +1146,9 @@ button.social-button:hover {
     background: var(--card-back-color) !important;
     border-radius: var(--card-border-radius) !important;
 }
+
+.ant-card.ant-card-bordered._gamification_card_1u4bb_1.gamification-card {
+    background: none !important;
+    border: none !important;
+}
+
