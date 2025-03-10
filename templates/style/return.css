@@ -1142,5 +1142,7 @@ button.social-button:hover {
 }
 
 ._achievement_1yliw_1 {
-    padding: 6px !important;
+    padding: 6px;
+    background: var(--card-back-color) !important;
+    border-radius: var(--card-border-radius) !important;
 }
