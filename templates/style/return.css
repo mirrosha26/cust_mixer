@@ -1152,3 +1152,57 @@ button.social-button:hover {
     border: none !important;
 }
 
+
+.ant-page-header.ant-page-header-ghost,
+._page_header_qgac4_10 {
+    border: 1px solid var(--text-color);
+    background: var(--main-color);
+
+}
+
+.ant-drawer .ant-drawer-footer,
+.ant-drawer footer {
+    background: var(--main-color);
+}
+
+.border.hoverable.mb-10.p-10.bg-white {
+    border: var(--card-border-width) solid var(--card-border-color) !important;
+    border-radius: var(--card-border-radius) !important;
+    background-color: var(--card-back-color) !important;
+}
+
+a._thread__title_5xqt3_8 {
+    color: var(--card-text-color-primary) !important;
+}
+
+.ant-breadcrumb a {
+    color: var(--text-color);
+}
+
+h1.fs-30.fw-600.color-gray-9 {
+    color: var(--text-color) !important;
+}
+
+h1.fs-30.fw-600.color-gray-9 span {
+    color: var(--text-color) !important;
+}
+
+.ant-card.ant-card-bordered.c-pointer.flex-1[class*="statcard_1csvf_1"] {
+    border: none !important;
+    color: var(--text-color) !important;
+}
+
+.ant-card._stat_card_1csvf_1 {
+    border: 0 !important;
+}
+
+.ant-card.ant-card-bordered[class*="statcard_1csvf_1"].c-pointer.flex-1 .ant-statistic-title,
+.ant-card.ant-card-bordered[class*="statcard_1csvf_1"].c-pointer.flex-1 .ant-statistic-content {
+    color: var(--text-color) !important;
+}
+
+.ant-statistic-content,
+.color-gray-9 {
+    color: var(--text-color) !important;
+}
+
