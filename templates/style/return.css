@@ -1206,3 +1206,19 @@ h1.fs-30.fw-600.color-gray-9 span {
     color: var(--text-color) !important;
 }
 
+
+.ant-page-header.ant-page-header-ghost,
+._page_header_qgac4_10 {
+    border: 1px solid var(--text-color);
+    background: var(--main-color) !important;
+}
+
+._page_header_1eumc_63,
+._topic_header_1eumc_36,
+._topic_body_1eumc_40,
+._topic_footer_1eumc_51,
+._il_scroller_1iut6_6 div[data-position]:nth-child(odd),
+._topic_1eumc_1 {
+    background: var(--main-color) !important;
+}
+
